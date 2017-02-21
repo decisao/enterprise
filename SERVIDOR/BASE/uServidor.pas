@@ -1,0 +1,60 @@
+unit uServidor;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, WideStrings, StdCtrls, DB, SqlExpr, DBXInterBase, DBXDevartInterBase;
+
+type
+  TformServidor = class(TForm)
+    SQLConnection: TSQLConnection;
+    lbNome: TLabel;
+    SQLMonitor: TSQLMonitor;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formServidor: TformServidor;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformServidor.FormCreate(Sender: TObject);
+var
+  nome, extensao, base: string;
+begin
+
+  { fecho se estiver aberto }
+  if SQLConnection.Connected then
+    SQLConnection.Close;
+
+//  { limpo os parâmetros }
+//  SQLConnection.Params.Clear;
+
+  { nome do cliente }
+  nome     := ExtractFileName(ParamStr(0));
+  extensao := ExtractFileExt (ParamStr(0));
+  delete(nome, pos(extensao, nome), length(extensao));
+  nome := uppercase(nome);
+
+//  { defino a conexão }
+//  SQLConnection.ConnectionName := nome;
+
+  { mudo somente o nome da base }
+  base := SQLConnection.Params.Values['DataBase'];
+  base := StringReplace(base, 'BASE', nome, [rfReplaceAll, rfIgnoreCase]);
+  SQLConnection.Params.Values['DataBase'] := base;
+
+  { abro a conexão }
+//  SQLMonitor.Active := True;
+  SQLConnection.Open;
+  
+end;
+
+end.

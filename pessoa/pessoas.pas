@@ -1,0 +1,1267 @@
+unit pessoas;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, MODELO_CAD, cxStyles, cxCustomData, cxGraphics, cxFilter,
+  cxData, cxDataStorage, cxEdit, DB, cxDBData, dxPSGlbl, dxPSUtl, dxPSEngn,
+  dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxPSCompsProvider, dxPSFillPatterns,
+  dxPSEdgePatterns, DBClient, ActnList, dxBar, dxPSCore,
+  ExtCtrls, dxBarExtItems, dxStatusBar, DBCtrls,
+  cxGridLevel, cxClasses, cxControls, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, cxPC,
+  cxContainer, cxTextEdit, cxDBEdit, StdCtrls, cxRadioGroup, cxMaskEdit,
+  cxDropDownEdit, cxCalendar, thSequencia, ActiveX, ShellApi, Menus, cxImage, cxCheckBox, jpeg, ExtDlgs,
+  cxLookAndFeelPainters, cxButtons, cxGroupBox, dxPScxCommon, cxMemo,
+  cxDBLookupComboBox, dxmdaset, dxBarExtDBItems, Grids, DBGrids, 
+  dxSkinsCore, dxSkinOffice2007Silver, dxSkinscxPCPainter,
+  dxSkinsdxStatusBarPainter, dxSkinsdxBarPainter, dxSkinOffice2007Blue,
+  cxLookAndFeels, dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils,
+  dxPSPrVwStd, dxPScxEditorProducers, dxPScxExtEditorProducers,
+  dxPScxPageControlProducer, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinXmas2008Blue, dxPSPrVwAdv, dxPSPrVwRibbon,
+  cxPCdxBarPopupMenu, dxPScxGridLnk, dxPScxGridLayoutViewLnk, cxNavigator,
+  dxSkinsdxRibbonPainter, dxSkinDevExpressStyle;
+
+type
+  TformPessoas = class(TformCadModelo)
+    cxGrid1DBTableView1CODIGO: TcxGridDBColumn;
+    cxGrid1DBTableView1RAZAOSOCIAL: TcxGridDBColumn;
+    cxGrid1DBTableView1NOME: TcxGridDBColumn;
+    cxGrid1DBTableView1RG: TcxGridDBColumn;
+    cxGrid1DBTableView1CPF: TcxGridDBColumn;
+    cxGrid1DBTableView1CGC: TcxGridDBColumn;
+    cxGrid1DBTableView1IE: TcxGridDBColumn;
+    cxGrid1DBTableView1FONE: TcxGridDBColumn;
+    cxGrid1DBTableView1FAX: TcxGridDBColumn;
+    cxGrid1DBTableView1EMAIL: TcxGridDBColumn;
+    cxGrid1DBTableView1CELULAR: TcxGridDBColumn;
+    cxGrid1DBTableView1NOMEUSER: TcxGridDBColumn;
+    cxGrid1DBTableView1NOME_FAMILIA: TcxGridDBColumn;
+    cxGrid1DBTableView1OCULTO: TcxGridDBColumn;
+    pnlCliente: TPanel;
+    Label1: TLabel;
+    dedCODIGO: TcxDBTextEdit;
+    Label2: TLabel;
+    dedNOME: TcxDBTextEdit;
+    pgcDetalhes: TcxPageControl;
+    tabJuridica: TcxTabSheet;
+    tabFisica: TcxTabSheet;
+    dbrPESSOAFISICA: TcxDBRadioGroup;
+    cxTabSheet3: TcxTabSheet;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    dedRAZAOSOCIAL: TcxDBTextEdit;
+    dedIE: TcxDBTextEdit;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label17: TLabel;
+    dedNATURALIDADE: TcxDBTextEdit;
+    dedRG: TcxDBTextEdit;
+    dedPAI: TcxDBTextEdit;
+    dedMAE: TcxDBTextEdit;
+    Label15: TLabel;
+    dedPROFISSAO: TcxDBTextEdit;
+    Label16: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    lblCidade: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    dedNUMERO: TcxDBTextEdit;
+    dedCOMPLEMENTO: TcxDBTextEdit;
+    dedEMAIL: TcxDBTextEdit;
+    Label27: TLabel;
+    dedCGC: TcxDBMaskEdit;
+    dedDATAFUND: TcxDBDateEdit;
+    dedDATANASC: TcxDBDateEdit;
+    dedSEXO: TcxDBComboBox;
+    dedESTADOCIVIL: TcxDBComboBox;
+    dedORGAOEXP: TcxDBMaskEdit;
+    dedCPF: TcxDBMaskEdit;
+    cxGrid1DBTableView1TIPO: TcxGridDBColumn;
+    cxTabSheet4: TcxTabSheet;
+    dedTIPO: TcxDBRadioGroup;
+    dedFONE: TcxDBMaskEdit;
+    dedFAX: TcxDBMaskEdit;
+    dedCELULAR: TcxDBMaskEdit;
+    cdsDadosCODIGO: TIntegerField;
+    cdsDadosPESSOAFISICA: TStringField;
+    cdsDadosRAZAOSOCIAL: TStringField;
+    cdsDadosNOME: TStringField;
+    cdsDadosNATURALIDADE: TStringField;
+    cdsDadosSEXO: TStringField;
+    cdsDadosESTADOCIVIL: TStringField;
+    cdsDadosRG: TStringField;
+    cdsDadosCPF: TStringField;
+    cdsDadosCGC: TStringField;
+    cdsDadosIE: TStringField;
+    cdsDadosPAI: TStringField;
+    cdsDadosMAE: TStringField;
+    cdsDadosNUMERO: TIntegerField;
+    cdsDadosCOMPLEMENTO: TStringField;
+    cdsDadosESTADO: TStringField;
+    cdsDadosFONE: TStringField;
+    cdsDadosFAX: TStringField;
+    cdsDadosEMAIL: TStringField;
+    cdsDadosHOMEPAGE: TStringField;
+    cdsDadosCELULAR: TStringField;
+    cdsDadosOBSERVACOES: TStringField;
+    cdsDadosCONTATO: TStringField;
+    cdsDadosPROFISSAO: TStringField;
+    cdsDadosEQUIPAMENTO: TStringField;
+    cdsDadosORGAOEXP: TStringField;
+    cdsDadosSOUNDBYTES: TIntegerField;
+    cdsDadosPROTESTO: TStringField;
+    cdsDadosSPC: TStringField;
+    cdsDadosSERASA: TStringField;
+    cdsDadosIMOVEL: TStringField;
+    cdsDadosPROTESTO_USER: TStringField;
+    cdsDadosSPC_USER: TStringField;
+    cdsDadosSERASA_USER: TStringField;
+    cdsDadosCODEMPREEND: TIntegerField;
+    cdsDadosPROCESSO_OK: TStringField;
+    cdsDadosIMOVEL_TIPO: TStringField;
+    cdsDadosFGTS: TStringField;
+    cdsDadosPIS: TStringField;
+    cdsDadosCONTRATO: TStringField;
+    cdsDadosKMS: TIntegerField;
+    cdsDadosCOMISSIONADO: TStringField;
+    cdsDadosNOMEUSER: TStringField;
+    cdsDadosFINANCEIRO: TStringField;
+    cdsDadosESTORNO: TStringField;
+    cdsDadosCODEMPRESA: TIntegerField;
+    cdsDadosTROCAVENDEDOR: TStringField;
+    cdsDadosINTERNET: TStringField;
+    cdsDadosMUDAEMPRESA: TStringField;
+    cdsDadosTIPO: TStringField;
+    cdsDadosCODFORNECEDOR: TIntegerField;
+    cdsDadosCODTRANSPORTADOR: TIntegerField;
+    cdsDadosCODASSOCIADO: TIntegerField;
+    cdsDadosNOME_FAMILIA: TStringField;
+    cdsDadosRECEBIMENTO: TStringField;
+    cdsDadosCUSTO: TStringField;
+    cdsDadosSEQUENCIAS: TStringField;
+    cdsDadosRECALCULO: TStringField;
+    cdsDadosCOMPRAS: TStringField;
+    cdsDadosTRANSFERENCIA: TStringField;
+    cdsDadosRELATORIOS: TStringField;
+    cdsDadosTIPO_BLOQUEIO: TStringField;
+    cdsDadosTIPO_IMPEDIMENTO: TStringField;
+    cdsDadosOCULTO: TStringField;
+    cdsDadosVENDADIRETA: TStringField;
+    cdsDadosTECNICOLOGIN: TStringField;
+    cdsDadosFECHAMENTO: TStringField;
+    cdsDadosLOG_USUARIO: TStringField;
+    cdsDadosLOG_TIPO: TStringField;
+    cdsDadosLOG_MAQUINA: TStringField;
+    btnEmail: TdxBarButton;
+    dxBarButton7: TdxBarButton;
+    dxBarSubItem4: TdxBarSubItem;
+    dxBarButton8: TdxBarButton;
+    cxTabSheet5: TcxTabSheet;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    pnlImagem: TPanel;
+    pnlAjuste: TPanel;
+    ckAjustar: TcxCheckBox;
+    tmrImagem: TTimer;
+    cxImage: TImage;
+    OpenPictureDialog: TOpenPictureDialog;
+    menuImagem: TPopupMenu;
+    Carregarimagem1: TMenuItem;
+    Excluir1: TMenuItem;
+    N1: TMenuItem;
+    cxTabSheet6: TcxTabSheet;
+    cxTabSheet7: TcxTabSheet;
+    Label21: TLabel;
+    cxDBMaskEdit1: TcxDBMaskEdit;
+    Label28: TLabel;
+    cxDBMaskEdit2: TcxDBMaskEdit;
+    Label29: TLabel;
+    cxDBMaskEdit3: TcxDBMaskEdit;
+    Label30: TLabel;
+    cxDBMaskEdit4: TcxDBMaskEdit;
+    pnlLog: TPanel;
+    DBTableView1: TcxGridDBTableView;
+    Level1: TcxGridLevel;
+    cxGridLog1: TcxGrid;
+    cxGrid2DBTableView2: TcxGridDBTableView;
+    cxGrid2Level2: TcxGridLevel;
+    cxGridLog2: TcxGrid;
+    Splitter1: TSplitter;
+    tmrLog: TTimer;
+    DBTableView1LOG_TIPO: TcxGridDBColumn;
+    DBTableView1LOG_USUARIO: TcxGridDBColumn;
+    DBTableView1LOG_MAQUINA: TcxGridDBColumn;
+    DBTableView1LOG_DATAREMOTO: TcxGridDBColumn;
+    DBTableView1LOG_DATASERVIDOR: TcxGridDBColumn;
+    cxGrid2DBTableView2LOG_CAMPO: TcxGridDBColumn;
+    cxGrid2DBTableView2LOG_VALORANTIGO: TcxGridDBColumn;
+    cxGrid2DBTableView2LOG_VALORNOVO: TcxGridDBColumn;
+    cxTabSheet9: TcxTabSheet;
+    Label31: TLabel;
+    pnlCondPag: TPanel;
+    Panel6: TPanel;
+    DBTableView2: TcxGridDBTableView;
+    Level2: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    tmrCondPag: TTimer;
+    DBTableView2DESCRICAO: TcxGridDBColumn;
+    cxTabSheet18: TcxTabSheet;
+    cdsDadosSEL: TStringField;
+    cdsDadosSENHAWEB: TStringField;
+    cdsDadosPERCCOMIS_CALCULO: TStringField;
+    cdsDadosCODLINHA: TIntegerField;
+    cxGrid1DBTableView1SEL: TcxGridDBColumn;
+    dxBarButton6: TdxBarButton;
+    cxDBCheckBox1: TcxDBCheckBox;
+    cxDBMemo1: TcxDBMemo;
+    dxBarButton9: TdxBarButton;
+    cdsDadosCODCENTRO: TIntegerField;
+    cdsDadosCODPLANO: TIntegerField;
+    cdsDadosCALC_BASEICMS: TStringField;
+    cxDBRadioGroup2: TcxDBRadioGroup;
+    tabCredito: TcxTabSheet;
+    lbCREDITO: TLabel;
+    dedCREDITO: TcxDBTextEdit;
+    cxDBRadioGroup4: TcxDBRadioGroup;
+    cxDBRadioGroup5: TcxDBRadioGroup;
+    cdsDadosCAIXA: TStringField;
+    dxBarButton10: TdxBarButton;
+    dxBarButton11: TdxBarButton;
+    Label32: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    lbContato: TLabel;
+    dedContato: TcxDBTextEdit;
+    dxBarButton12: TdxBarButton;
+    dxBarButton13: TdxBarButton;
+    dxBarButton14: TdxBarButton;
+    ckCOMISSIONADO: TcxDBCheckBox;
+    cdsEndereco: TClientDataSet;
+    cdsEnderecoLOGRADOURO: TStringField;
+    cdsEnderecoBAIRRO: TStringField;
+    cdsEnderecoCIDADE: TStringField;
+    cdsEnderecoESTADO: TStringField;
+    cdsEnderecoCEP: TStringField;
+    cdsDadosOCULTOS: TStringField;
+    cdsDadosANALISES: TStringField;
+    cdsDadosLOGS: TStringField;
+    cdsDadosSALARIO: TFloatField;
+    cdsDadosVALOR_FGTS: TFloatField;
+    cdsDadosDESCONTO: TFloatField;
+    cdsDadosCOMISSAO: TFloatField;
+    cdsDadosLIMITECREDITO: TFloatField;
+    cdsDadosPERCCOMIS_PROD: TFloatField;
+    cdsDadosPERCCOMIS_PECA: TFloatField;
+    cdsDadosPERCCOMIS_SERV: TFloatField;
+    cdsDadosDATANASC: TSQLTimeStampField;
+    cdsDadosDATACADAST: TSQLTimeStampField;
+    cdsDadosDATAFUND: TSQLTimeStampField;
+    cdsDadosPROTESTO_DATA: TSQLTimeStampField;
+    cdsDadosSPC_DATA: TSQLTimeStampField;
+    cdsDadosSERASA_DATA: TSQLTimeStampField;
+    cdsDadosLOG_DATAREMOTO: TSQLTimeStampField;
+    tabAdicionais: TcxTabSheet;
+    lbCARTEIRA: TLabel;
+    dedCARTEIRA: TcxDBTextEdit;
+    cdsDadosENTREGA1: TStringField;
+    cdsDadosENTREGA2: TStringField;
+    cdsDadosRESIDENCIA_TEMPO: TStringField;
+    cdsDadosALUGUEL: TStringField;
+    cdsDadosALUGUEL_VALOR: TFloatField;
+    cdsDadosTRAB_EMPRESA: TStringField;
+    cdsDadosTRAB_ADMISSAO: TDateField;
+    cdsDadosTRAB_ENDERECO: TStringField;
+    cdsDadosTRAB_CIDADE: TStringField;
+    cdsDadosTRAB_FONE: TStringField;
+    cdsDadosTRAB_CARGO: TStringField;
+    cdsDadosTRAB_SALARIO: TFloatField;
+    cdsDadosCONJ_NOME: TStringField;
+    cdsDadosCONJ_DATANASC: TDateField;
+    cdsDadosCONJ_RG: TStringField;
+    cdsDadosCONJ_CPF: TStringField;
+    cdsDadosCONJ_CARTEIRA: TStringField;
+    cdsDadosCONJ_EMPRESA: TStringField;
+    cdsDadosCONJ_ADMISSAO: TDateField;
+    cdsDadosCONJ_CARGO: TStringField;
+    cdsDadosCONJ_ENDERECO: TStringField;
+    cdsDadosCONJ_FONE: TStringField;
+    cdsDadosCONJ_SALARIO: TFloatField;
+    cdsDadosCARTEIRA: TStringField;
+    cdsDadosREFERENCIA1: TStringField;
+    cdsDadosREFERENCIA2: TStringField;
+    cdsDadosREFERENCIA3: TStringField;
+    lbENTREGA: TLabel;
+    dedENTREGA1: TcxDBTextEdit;
+    dedENTREGA2: TcxDBTextEdit;
+    lbEMPRESA: TLabel;
+    dedEMPRESA: TcxDBTextEdit;
+    lbEMP_ENDERECO: TLabel;
+    dedENDERECO: TcxDBTextEdit;
+    lbEMP_CIDADE: TLabel;
+    dedCIDADE: TcxDBTextEdit;
+    lbEMP_FONE: TLabel;
+    dedFONE2: TcxDBMaskEdit;
+    lbEMP_CARGO: TLabel;
+    dedCARGO: TcxDBTextEdit;
+    lbEMP_SALARIO: TLabel;
+    dedSALARIO: TcxDBTextEdit;
+    lbEMP_ADMISSAO: TLabel;
+    dedADMISSAO: TcxDBDateEdit;
+    cxTabSheet1: TcxTabSheet;
+    lbCONJUGE: TLabel;
+    dedCONJUGE: TcxDBTextEdit;
+    lbCON_EMPRESA: TLabel;
+    dedCON_EMPRESA: TcxDBTextEdit;
+    lbCON_ENDERECO: TLabel;
+    dedCON_ENDERECO: TcxDBTextEdit;
+    lbCON_FONE: TLabel;
+    dedCON_FONE: TcxDBMaskEdit;
+    lbCON_CARGO: TLabel;
+    dedCON_CARGO: TcxDBTextEdit;
+    lbCON_SALARIO: TLabel;
+    dedCON_SALARIO: TcxDBTextEdit;
+    lbCON_ADMISSAO: TLabel;
+    dedCON_ADMISSAO: TcxDBDateEdit;
+    lbCON_RG: TLabel;
+    dedCON_RG: TcxDBTextEdit;
+    lbCON_CPF: TLabel;
+    dedCON_CPF: TcxDBMaskEdit;
+    lbCON_NASCIM: TLabel;
+    dedCON_NASCIM: TcxDBDateEdit;
+    lbCON_CARTEIRA: TLabel;
+    dedCON_CARTEIRA: TcxDBTextEdit;
+    cxTabSheet2: TcxTabSheet;
+    lbREFERENCIA: TLabel;
+    dedREFERENCIA1: TcxDBTextEdit;
+    dedREFERENCIA2: TcxDBTextEdit;
+    dedREFERENCIA3: TcxDBTextEdit;
+    lbTEMPO_RESIDENCIA: TLabel;
+    dedTEMPO_RESIDENCIA: TcxDBTextEdit;
+    lbALUGUEL_VALOR: TLabel;
+    dedALUGUEL_VALOR: TcxDBTextEdit;
+    ckPAGA_ALUGUEL: TcxDBCheckBox;
+    cdsCliFoto: TClientDataSet;
+    cdsCliFotoCODCLIENTE: TIntegerField;
+    cdsCliFotoIMAGEM: TBlobField;
+    dxBarButton15: TdxBarButton;
+    cdsDadosABERTO: TFMTBCDField;
+    cxGrid1DBTableView1ABERTO: TcxGridDBColumn;
+    dxBarButton16: TdxBarButton;
+    dxBarButton17: TdxBarButton;
+    dedContratoJuridico: TcxDBCheckBox;
+    dedContratoFisico: TcxDBCheckBox;
+    cdsDadosVALOR_CONTRATO: TFloatField;
+    lbValorContratoFisico: TLabel;
+    dedValorContratoFisico: TcxDBTextEdit;
+    lbValorContratoJuridico: TLabel;
+    dedValorContratoJuridico: TcxDBTextEdit;
+    cxGrid1DBTableView1CONTRATO: TcxGridDBColumn;
+    cxGrid1DBTableView1VALOR_CONTRATO: TcxGridDBColumn;
+    cdsDadosLOGRADOURO: TStringField;
+    cdsDadosBAIRRO: TStringField;
+    cdsDadosCIDADE: TStringField;
+    cdsDadosCEP: TStringField;
+    cdsDadosMUNIBGE: TStringField;
+    cxGrid1DBTableView1CIDADE: TcxGridDBColumn;
+    cxGrid1DBTableView1ESTADO: TcxGridDBColumn;
+    dedCidade2: TcxDBTextEdit;
+    dedUF: TcxDBTextEdit;
+    dedLogradouro: TcxDBTextEdit;
+    dedBAIRRO: TcxDBTextEdit;
+    lbMUNIBGE: TLabel;
+    dedMUNIBGE: TcxDBTextEdit;
+    lbIM: TLabel;
+    dedIM: TcxDBTextEdit;
+    cdsDadosIM: TStringField;
+    cdsDadosCNAE: TStringField;
+    lbCNAE: TLabel;
+    dedCNAE: TcxDBTextEdit;
+    dedCEP: TcxDBMaskEdit;
+    cdsDadosESTORNO_PECA: TStringField;
+    cdsDadosPRECO_CLIENTE: TStringField;
+    cdsDadosPRECO_45: TStringField;
+    cdsDadosLICENCIAMENTO: TSmallintField;
+    procedure lblCidadeClick(Sender: TObject);
+    procedure Label16Click(Sender: TObject);
+    procedure btnAdicionarClick(Sender: TObject); override;
+    procedure cdsDadosNewRecord(DataSet: TDataSet); override;
+    procedure btnEmailClick(Sender: TObject);
+    procedure cdsDadosAfterScroll(DataSet: TDataSet); override;
+    procedure btnModificarClick(Sender: TObject); override;
+    procedure btnSalvarClick(Sender: TObject); override;
+    procedure pgcDetalhesChange(Sender: TObject);
+    procedure tmrImagemTimer(Sender: TObject);
+    procedure ckAjustarClick(Sender: TObject);
+    procedure Carregarimagem1Click(Sender: TObject);
+    procedure Excluir1Click(Sender: TObject);
+    procedure tmrLogTimer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure dxBarButton9Click(Sender: TObject);
+    procedure dxBarButton7Click(Sender: TObject);
+    procedure dxBarButton8Click(Sender: TObject);
+    procedure dxBarButton10Click(Sender: TObject);
+    procedure dxBarButton11Click(Sender: TObject);
+    procedure dxBarButton12Click(Sender: TObject);
+    procedure dxBarButton14Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure dbrPESSOAFISICAClick(Sender: TObject);
+    procedure dxBarButton15Click(Sender: TObject);
+    procedure dxBarButton17Click(Sender: TObject);
+    procedure dxBarButton16Click(Sender: TObject);
+    procedure tmrSelTimer(Sender: TObject);
+  private
+    { Private declarations }
+    thObterSeq: ThreadSequencia;
+    procedure LerSequencia(var sequencia: longint);
+  public
+    { Public declarations }
+    cepCidade: string;
+    codCliente: longint;
+  end;
+
+var
+  formPessoas: TformPessoas;
+
+implementation
+
+uses cidades, logradouros, principal, data_log, formapagamento,
+  pessoasequp, contareceber, vendas, os, saida, individuais, orcamentos;
+
+{$R *.dfm}
+
+{####################################################################}
+{##                                                                ##}
+{##  FORMULARIO                                                    ##}
+{##                                                                ##}
+{####################################################################}
+
+procedure TformPessoas.LerSequencia(var sequencia: longint);
+begin
+  if cdsDados.State = dsInsert then
+   begin
+     cdsDadosCODIGO.AsInteger  := sequencia;
+     cdsDadosNOMEUSER.AsString := 'CLI' + IntToStr(sequencia);
+   end;
+end;
+
+procedure TformPessoas.lblCidadeClick(Sender: TObject);
+begin
+  inherited;
+  { chamo o form }
+  try
+    formCidades := TformCidades.Create(Self);
+    formCidades.Transferir := True;
+    formCidades.MultiSelect := False;
+    formCidades.Tag := formPrincipal.actCidades.Tag;
+    if formCidades.ShowModal = mrOk then
+     if formCidades.cdsDados.Active then
+      begin
+        Liberar;
+        cdsDados.FieldByName('CEP').AsString :=
+          formCidades.cdsDados.FieldByName('CEP').AsString;
+        cdsDados.FieldByName('ESTADO').AsString :=
+          formCidades.cdsDados.FieldByName('ESTADO').AsString;
+        cdsDados.FieldByName('CIDADE').AsString :=
+          formCidades.cdsDados.FieldByName('CIDADE').AsString;
+        cdsDados.FieldByName('MUNIBGE').AsString :=
+          formCidades.cdsDados.FieldByName('MUNIBGE').AsString;
+        { limpo o endereço }
+        cdsDados.FieldByName('LOGRADOURO').Clear;
+        cdsDados.FieldByName('NUMERO').Clear;
+        cdsDados.FieldByName('BAIRRO').Clear;
+        cdsDados.FieldByName('COMPLEMENTO').Clear;
+      end;
+  finally
+    try
+      { destruo o form }
+      formCidades.Release;
+    except
+    end
+  end
+end;
+
+procedure TformPessoas.Label16Click(Sender: TObject);
+begin
+  inherited;
+  try
+    { chamo o form }
+    formLogradouros := TformLogradouros.Create(Self);
+    formLogradouros.SetWhereDynamic(Format(
+      '(CI.CIDADE = ''%s'' AND LO.ESTADO = ''%s'')',
+      [cdsDados.FieldByName('CIDADE').AsString,
+       cdsDados.FieldByName('ESTADO').AsString]),
+      Format('Localidades de %s - %s',
+      [cdsDados.FieldByName('CIDADE').AsString,
+       cdsDados.FieldByName('ESTADO').AsString]));
+    formLogradouros.Transferir := True;
+    formLogradouros.MultiSelect := False;
+    formLogradouros.Tag := formPrincipal.actLogradouros.Tag;
+    if formLogradouros.ShowModal = mrOk then
+     if formLogradouros.cdsDados.Active then
+      begin
+        { campos }
+        Liberar;
+        cdsDados.FieldByName('BAIRRO').AsString :=
+          formLogradouros.cdsDados.FieldByName('NOMEBAIRRO').AsString;
+        cdsDados.FieldByName('LOGRADOURO').AsString :=
+          formLogradouros.cdsDados.FieldByName('LOGRADOURO').AsString;
+        cdsDados.FieldByName('CEP').AsString :=
+          formLogradouros.cdsDados.FieldByName('CEP').AsString;
+        if dedNumero.CanFocus then
+          dedNumero.SetFocus;
+      end;
+  finally
+    try
+      { destruo o form }
+      formLogradouros.Release;
+    except
+    end
+  end
+end;
+
+procedure TformPessoas.btnAdicionarClick(Sender: TObject);
+begin
+  pnlImagem.Visible := False;
+  pnlLog.Visible := False;
+  pnlCondPag.Visible := False;
+  inherited;
+  dbrPESSOAFISICAClick(Sender);
+  dedTipo.Enabled := True;
+  if dedNOME.CanFocus then
+    dedNOME.SetFocus;
+end;
+
+procedure TformPessoas.cdsDadosNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+
+  thObterSeq := ThreadSequencia.Create(
+    formPrincipal.dbid,
+    formPrincipal.midtier_host,
+    'CLIENTES',
+    LerSequencia);
+
+  { valores default requeridos }
+  with Dataset do
+   begin
+     fieldByName('DATACADAST').AsDateTime     := now;
+     fieldByName('PESSOAFISICA').AsString     := 'F';
+     fieldByName('CONTRATO').AsString         := 'N';
+     fieldByName('COMISSIONADO').AsString     := 'S';
+     fieldByName('FGTS').AsString             := 'N';
+     fieldByName('VALOR_FGTS').AsCurrency     := 0.0;
+     fieldByName('KMS').AsInteger             := 0;
+     fieldByName('SOUNDBYTES').AsInteger      := 0;
+     fieldByName('SPC').AsString              := 'N';
+     fieldByName('SERASA').AsString           := 'N';
+     fieldByName('PROTESTO').AsString         := 'N';
+     fieldByName('PROCESSO_OK').AsString      := 'N';
+     fieldByName('IMOVEL').AsString           := 'N';
+     fieldByName('SALARIO').AsCurrency        := 0.0;
+     fieldByName('DESCONTO').AsCurrency       := 0.0;
+     fieldByName('COMISSAO').AsCurrency       := 0.0;
+     fieldByName('CODEMPRESA').AsInteger      := formPrincipal.codempresa;
+     fieldByName('TIPO').AsString             := 'C';
+     fieldByName('FINANCEIRO').AsString       := 'N';
+     fieldByName('ESTORNO').AsString          := 'N';
+     fieldByName('TROCAVENDEDOR').AsString    := 'N';
+     fieldByName('INTERNET').AsString         := 'N';
+     fieldByName('MUDAEMPRESA').AsString      := 'N';
+     fieldByName('VENDADIRETA').AsString      := 'N';
+     fieldByName('TECNICOLOGIN').AsString     := 'N';
+     fieldByName('FECHAMENTO').AsString       := 'N';
+     fieldByName('LIMITECREDITO').AsCurrency  := 1000;
+     fieldByName('TIPO_BLOQUEIO').AsString    := 'A';
+     fieldByName('TIPO_IMPEDIMENTO').AsString := 'N';
+     fieldByName('RECEBIMENTO').AsString      := 'N';
+     fieldByName('CUSTO').AsString            := 'N';
+     fieldByName('SEQUENCIAS').AsString       := 'N';
+     fieldByName('RECALCULO').AsString        := 'N';
+     fieldByName('COMPRAS').AsString          := 'N';
+     fieldByName('TRANSFERENCIA').AsString    := 'N';
+     fieldByName('RELATORIOS').AsString       := 'N';
+     fieldByName('INTERNET').AsString         := 'N';
+     fieldByName('OCULTO').AsString           := 'N';
+     fieldByName('VENDADIRETA').AsString      := 'N';
+     fieldByName('TECNICOLOGIN').AsString     := 'N';
+     fieldByName('FECHAMENTO').AsString       := 'N';
+     fieldByname('LOG_USUARIO').AsString      := formPrincipal.usuario;
+     fieldByName('LOG_MAQUINA').AsString      := formPrincipal.computador;
+     fieldByName('LOG_DATAREMOTO').AsDateTime := now;
+     fieldByName('PERCCOMIS_PROD').AsCurrency := 0.0;
+     fieldByName('PERCCOMIS_PECA').AsCurrency := 0.0;
+     fieldByName('PERCCOMIS_SERV').AsCurrency := 0.0;
+     fieldByName('PERCCOMIS_CALCULO').AsString:= 'F';
+     fieldByName('CALC_BASEICMS').AsString    := 'N';
+     fieldByName('CAIXA').AsString            := 'N';
+     fieldByName('OCULTOS').AsString          := 'N';
+     fieldByName('ANALISES').AsString         := 'N';
+     fieldByName('LOGS').AsString             := 'N';
+     fieldByName('ALUGUEL').AsString          := 'N';
+     fieldByName('ALUGUEL_VALOR').AsCurrency  := 0;
+     fieldByName('TRAB_SALARIO').AsCurrency   := 0;
+     fieldByName('CONJ_SALARIO').AsCurrency   := 0;
+     fieldByName('ESTORNO_PECA').AsString     := 'N';
+     fieldByName('PRECO_CLIENTE').AsString    := 'N';
+     fieldByName('PRECO_45').AsString         := 'N';
+     fieldByName('LICENCIAMENTO').AsCurrency   := 0;
+
+     fieldByName('CEP').AsString :=
+       formPrincipal.cdsPerfil.fieldBYName('EMP_CEP').AsString;
+     fieldByName('ESTADO').AsString :=
+       formPrincipal.cdsPerfil.fieldBYName('EMP_ESTADO').AsString;
+     fieldByName('CIDADE').AsString :=
+       formPrincipal.cdsPerfil.fieldBYName('EMP_CIDADE').AsString;
+     fieldByName('MUNIBGE').AsString :=
+       formPrincipal.cdsPerfil.fieldBYName('EMP_MUNIBGE').AsString;
+
+     Application.ProcessMessages;
+   end;
+end;
+
+procedure TformPessoas.btnEmailClick(Sender: TObject);
+var
+  x: string;
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  if cdsDados.FieldByName('EMAIL').IsNull then
+   begin
+     btnModificarClick(Sender);
+     pgcDetalhes.ActivePage := cxTabSheet3;
+     dedEMAIL.SetFocus;
+   end else
+   begin
+     x := 'mailto:'+btnEmail.Hint;
+     ShellExecute(0, nil, PChar(x), nil, nil, SW_SHOWDEFAULT);
+   end;
+end;
+
+procedure TformPessoas.cdsDadosAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  if Dataset.FieldByName('EMAIL').IsNull then
+   begin
+     btnEmail.Hint := '<< sem e-mail >>' + #13#10 +
+       'Clique para adicionar um endereço de e-mail';
+   end else
+   begin
+     btnEmail.Hint := Dataset.FieldByName('EMAIL').AsString;
+   end;
+end;
+
+procedure TformPessoas.btnModificarClick(Sender: TObject);
+begin
+  pnlImagem.Visible := False;
+  pnlLog.Visible := False;
+  pnlCondPag.Visible := False;
+  inherited;
+  dbrPESSOAFISICAClick(Sender);
+//  dedTipo.Enabled := cdsDadosTIPO.AsString <> 'A';
+end;
+
+procedure TformPessoas.btnSalvarClick(Sender: TObject);
+begin
+
+  VerificarCampos;
+
+//  { verificação dos documentos obrigatório }
+//  with cdsDados do
+//   begin
+//     if ((trim(fieldByName('RG').AsString) = '') or
+//         (trim(fieldByName('CIDADE').AsString) = '')) and
+//        (fieldByName('PESSOAFISICA').AsString = 'F') then
+//      begin
+//        formPrincipal.MsgError(Self,
+//          'Os dados pessoais RG e CPF são obrigatórios.',
+//          'Preenchimento de cadastro');
+//        cxPageControl1.ActivePage := cxTabSheet2;
+//        FocusOnField('RG');
+//        exit;
+//      end;
+//   end;
+//
+//  { verificação dos documentos obrigatório }
+//  with cdsDados do
+//   begin
+//     if (trim(fieldByName('CGC').AsString) = '') and
+//        (fieldByName('PESSOAFISICA').AsString = 'J') then
+//      begin
+//        formPrincipal.MsgError(Self,
+//          'Os CNPJ é obrigatório para pessoas jurídicas.',
+//          'Preenchimento de cadastro');
+//        cxPageControl1.ActivePage := cxTabSheet2;
+//        FocusOnField('CGC');
+//        exit;
+//      end;
+//   end;
+
+
+//  { formas de pagamento }
+//  with cdsCliCondPag do
+//   try
+//     if Active then
+//      begin
+//        if State in [dsInsert, dsEdit] then
+//          Post;
+//        if ChangeCount > 0 then
+//         begin
+//           formPrincipal.ShowMsg(Self, 'Gravando Condições de Pagamento...');
+//           ApplyUpdates(-1);
+//           formPrincipal.HideMsg;
+//         end;
+//      end;
+//   except
+//     on exception do
+//      begin
+//        formPrincipal.HideMsg;
+//        exit;
+//      end;
+//   end;
+
+  inherited;
+  SalvarDataSet(cdsCliFoto, 'Imagem');
+
+end;
+
+procedure TformPessoas.pgcDetalhesChange(Sender: TObject);
+begin
+  inherited;
+
+  { imagem }
+  if pgcDetalhes.ActivePage = cxTabSheet5 then
+   begin
+     if (not pnlImagem.Visible) then
+       tmrImagem.Enabled := True;
+   end;
+
+  { log }
+  if pgcDetalhes.ActivePage = cxTabSheet7 then
+   begin
+     if (not pnlLog.Visible) then
+       tmrLog.Enabled := True;
+   end;
+
+  { condpag }
+  if pgcDetalhes.ActivePage = cxTabSheet9 then
+   begin
+     if (not pnlCondPag.Visible) then
+       tmrCondPag.Enabled := True;
+   end;
+
+//  { endereço }
+//  if pgcDetalhes.ActivePage = cxTabSheet3 then
+//   try
+//     formPrincipal.ShowMsg('Obtendo endereço...');
+//     if cdsEndereco.Active then
+//       cdsEndereco.Close;
+//     cdsEndereco.Params[0].AsInteger :=
+//       cdsDadosLOCALIZACAO.AsInteger;
+//     cdsEndereco.Params[1].AsInteger :=
+//       cdsDadosBAIRRO.AsInteger;
+//     cdsEndereco.Params[2].AsInteger :=
+//       cdsDadosCIDADE.AsInteger;
+//     cdsEndereco.Params[3].AsString :=
+//       cdsDadosESTADO.AsString;
+//     cdsEndereco.Open;
+//     cdsEndereco.RemoteServer.Close;
+//     edLogradouro.Text :=
+//       cdsEnderecoLOGRADOURO.AsString;
+//     edBairro.Text :=
+//       cdsEnderecoBAIRRO.AsString;
+//     edCEP.Text :=
+//       cdsEnderecoCEP.AsString;
+//     if cdsEnderecoCIDADE.AsString > '' then
+//      begin
+//        edCidade.Text :=
+//          cdsEnderecoCIDADE.AsString;
+//      end;
+//     formPrincipal.HideMsg;
+//   except
+//     on exception do
+//       formPrincipal.MsgError('Falha ao ler endereço.', 'Erro');
+//   end;
+end;
+
+procedure TformPessoas.tmrImagemTimer(Sender: TObject);
+var
+  b: TStream;
+  jpg: TJpegImage;
+begin
+  inherited;
+
+  tmrImagem.Enabled := False;
+  try
+    formPrincipal.ShowMsg('Carregando Imagem...');
+    cxImage.Picture.Assign(nil);
+    with cdsCliFoto do
+     begin
+       if Active then
+         Close;
+       Params[0].AsInteger := cdsDadosCODIGO.AsInteger;
+       Open;
+       cxImage.Visible := True;
+       pnlAjuste.Visible := True;
+       pnlImagem.Visible := True;
+       if (not IsEmpty) and (not fieldByName('IMAGEM').IsNull) then
+        begin
+
+          { tranfiro a figura para o stream }
+          b := cdsCliFoto.CreateBlobStream(cdsCliFoto.FieldByName('IMAGEM'), bmRead);
+
+          { tem figura mesmo? }
+          if b.Size > 0 then
+            try
+              jpg := TJpegImage.Create;
+              jpg.LoadFromStream(b);
+              cxImage.Picture.Assign(jpg);
+              jpg.Free;
+            except
+            end
+          else
+            cxImage.Picture.Assign(nil);
+
+          { destruo as variáveis }
+          b.Destroy;
+
+        end;
+       RemoteServer.Close;
+       formPrincipal.HideMsg;
+     end;
+  except
+    on e: exception do
+     begin
+       formPrincipal.CONN_DBError(
+         Self.Name + ': Imagem',
+         cdsDadosCODIGO.AsString,
+         e.message);
+       cdsCliFoto.RemoteServer.Close;
+       pnlImagem.Caption := 'Erro ao Carregar Imagem';
+       cxImage.Visible := False;
+       pnlAjuste.Visible := False;
+       pnlImagem.Visible := True;
+       formPrincipal.HideMsg;
+     end;
+  end
+
+end;
+
+procedure TformPessoas.ckAjustarClick(Sender: TObject);
+begin
+  inherited;
+  cxImage.Stretch := ckAjustar.Checked;
+end;
+
+procedure TformPessoas.Carregarimagem1Click(Sender: TObject);
+var
+  jpg: TJpegImage;
+begin
+  inherited;
+
+  if OpenPictureDialog.Execute then
+   begin
+
+     { crio o objeto }
+     jpg := TJpegImage.Create;
+     jpg.LoadFromFile(OpenPictureDialog.FileName);
+
+     { exibo a imagem }
+     Liberar;
+     cxImage.Picture.Assign(jpg);
+
+     { salvo no banco de dados }
+     with cdsCliFoto do
+      begin
+        if not IsEmpty then
+          edit
+        else
+          insert;
+        FieldByName('CODCLIENTE').AsInteger := cdsDadosCODIGO.AsInteger;
+        FieldByName('IMAGEM').Assign(jpg);
+        Post;
+      end;
+
+     { destruo as variáveis }
+     jpg.Free;
+
+   end
+end;
+
+procedure TformPessoas.Excluir1Click(Sender: TObject);
+begin
+  inherited;
+
+  { excluir }
+  with cdsCliFoto do
+   begin
+     if (not IsEmpty) and (not fieldByName('IMAGEM').IsNull) then
+      begin
+        Liberar;
+        edit;
+        FieldByName('IMAGEM').Clear;
+        Post;
+      end;
+   end;
+  cxImage.Picture.Assign(nil);
+
+end;
+
+procedure TformPessoas.tmrLogTimer(Sender: TObject);
+begin
+  inherited;
+  tmrLog.Enabled := False;
+  if dmoLog.OpenLog('CLIENTES', cdsDados) then
+   begin
+     cxGridLog1.Visible := True;
+     cxGridLog2.Visible := True;
+     pnlLog.Visible := True;
+   end else
+   begin
+     cxGridLog1.Visible := False;
+     cxGridLog2.Visible := False;
+     pnlLog.Visible := True;
+   end;
+end;
+
+procedure TformPessoas.tmrSelTimer(Sender: TObject);
+begin
+  inherited;
+  if (codCliente > 0) and (no_sel = 1) then
+    btnModificarClick(Sender);
+end;
+
+procedure TformPessoas.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dmoLog := TdmoLog.Create(Self);
+  codCliente := 0;
+  SetCampoRodape('ABERTO', 'A=#,##0.00', 'SUM');
+  SetCampoRodape('VALOR_CONTRATO', 'A=#,##0.00', 'SUM');
+end;
+
+procedure TformPessoas.dxBarButton9Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formOS := TformOS.Create(Self);
+    formOS.SetWhereDynamic(
+      Format('MO.CODCLIENTE = %d', [cdsDadosCODIGO.AsInteger]),
+      Format('O.S. do Cliente %d - %s', [cdsDadosCODIGO.AsInteger, cdsDadosNOME.AsString]));
+    formOS.AutoLoad := True;
+    formOS.Tag := formPrincipal.actOS.Tag;
+    formOS.ShowModal;
+  finally
+    try
+      formOS.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.dxBarButton7Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formContaReceber := TformContaReceber.Create(Self);
+    formContaReceber.SetWhereDynamic(
+      Format('PAGAMENTOS.CODCLIENTE = %d',
+        [cdsDadosCODIGO.AsInteger]),
+      Format('Contas a Receber de %d - %s',
+        [cdsDadosCODIGO.AsInteger, cdsDadosNOME.AsString]));
+    formContaReceber.Tag :=
+      formPrincipal.actContaReceber.Tag;
+    formContaReceber.AutoLoad := True;
+    formContaReceber.ShowModal;
+  finally
+    try
+      formContaReceber.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.dxBarButton8Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formVendas := TformVendas.Create(Self);
+    formVendas.SetWhereDynamic(
+      Format('MO.CODCLIENTE = %d', [cdsDadosCODIGO.AsInteger]),
+      Format('Vendas do Cliente %d - %s', [cdsDadosCODIGO.AsInteger, cdsDadosNOME.AsString]));
+    formVendas.Tag := formPrincipal.actSaida.Tag;
+    formVendas.AutoLoad := True;
+    formVendas.ShowModal;
+  finally
+    try
+      formVendas.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.dbrPESSOAFISICAClick(Sender: TObject);
+begin
+  inherited;
+
+  if pgcDados.ActivePage = tabDetalhe then
+  case dbrPESSOAFISICA.ItemIndex of
+    0: begin
+      tabJuridica.TabVisible := True;
+      pgcDetalhes.ActivePage := tabJuridica;
+      tabFisica.TabVisible := False;
+    end;
+    1: begin
+      tabFisica.TabVisible := True;
+      pgcDetalhes.ActivePage := tabFisica;
+      tabJuridica.TabVisible := False;
+    end;
+  end;
+end;
+
+procedure TformPessoas.dxBarButton10Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formPrincipal.CaptShift := True;
+    formVendas := TformVendas.Create(Self);
+    formVendas.codCliente :=
+      cdsDadosCODIGO.AsInteger;
+    formVendas.Cliente :=
+      cdsDadosNOME.AsString;
+    formVendas.Tag := formPrincipal.actSaida.Tag;
+    formVendas.ShowModal;
+  finally
+    try
+      formVendas.Release;
+    except
+    end
+  end;
+
+end;
+
+procedure TformPessoas.dxBarButton11Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formOS := TformOS.Create(Self);
+    formOS.codCliente :=
+      cdsDadosCODIGO.AsInteger;
+    formOS.Cliente :=
+      cdsDadosNOME.AsString;
+    formOS.Tag := formPrincipal.actOS.Tag;
+    formOS.ShowModal;
+  finally
+    try
+      formOS.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.dxBarButton12Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formPessoasEquip := TformPessoasEquip.Create(Self);
+    formPessoasEquip.codCliente := cdsDadosCODIGO.AsInteger;
+    formPessoasEquip.SetWhereDynamic(
+      Format('CE.CODCLIENTE = %d', [cdsDadosCODIGO.AsInteger]),
+      Format('Equipamentos do Cliente %d - %s', [cdsDadosCODIGO.AsInteger, cdsDadosNOME.AsString]));
+    formPessoasEquip.AutoLoad := True;
+    formPessoasEquip.ShowModal;
+  finally
+    try
+      formPessoasEquip.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.dxBarButton14Click(Sender: TObject);
+var
+  selecionados: string;
+begin
+  inherited;
+
+  { monto a linha de selecionados }
+  selecionados := '';
+  SelectFilter;
+  with cdsDados do
+   try
+     first;
+     while not eof do
+      begin
+        if selecionados > '' then
+          selecionados := selecionados + ',';
+        selecionados := selecionados + fieldByName('CODIGO').AsString;
+        next;
+      end;
+   except
+   end;
+  SelectRelease;
+
+  { se não houver selecionados }
+  if selecionados = '' then
+   begin
+     formPrincipal.MsgError(
+       'Por favor, selecione os Clientes que deseja imprimir etiquetas.',
+       'Seleção');
+     exit;
+   end;
+
+//  { relatórios customizados }
+//  formPrincipal.ShowMsg(Self, 'Gerando Etiquetas...');
+//  formPrincipal.reportPrepare('Etiquetas');
+//  formPrincipal.reportParam(
+//    selecionados);
+//  formPrincipal.reportOpen;
+
+end;
+
+procedure TformPessoas.dxBarButton15Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formIndividuais := TformIndividuais.Create(Self);
+    formIndividuais.Tag := formPrincipal.actIndividuais.Tag;
+    formIndividuais.SetWhereDynamic(
+      Format('((CE.CODIGO = %d) OR (CS.CODIGO = %d))', [cdsDadosCODIGO.AsInteger, cdsDadosCODIGO.AsInteger]),
+      Format('Mov. Compra/Venda Produtos de %d - %s', [cdsDadosCODIGO.AsInteger, cdsDadosNOME.AsString]));
+    formIndividuais.AutoLoad := True;
+    formIndividuais.ShowModal;
+  finally
+    try
+      formIndividuais.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.dxBarButton16Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formPrincipal.CaptShift := True;
+    formOrcamentos := TformOrcamentos.Create(Self);
+    formOrcamentos.codCliente :=
+      cdsDadosCODIGO.AsInteger;
+    formOrcamentos.Cliente :=
+      cdsDadosNOME.AsString;
+    formOrcamentos.Tag := formPrincipal.actOrcamento.Tag;
+    formOrcamentos.ShowModal;
+  finally
+    try
+      formOrcamentos.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.dxBarButton17Click(Sender: TObject);
+begin
+  inherited;
+
+  if not cdsDados.Active then exit;
+  if cdsDados.IsEmpty then exit;
+  if not SelMarcado then exit;
+
+  try
+    formOrcamentos := TformOrcamentos.Create(Self);
+    formOrcamentos.SetWhereDynamic(
+      Format('MO.CODCLIENTE = %d', [cdsDadosCODIGO.AsInteger]),
+      Format('Orçamentos do Cliente %d - %s', [cdsDadosCODIGO.AsInteger, cdsDadosNOME.AsString]));
+    formOrcamentos.AutoLoad := True;
+    formOrcamentos.Tag := formPrincipal.actOrcamento.Tag;
+    formOrcamentos.ShowModal;
+  finally
+    try
+      formOrcamentos.Release;
+    except
+    end
+  end
+
+end;
+
+procedure TformPessoas.FormShow(Sender: TObject);
+begin
+  inherited;
+  ckCOMISSIONADO.Enabled :=
+    formPrincipal.cdsUsuarios.fieldByName('FINANCEIRO').AsString = 'S';
+end;
+
+end.

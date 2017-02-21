@@ -1,0 +1,81 @@
+unit rel_estoque;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, MODELO_RELATORIO, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinOffice2007Blue,
+  dxSkinOffice2007Silver, Menus, ppParameter, ppBands, ppCtrls, ppStrtch,
+  ppMemo, ppVar, ppPrnabl, ppClass, ppCache, ppProd, ppReport, ppDB, ppComm,
+  ppRelatv, ppDBPipe, DB, DBClient, StdCtrls, cxButtons, cxCheckBox,
+  cxDropDownEdit, cxCalendar, cxTextEdit, cxMaskEdit, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, dxGDIPlusClasses, ExtCtrls, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue;
+
+type
+  TformRelEstoque = class(TformRepModelo)
+    cdsRelatorioCODIGO: TIntegerField;
+    cdsRelatorioBARRA: TStringField;
+    cdsRelatorioDESCRICAO: TStringField;
+    cdsRelatorioPRECOCUSTO: TFloatField;
+    cdsRelatorioPRECOVENDA: TFloatField;
+    cdsRelatorioTOTALCUSTO: TFloatField;
+    cdsRelatorioTOTALVENDA: TFloatField;
+    cdsRelatorioLUCRO: TFloatField;
+    cdsRelatorioOCULTO: TStringField;
+    cdsRelatorioMINIMO: TFloatField;
+    cdsRelatorioGRUPO: TStringField;
+    cdsRelatorioQUANTIDADE: TFloatField;
+    cdsRelatorioTOTALSERVICO: TFloatField;
+    cdsRelatorioCODEMPRESA: TIntegerField;
+    cdsRelatorioEMPRESA_NOME: TStringField;
+    ppLabel1: TppLabel;
+    ppDBText1: TppDBText;
+    ppLabel2: TppLabel;
+    ppDBText2: TppDBText;
+    ppLabel3: TppLabel;
+    ppDBText3: TppDBText;
+    Label1: TLabel;
+    procedure cxButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formRelEstoque: TformRelEstoque;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformRelEstoque.cxButton1Click(Sender: TObject);
+begin
+  SetTitulo('Estoque Total');
+  if ckEmpresa.Checked then
+   begin
+     SetWhereDynamic(
+       Format('CODEMPRESA = %s AND OCULTO = %s', [dlcEmpresa.EditValue, QuotedStr('N')]),
+       Format('Estoque completo da empresa %s - %s', [dlcEmpresa.EditValue, dlcEmpresa.Text]));
+   end else
+   begin
+     SetWhereDynamic(
+       Format('OCULTO = %s', [QuotedStr('N')]),
+       'Estoque completo de todas as empresas');
+   end;
+  SetOrderBy('DESCRICAO');
+
+  inherited;
+
+end;
+
+end.

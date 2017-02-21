@@ -1,0 +1,83 @@
+object formServidor: TformServidor
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Taligent Servidor'
+  ClientHeight = 56
+  ClientWidth = 257
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  WindowState = wsMinimized
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lbNome: TLabel
+    Left = 8
+    Top = 8
+    Width = 230
+    Height = 19
+    Caption = 'Servidor Taligent Enterprise'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object SQLConnection: TSQLConnection
+    ConnectionName = 'BASE'
+    DriverName = 'DevartInterBase'
+    GetDriverFunc = 'getSQLDriverInterBase'
+    KeepConnection = False
+    LibraryName = 'dbexpida.dll'
+    LoginPrompt = False
+    Params.Strings = (
+      'LocaleCode=0000'
+      'DriverUnit=DBXDevartInterBase'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DBXCommonDriver120.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Devart.DbxIda.DriverLoader.TCRDynalinkDrive' +
+        'rLoader,Devart.DbxIda.DriverLoader,Version=1.0.0.5,Culture=neutr' +
+        'al,PublicKeyToken=09af7300eec23701'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXInterbaseMetaDataCommand' +
+        'Factory,Borland.Data.DbxInterBaseDriver,Version=12.0.0.0,Culture' +
+        '=neutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'ProductName=Interbase'
+      'GetDriverFunc=getSQLDriverInterBase'
+      'LibraryName=dbexpida.dll'
+      'VendorLib=gds32.dll'
+      'Database=C:\enterprise\fbdata\BASE.FDB'
+      'User_Name=REMOTO'
+      'Password=r3m0t0'
+      'SQLDialect=3'
+      'MaxBlobSize=-1'
+      'DevartInterBase TransIsolation=ReadCommitted'
+      'WaitOnLocks=True'
+      'CharLength=1'
+      'EnableBCD=True'
+      'OptimizedNumerics=True'
+      'LongStrings=True'
+      'UseQuoteChar=False'
+      'FetchAll=False'
+      'DeferredBlobRead=False'
+      'DeferredArrayRead=False'
+      'UseUnicode=False'
+      'Trim Char=True')
+    VendorLib = 'gds32.dll'
+    Left = 176
+    Top = 8
+  end
+  object SQLMonitor: TSQLMonitor
+    SQLConnection = SQLConnection
+    Left = 96
+    Top = 8
+  end
+end

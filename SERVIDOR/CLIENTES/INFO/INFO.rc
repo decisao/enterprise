@@ -1,0 +1,5 @@
+MAINICON ICON "C:\\enterprise\\enterprise\\SERVIDOR\\CLIENTES\\INFO\\mainicon.ico"
+/*
+Include manifest xml for XP/Vista
+*/
+1 24 "C:\\enterprise\\enterprise\\SERVIDOR\\BASE\\BASEManifest.xml"

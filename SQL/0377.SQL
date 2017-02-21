@@ -1,0 +1,549 @@
+/*
+** MENSAGEM DO PRODUTO SEM ESTOQUE
+*/
+
+CREATE EXCEPTION ERRO '!';
+
+SET TERM ^ ;
+
+ALTER PROCEDURE ITVENDA_GRAVA (
+    BARRA CHAR(14),
+    QUANTIDADE NUMERIC(9,2),
+    VALOR NUMERIC(9,2),
+    DESCONTO NUMERIC(9,2),
+    ICMS NUMERIC(9,2),
+    CODMOVSAIDA INTEGER)
+AS
+DECLARE VARIABLE XCODIGO INTEGER;
+DECLARE VARIABLE XCODITEM INTEGER;
+DECLARE VARIABLE XCODPRODUTO INTEGER;
+DECLARE VARIABLE XCODMOVENTRADA INTEGER;
+DECLARE VARIABLE XSEQUENCIA CHAR(4);
+DECLARE VARIABLE XSERIE CHAR(20);
+DECLARE VARIABLE XVENDIDO CHAR(1);
+DECLARE VARIABLE XCODMOVSAIDA INTEGER;
+DECLARE VARIABLE XVALOR_VENDA NUMERIC(9,2);
+DECLARE VARIABLE XICMSVENDA NUMERIC(9,2);
+DECLARE VARIABLE XDESCONTO NUMERIC(9,2);
+DECLARE VARIABLE XIMPETIQ CHAR(1);
+DECLARE VARIABLE XBARRA CHAR(14);
+DECLARE VARIABLE XQUANTIDADE NUMERIC(9,2);
+DECLARE VARIABLE XUNICO INTEGER;
+DECLARE VARIABLE BAIXA NUMERIC(9,2);
+DECLARE VARIABLE SOBRA NUMERIC(9,2);
+DECLARE VARIABLE NSEQ INTEGER;
+DECLARE VARIABLE PS CHAR(1);
+DECLARE VARIABLE XPRECOCUSTO NUMERIC(9,2);
+DECLARE VARIABLE CODEMPRESA INTEGER;
+DECLARE VARIABLE COMISSAO_CLIENTE CHAR(1);
+DECLARE VARIABLE COMISSAO_PRODUTO CHAR(1);
+DECLARE VARIABLE PERCCOMISSAO NUMERIC(9,2);
+DECLARE VARIABLE CODCLIENTE INTEGER;
+DECLARE VARIABLE CODVENDEDOR INTEGER;
+DECLARE VARIABLE COMISSAO NUMERIC(9,2);
+DECLARE VARIABLE ALIQUOTA_ICMSPRODUTO NUMERIC(9,4);
+DECLARE VARIABLE ECF CHAR(1);
+DECLARE VARIABLE ICMSSIMPLES CHAR(1);
+DECLARE VARIABLE ALIQUOTA_ICMSSIMPLES NUMERIC(9,4);
+DECLARE VARIABLE XCUSTO_PRODUTO NUMERIC(9,2);
+DECLARE VARIABLE XCUSTO_IPI NUMERIC(9,2);
+DECLARE VARIABLE XCUSTO_RATEIO NUMERIC(9,2);
+DECLARE VARIABLE XCUSTO_ICMS NUMERIC(9,2);
+DECLARE VARIABLE XCUSTO_ISS NUMERIC(9,2);
+DECLARE VARIABLE ESTOQUE CHAR(1);
+DECLARE VARIABLE TMP_ICMS CHAR(1);
+DECLARE VARIABLE TMP_IPI CHAR(1);
+DECLARE VARIABLE CODNATUOPER VARCHAR(5);
+DECLARE VARIABLE CODCOMPRA INTEGER;
+DECLARE VARIABLE DESCRICAO VARCHAR(60);
+BEGIN
+
+  /* VERIFICO A QUANTIDADE */
+  IF (QUANTIDADE <= 0) THEN
+    EXCEPTION QUANTIDADE_POSITIVA;
+
+  /* INFORMAÇÕES DO PRODUTO */
+  SELECT
+    CODIGO,
+    PRECOCUSTO,
+    PS,
+    COMISSIONADO,
+    ICMS,
+    DESCRICAO
+  FROM
+    PRODUTOS
+  WHERE
+    BARRA = :BARRA
+  INTO
+    :XCODPRODUTO,
+    :XPRECOCUSTO,
+    :PS,
+    :COMISSAO_PRODUTO,
+    :ALIQUOTA_ICMSPRODUTO,
+    :DESCRICAO;
+
+  /* INFORMAÇÕES DO MOVIMENTO */
+  SELECT
+    CODCLIENTE,
+    CODVENDEDOR,
+    CODEMPRESA,
+    ECF,
+    NOTA_CODNATUOPER
+  FROM
+    MOVIMENTOS
+  WHERE
+    CODIGO = :CODMOVSAIDA
+  INTO
+    :CODCLIENTE,
+    :CODVENDEDOR,
+    :CODEMPRESA,
+    :ECF,
+    :CODNATUOPER;
+
+  /* INFORMACOES DA NATUREZA DE OPERACAO */
+  SELECT
+    ESTOQUE,
+    ICMS,
+    IPI
+  FROM
+    NATUOPER
+  WHERE
+    CODIGO = :CODNATUOPER
+  INTO
+    :ESTOQUE,
+    :TMP_ICMS,
+    :TMP_IPI;
+
+  /* INFORMAÇÕES DO CLIENTE */
+  SELECT
+    COMISSIONADO
+  FROM
+    CLIENTES
+  WHERE
+    CODIGO = :CODCLIENTE
+  INTO
+    :COMISSAO_CLIENTE;
+
+  /* INFORMAÇÕES DO VENDEDOR */
+  SELECT
+    COMISSAO
+  FROM
+    CLIENTES
+  WHERE
+    CODIGO = :CODVENDEDOR
+  INTO
+    :PERCCOMISSAO;
+
+  /* NAO POSSUI MOVIMENTACAO DE ESTOQUE */
+  IF (((PS = 'P') OR (PS = 'M')) AND (ESTOQUE = 'N')) THEN
+   BEGIN
+
+     /* CODIGO DO PRODUTO */
+     SELECT
+       PO.CODIGO
+     FROM
+       PRODUTOS PO
+     WHERE
+       PO.BARRA = :BARRA
+     INTO
+       :XCODPRODUTO;
+
+     IF (XCODPRODUTO IS NULL) THEN
+       EXCEPTION INDIVIDUO_ESTOQUE;
+
+     /* CODIGO DA ULTIMA COMPRA */
+     SELECT
+       MAX(TM.CODIGO)
+     FROM
+       TEMPITENS TM
+       JOIN MOVIMENTOS MO ON
+         (MO.CODIGO = TM.CODMOVIMENTO)
+     WHERE
+       TM.CODPRODUTO = :XCODPRODUTO AND
+       MO.ES         = 1            AND
+       MO.TIPO       = 1
+     INTO
+       :CODCOMPRA;
+
+     IF (CODCOMPRA IS NULL) THEN
+       EXCEPTION MOV_PREVIA;
+
+     SELECT
+       CODMOVIMENTO,
+       ICMSCOMPRA,
+       CAST((VALOR_TOTAL / QUANTIDADE) AS NUMERIC(9, 2))
+     FROM
+       TEMPITENS
+     WHERE
+       CODIGO = :CODCOMPRA
+     INTO
+       :XCODMOVENTRADA,
+       :XICMSVENDA,
+       :XPRECOCUSTO;
+
+     /* PEGO A SEQUENCIA DOS ITENS DE ESTOQUE */
+     EXECUTE PROCEDURE SEQ_OBTER 'INDIVIDUAIS'
+       RETURNING_VALUES NSEQ;
+
+     /* INSIRO UM ITEM DE SERVIÇO NA QUANTIDADE EXATA */
+     INSERT INTO
+       INDIVIDUAIS (
+         CODIGO,
+         CODITEM,
+         CODPRODUTO,
+         CODMOVENTRADA,
+         CODMOVSAIDA,
+         SEQUENCIA,
+         SERIE,
+         VENDIDO,
+         VALOR_VENDA,
+         ICMSVENDA,
+         DESCONTO,
+         IMPETIQ,
+         BARRA,
+         QUANTIDADE,
+         UNICO,
+         FRACIONADO,
+         PS,
+         CODEMPRESA,
+         CUSTO_PRODUTO)
+       VALUES (
+         :NSEQ,
+         :CODCOMPRA,
+         :XCODPRODUTO,
+         :XCODMOVENTRADA,
+         :CODMOVSAIDA,
+         '0000',
+         '',
+         'S',
+         :VALOR,
+         :XICMSVENDA,
+         :DESCONTO,
+         'N',
+         :BARRA,
+         :QUANTIDADE,
+         0,
+         'S',
+         'P',
+         :CODEMPRESA,
+         :XPRECOCUSTO);
+
+   END ELSE
+
+  /* VERIFICO SE É PRODUTO E NÃO SERVIÇO */
+  IF ((PS = 'P') OR (PS = 'M') OR (PS IS NULL)) THEN
+   BEGIN
+
+    /* VERIFICO SE JÁ FOI VENDIDO NESSE MOVIMENTO */
+    SELECT
+      SUM(QUANTIDADE)
+    FROM
+      INDIVIDUAIS
+    WHERE
+      BARRA = :BARRA AND
+      VENDIDO = 'S' AND
+      CODMOVSAIDA = :CODMOVSAIDA AND
+      CODEMPRESA = :CODEMPRESA
+    INTO
+      :XQUANTIDADE;
+
+    IF (XQUANTIDADE IS NULL) THEN
+      XQUANTIDADE = 0;
+
+    /* SE JÁ FOI VENDIDO, ERRO, SÓ UM LANÇAMENTO PARA CADA PRODUTO DIFERENTE */
+    IF (XQUANTIDADE > 0) THEN
+      EXCEPTION ITEM_REPETIDO;
+
+    /* VERIFICO SE EXISTE ESTOQUE */
+    SELECT
+      SUM(QUANTIDADE)
+    FROM
+      INDIVIDUAIS
+    WHERE
+      BARRA = :BARRA AND
+      VENDIDO = 'N'  AND
+      CODEMPRESA = :CODEMPRESA
+    INTO
+      :XQUANTIDADE;
+
+    /* SE TIVER ESTOQUE, FAÇO A VENDA */
+    IF (QUANTIDADE <= XQUANTIDADE) THEN
+      BEGIN
+
+        /* FAÇO UMA VARREDURA DOS ITENS NO ESTOQUE */
+        FOR
+        SELECT
+          ID.CODIGO,
+          ID.CODITEM,
+          ID.CODPRODUTO,
+          ID.CODMOVENTRADA,
+          ID.SEQUENCIA,
+          ID.SERIE,
+          ID.VENDIDO,
+          ID.CODMOVSAIDA,
+          ID.VALOR_VENDA,
+          ID.ICMSVENDA,
+          ID.DESCONTO,
+          ID.IMPETIQ,
+          ID.BARRA,
+          ID.QUANTIDADE,
+          ID.UNICO,
+          ID.CUSTO_PRODUTO,
+          ID.CUSTO_IPI,
+          ID.CUSTO_RATEIO,
+          ID.CUSTO_ICMS,
+          ID.CUSTO_ISS
+        FROM
+          INDIVIDUAIS ID
+          LEFT JOIN MOVIMENTOS MO ON
+            (MO.CODIGO = ID.CODMOVENTRADA)
+        WHERE
+          ID.BARRA = :BARRA AND
+          ID.VENDIDO = 'N' AND
+          ID.CODEMPRESA = :CODEMPRESA
+        ORDER BY
+          MO.DATA
+        INTO
+          :XCODIGO,
+          :XCODITEM,
+          :XCODPRODUTO,
+          :XCODMOVENTRADA,
+          :XSEQUENCIA,
+          :XSERIE,
+          :XVENDIDO,
+          :XCODMOVSAIDA,
+          :XVALOR_VENDA,
+          :XICMSVENDA,
+          :XDESCONTO,
+          :XIMPETIQ,
+          :XBARRA,
+          :XQUANTIDADE,
+          :XUNICO,
+          :XCUSTO_PRODUTO,
+          :XCUSTO_IPI,
+          :XCUSTO_RATEIO,
+          :XCUSTO_ICMS,
+          :XCUSTO_ISS
+        DO
+        BEGIN
+
+          /* TENHO ESTOQUE NESSE REGISTRO */
+          IF (QUANTIDADE > 0) THEN
+            BEGIN
+
+              /* SE A QUANTIDADE É SUFICIENTE OU MAIOR */
+              SOBRA = 0;
+              IF (QUANTIDADE >= XQUANTIDADE) THEN
+                BEGIN
+
+                  BAIXA = XQUANTIDADE;
+
+                END ELSE
+                BEGIN
+
+                  BAIXA = QUANTIDADE;
+                  SOBRA = XQUANTIDADE - BAIXA;
+
+                END
+
+              /* SE FALTOU, CALCULO PARA A PRÓXIMA ITERAÇÃO */
+              QUANTIDADE = QUANTIDADE - BAIXA;
+
+              /* CALCULO A COMISSAO DESSE ITEM */
+              IF ((COMISSAO_PRODUTO = 'S') AND (COMISSAO_CLIENTE = 'S')) THEN
+                COMISSAO = ((VALOR - DESCONTO) * BAIXA) * (PERCCOMISSAO / 100);
+              ELSE
+                COMISSAO = 0.0;
+
+              IF (COMISSAO IS NULL) THEN
+                COMISSAO = 0.0;
+
+              /* SE FOR ECF, ALIQUOTA DO CADASTRO DE PRODUTOS */
+              IF (ECF = 'S') THEN
+                XICMSVENDA = ALIQUOTA_ICMSPRODUTO;
+
+              /* VERIFICO O ICMS CORRETO */
+              SELECT
+                ICMSSIMPLES,
+                ALIQUOTA_ICMSSIMPLES
+              FROM
+                SISCONFIG
+              WHERE
+                CODIGO = :CODEMPRESA
+              INTO
+                :ICMSSIMPLES,
+                :ALIQUOTA_ICMSSIMPLES;
+
+              /* SE FOR SIMPLES, ALIQUOTA SIMPLES */
+              IF (ICMSSIMPLES = 'S') THEN
+                XICMSVENDA = ALIQUOTA_ICMSSIMPLES;
+
+              /* VENDO O QUE FOR PRECISO */
+              UPDATE
+                INDIVIDUAIS
+              SET
+                QUANTIDADE = :BAIXA,
+                CODMOVSAIDA = :CODMOVSAIDA,
+                VALOR_VENDA = :VALOR,
+                DESCONTO = :DESCONTO,
+                VENDIDO = 'S',
+                ICMSVENDA = :XICMSVENDA,
+                VALOR_COMISSAO = :COMISSAO
+              WHERE
+                CODIGO = :XCODIGO;
+
+              /* SE SOBROU, INSIRO UM NOVO ITEM DE ESTOQUE COM A SOBRE */
+              IF (SOBRA > 0) THEN
+                BEGIN
+
+                  /* PEGO A SEQUENCIA DOS ITENS DE ESTOQUE */
+                  EXECUTE PROCEDURE SEQ_OBTER 'INDIVIDUAIS'
+                    RETURNING_VALUES NSEQ;
+                  XVENDIDO = 'N';
+
+                  /* INSIRO O REGISTRO NO ESTOQUE */
+                  INSERT INTO
+                    INDIVIDUAIS (
+                      CODIGO,
+                      CODITEM,
+                      CODPRODUTO,
+                      CODMOVENTRADA,
+                      SEQUENCIA,
+                      SERIE,
+                      VENDIDO,
+                      VALOR_VENDA,
+                      ICMSVENDA,
+                      DESCONTO,
+                      IMPETIQ,
+                      BARRA,
+                      QUANTIDADE,
+                      UNICO,
+                      FRACIONADO,
+                      CODEMPRESA,
+                      CUSTO_PRODUTO,
+                      CUSTO_IPI,
+                      CUSTO_RATEIO,
+                      CUSTO_ICMS,
+                      CUSTO_ISS)
+                    VALUES (
+                      :NSEQ,
+                      :XCODITEM,
+                      :XCODPRODUTO,
+                      :XCODMOVENTRADA,
+                      :XSEQUENCIA,
+                      :XSERIE,
+                      :XVENDIDO,
+                      :XVALOR_VENDA,
+                      :XICMSVENDA,
+                      :XDESCONTO,
+                      :XIMPETIQ,
+                      :XBARRA,
+                      :SOBRA,
+                      :XUNICO,
+                      'S',
+                      :CODEMPRESA,
+                      :XCUSTO_PRODUTO,
+                      :XCUSTO_IPI,
+                      :XCUSTO_RATEIO,
+                      :XCUSTO_ICMS,
+                      :XCUSTO_ISS);
+
+              END
+            END ELSE EXIT;
+        END
+
+      /* SE NÃO HOUVER ESTOQUE, GERO ERRO */
+      END ELSE EXCEPTION ERRO 'SEM ESTOQUE: "' || UDF_TRIM(DESCRICAO) || '"';
+
+    /* SE NÃO FOR PRODUTO, É SERVIÇO */
+    END ELSE
+    BEGIN
+
+      /* PEGO A SEQUENCIA DOS ITENS TEMPORÁRIOS */
+      EXECUTE PROCEDURE SEQ_OBTER 'TEMPITENS'
+         RETURNING_VALUES XCODITEM;
+
+      /* INSIRO UM ITEM DE SERVIÇO NA QUANTIDADE EXATA */
+      INSERT INTO
+        TEMPITENS (
+          CODIGO,
+          CODMOVIMENTO,
+          CODPRODUTO,
+          QUANTIDADE,
+          VALOR_UNITARIO,
+          DESCONTO,
+          SITTRIBU,
+          MARGEM,
+          REAJUSTAR,
+          VALOR_VENDA,
+          ICMSCOMPRA,
+          ICMSVENDA)
+        VALUES (
+          :XCODITEM,
+          :CODMOVSAIDA,
+          :XCODPRODUTO,
+          :QUANTIDADE,
+          :XPRECOCUSTO,
+          0,
+          '0.0',
+          0,
+          'N',
+          :VALOR,
+          0,
+          0);
+
+      /* PEGO A SEQUENCIA DOS ITENS DE ESTOQUE */
+      EXECUTE PROCEDURE SEQ_OBTER 'INDIVIDUAIS'
+         RETURNING_VALUES NSEQ;
+
+      /* INSIRO UM ITEM DE SERVIÇO NA QUANTIDADE EXATA */
+      INSERT INTO
+        INDIVIDUAIS (
+          CODIGO,
+          CODITEM,
+          CODPRODUTO,
+          CODMOVENTRADA,
+          CODMOVSAIDA,
+          SEQUENCIA,
+          SERIE,
+          VENDIDO,
+          VALOR_VENDA,
+          ICMSVENDA,
+          DESCONTO,
+          IMPETIQ,
+          BARRA,
+          QUANTIDADE,
+          UNICO,
+          FRACIONADO,
+          PS,
+          CODEMPRESA,
+          CUSTO_PRODUTO)
+        VALUES (
+          :NSEQ,
+          :XCODITEM,
+          :XCODPRODUTO,
+          :CODMOVSAIDA,
+          :CODMOVSAIDA,
+          '0000',
+          '',
+          'S',
+          :VALOR,
+          0,
+          :DESCONTO,
+          'N',
+          :BARRA,
+          :QUANTIDADE,
+          0,
+          'N',
+          'S',
+          :CODEMPRESA,
+          :XPRECOCUSTO);
+    END
+END
+^
+
+SET TERM ; ^
+
+INSERT INTO SCRIPTVER(NUMERO, DATA) VALUES (377, CURRENT_TIMESTAMP);
+COMMIT;
+

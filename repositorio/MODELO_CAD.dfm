@@ -1,0 +1,979 @@
+object formCadModelo: TformCadModelo
+  Left = 256
+  Top = 154
+  HelpKeyword = 'MODELO'
+  HelpContext = 1
+  BorderIcons = [biSystemMenu, biMaximize]
+  Caption = 'Modelo de Cadastro'
+  ClientHeight = 454
+  ClientWidth = 699
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Verdana'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = True
+  Position = poDesigned
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pgcDados: TcxPageControl
+    Left = 0
+    Top = 0
+    Width = 699
+    Height = 434
+    HelpContext = 555
+    Align = alClient
+    TabOrder = 0
+    Properties.ActivePage = tabVisual
+    Properties.HideTabs = True
+    LookAndFeel.NativeStyle = False
+    OnChange = pgcDadosChange
+    ClientRectBottom = 433
+    ClientRectLeft = 1
+    ClientRectRight = 698
+    ClientRectTop = 1
+    object tabVisual: TcxTabSheet
+      HelpContext = 555
+      Caption = 'Busca'
+      ImageIndex = 0
+      object dxBarDockControl_BotoesSelecao: TdxBarDockControl
+        Left = 0
+        Top = 0
+        Width = 697
+        Height = 79
+        HelpContext = 555
+        Align = dalTop
+        AllowDocking = False
+        BarManager = dxBarManagerCad
+        SunkenBorder = False
+        UseOwnSunkenBorder = True
+      end
+      object dxBarDockControl_Selecao: TdxBarDockControl
+        Left = 0
+        Top = 401
+        Width = 697
+        Height = 31
+        HelpContext = 555
+        Align = dalBottom
+        AllowDocking = False
+        BarManager = dxBarManagerCad
+        SunkenBorder = False
+        UseOwnSunkenBorder = True
+      end
+      object pnlFundoGrade: TPanel
+        Left = 0
+        Top = 79
+        Width = 697
+        Height = 322
+        HelpContext = 555
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clCream
+        TabOrder = 2
+        object dxBarDockControl_Links: TdxBarDockControl
+          Left = 0
+          Top = 300
+          Width = 697
+          Height = 22
+          HelpContext = 555
+          Align = dalBottom
+          AllowDocking = False
+          BarManager = dxBarManagerCad
+          SunkenBorder = False
+          UseOwnSunkenBorder = True
+        end
+        object dxBarDockControlWhere: TdxBarDockControl
+          Left = 0
+          Top = 0
+          Width = 697
+          Height = 22
+          HelpContext = 555
+          Align = dalTop
+          AllowDocking = False
+          BarManager = dxBarManagerCad
+          SunkenBorder = False
+          UseOwnSunkenBorder = True
+        end
+        object grdDados: TcxGrid
+          Left = 0
+          Top = 22
+          Width = 697
+          Height = 278
+          HelpContext = 555
+          Align = alClient
+          PopupMenu = menuGrade
+          TabOrder = 2
+          LookAndFeel.Kind = lfOffice11
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.SkinName = 'Office2010Silver'
+          object cxGrid1DBTableView1: TcxGridDBTableView
+            Navigator.Visible = True
+            OnCellClick = cxGrid1DBTableView1CellClick
+            OnCellDblClick = cxGrid1DBTableView1CellDblClick
+            DataController.DataSource = dsrDados
+            DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoSortByDisplayText]
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            DataController.OnGroupingChanged = cxGrid1DBTableView1DataControllerGroupingChanged
+            OptionsData.Deleting = False
+            OptionsData.DeletingConfirmation = False
+            OptionsData.Inserting = False
+            OptionsView.GroupByBox = False
+            OptionsView.Indicator = True
+          end
+          object cxGrid1Level1: TcxGridLevel
+            GridView = cxGrid1DBTableView1
+          end
+        end
+      end
+    end
+    object tabDetalhe: TcxTabSheet
+      HelpContext = 555
+      Caption = 'Detalhes'
+      ImageIndex = 1
+      object dbnDetalhes: TDBNavigator
+        Left = 8
+        Top = 320
+        Width = 240
+        Height = 25
+        HelpContext = 555
+        DataSource = dsrDados
+        TabOrder = 0
+        Visible = False
+      end
+      object dxBarDockControl_BotesDetalhes: TdxBarDockControl
+        Left = 0
+        Top = 0
+        Width = 697
+        Height = 79
+        HelpContext = 555
+        Align = dalTop
+        AllowDocking = False
+        BarManager = dxBarManagerCad
+        SunkenBorder = False
+        UseOwnSunkenBorder = True
+      end
+      object pnlEdicao: TPanel
+        Left = 0
+        Top = 79
+        Width = 697
+        Height = 353
+        HelpContext = 555
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 2
+        ExplicitTop = 74
+        ExplicitHeight = 358
+      end
+    end
+  end
+  object dxStatusBar: TdxStatusBar
+    Left = 0
+    Top = 434
+    Width = 699
+    Height = 20
+    HelpContext = 555
+    Panels = <
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.ParentFont = False
+        Width = 60
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarKeyboardStatePanelStyle'
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.CapsLockKeyAppearance.ActiveCaption = 'CAPS'
+        PanelStyle.CapsLockKeyAppearance.InactiveCaption = 'CAPS'
+        PanelStyle.NumLockKeyAppearance.ActiveCaption = 'NUM'
+        PanelStyle.NumLockKeyAppearance.InactiveCaption = 'NUM'
+        PanelStyle.ScrollLockKeyAppearance.ActiveCaption = 'SCRL'
+        PanelStyle.ScrollLockKeyAppearance.InactiveCaption = 'SCRL'
+        PanelStyle.InsertKeyAppearance.ActiveCaption = 'OVR'
+        PanelStyle.InsertKeyAppearance.InactiveCaption = 'INS'
+        PanelStyle.ParentFont = False
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.ParentFont = False
+        Width = 150
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.ParentFont = False
+      end>
+    PaintStyle = stpsUseLookAndFeel
+    LookAndFeel.Kind = lfOffice11
+    LookAndFeel.SkinName = 'Office2010Silver'
+    ParentFont = True
+  end
+  object dxBarManagerCad: TdxBarManager
+    AllowReset = False
+    AlwaysSaveText = True
+    AutoDockColor = False
+    AutoHideEmptyBars = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    CanCustomize = False
+    Categories.Strings = (
+      'Default')
+    Categories.ItemsVisibles = (
+      2)
+    Categories.Visibles = (
+      True)
+    DockColor = clBtnFace
+    HelpContext = 555
+    ImageOptions.ImageListBkColor = clBlack
+    ImageOptions.Images = formPrincipal.imgMenu
+    ImageOptions.LargeImages = formPrincipal.imgToolbar
+    ImageOptions.SmoothGlyphs = True
+    ImageOptions.StretchGlyphs = False
+    ImageOptions.UseLargeImagesForLargeIcons = True
+    LookAndFeel.Kind = lfOffice11
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.SkinName = 'DevExpressStyle'
+    PopupMenuLinks = <>
+    UseSystemFont = True
+    Left = 40
+    Top = 151
+    DockControlHeights = (
+      0
+      0
+      0
+      0)
+    object dxBarManagerCadBar1: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      Caption = 'ToolbarSelecao'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl_Selecao
+      DockedDockControl = dxBarDockControl_Selecao
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 74
+      FloatTop = 371
+      FloatClientWidth = 23
+      FloatClientHeight = 22
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'cmbSelecionar'
+        end
+        item
+          UserDefine = [udWidth]
+          UserWidth = 122
+          Visible = True
+          ItemName = 'edtSelecionar'
+        end
+        item
+          Visible = True
+          ItemName = 'cmbSelecionar2'
+        end
+        item
+          UserDefine = [udWidth]
+          UserWidth = 125
+          Visible = True
+          ItemName = 'edtSelecionar2'
+        end>
+      OldName = 'ToolbarSelecao'
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManagerCadBar2: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      AllowReset = False
+      Caption = 'BotoesSelecao'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl_BotoesSelecao
+      DockedDockControl = dxBarDockControl_BotoesSelecao
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 547
+      FloatTop = 194
+      FloatClientWidth = 83
+      FloatClientHeight = 223
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnAjuda'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnAdicionar'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnModificar'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnImprimir'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnSair'
+        end>
+      OldName = 'BotoesSelecao'
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManagerCadBar3: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      BorderStyle = bbsNone
+      Caption = 'Links'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl_Links
+      DockedDockControl = dxBarDockControl_Links
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 813
+      FloatTop = 131
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'lbSEL'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnEmpresas'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnOcultos'
+        end>
+      OldName = 'Custom 2'
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManagerCadBar4: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      BorderStyle = bbsNone
+      Caption = 'Where'
+      CaptionButtons = <>
+      DockControl = dxBarDockControlWhere
+      DockedDockControl = dxBarDockControlWhere
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 813
+      FloatTop = 131
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'lblWhere'
+        end>
+      OldName = 'Custom 3'
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManagerCadBar5: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      Caption = 'BotoesDetalhes'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl_BotesDetalhes
+      DockedDockControl = dxBarDockControl_BotesDetalhes
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 813
+      FloatTop = 131
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnAjuda'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnSalvar'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnCancelar'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnExcluir'
+        end>
+      OldName = 'Custom 4'
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object btnAdicionar: TdxBarLargeButton
+      Caption = 'Adicionar [F2]'
+      Category = 0
+      Hint = 'Adicionar [F2]'
+      Visible = ivAlways
+      LargeImageIndex = 96
+      OnClick = btnAdicionarClick
+      AutoGrayScale = False
+      SyncImageIndex = False
+      ImageIndex = 96
+    end
+    object lblWhere: TdxBarStatic
+      Caption = 'lblWhere'
+      Category = 0
+      Description = 'lblWhere'
+      Hint = 'lblWhere'
+      Visible = ivAlways
+      ImageIndex = 119
+    end
+    object dxBarButton1: TdxBarButton
+      Caption = 'New Item'
+      Category = 0
+      Hint = 'New Item'
+      Visible = ivAlways
+    end
+    object btnModificar: TdxBarLargeButton
+      Caption = 'Detalhes [F3]'
+      Category = 0
+      Hint = 'Detalhes [F3]'
+      Visible = ivAlways
+      LargeImageIndex = 68
+      OnClick = btnModificarClick
+      AutoGrayScale = False
+    end
+    object btnImprimir: TdxBarLargeButton
+      Caption = 'Impress'#227'o'
+      Category = 0
+      Hint = 'Impress'#227'o'
+      Visible = ivAlways
+      ButtonStyle = bsDropDown
+      DropDownMenu = dxBarPopupPrint
+      LargeImageIndex = 71
+      AutoGrayScale = False
+    end
+    object btnSair: TdxBarLargeButton
+      Caption = 'Fechar [ESC]'
+      Category = 0
+      Hint = 'Fechar [ESC]'
+      Visible = ivAlways
+      LargeImageIndex = 24
+      OnClick = btnSairClick
+      AutoGrayScale = False
+    end
+    object btnSalvar: TdxBarLargeButton
+      Caption = 'Salvar [F9]'
+      Category = 0
+      Hint = 'Salvar [F9]'
+      Visible = ivAlways
+      LargeImageIndex = 1
+      OnClick = btnSalvarClick
+      AutoGrayScale = False
+    end
+    object btnCancelar: TdxBarLargeButton
+      Caption = 'Desfazer [ESC]'
+      Category = 0
+      Hint = 'Desfazer [ESC]'
+      Visible = ivAlways
+      LargeImageIndex = 114
+      OnClick = btnCancelarClick
+      AutoGrayScale = False
+    end
+    object btnExcluir: TdxBarLargeButton
+      Caption = 'Excluir'
+      Category = 0
+      Hint = 'Excluir'
+      Visible = ivAlways
+      LargeImageIndex = 106
+      OnClick = btnExcluirClick
+      AutoGrayScale = False
+    end
+    object dxBarSubItem1: TdxBarSubItem
+      Caption = 'New Item'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarControlContainerItem1: TdxBarControlContainerItem
+      Caption = 'New Item'
+      Category = 0
+      Hint = 'New Item'
+      Visible = ivAlways
+    end
+    object edtSelecionar: TdxBarEdit
+      Tag = 1
+      Caption = 'Contendo'
+      Category = 0
+      Hint = 'Contendo'
+      Visible = ivAlways
+      OnChange = edtSelecionarChange
+      OnCurChange = edtSelecionarCurChange
+      OnEnter = edtSelecionarEnter
+      OnKeyDown = edtSelecionarKeyDown
+      ShowCaption = True
+    end
+    object cmbSelecionar: TdxBarCombo
+      Caption = 'Selecionar'
+      Category = 0
+      Hint = 'Selecionar'
+      Visible = ivAlways
+      OnChange = cmbSelecionarChange
+      ShowCaption = True
+      ItemIndex = -1
+    end
+    object dxBarSubItem2: TdxBarSubItem
+      Caption = 'New Item'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarButton2: TdxBarButton
+      Caption = 'Impress'#227'o da &Grade'
+      Category = 0
+      Hint = 'Impress'#227'o da Grade'
+      Visible = ivAlways
+      ImageIndex = 71
+      LargeImageIndex = 71
+      OnClick = dxBarButton2Click
+    end
+    object dxBarSubItem3: TdxBarSubItem
+      Caption = 'Exporta'#231#227'o'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarButton3'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton4'
+        end>
+    end
+    object dxBarButton3: TdxBarButton
+      Caption = 'P'#225'gina da &Web'
+      Category = 0
+      Hint = 'P'#225'gina da Web'
+      Visible = ivAlways
+      ImageIndex = 36
+      OnClick = dxBarButton3Click
+    end
+    object dxBarButton4: TdxBarButton
+      Caption = 'Planilha do Microsoft &Excel'
+      Category = 0
+      Hint = 'Planilha do Microsoft Excel'
+      Visible = ivAlways
+      ImageIndex = 14
+      OnClick = dxBarButton4Click
+    end
+    object dxBarButton5: TdxBarButton
+      Caption = 'New Item'
+      Category = 0
+      Hint = 'New Item'
+      Visible = ivAlways
+      ImageIndex = 0
+    end
+    object btnAjuda: TdxBarLargeButton
+      Action = formPrincipal.actSobre
+      Category = 0
+      AutoGrayScale = False
+    end
+    object btnRestaurar: TdxBarButton
+      Caption = 'Restaurar Colunas Originais'
+      Category = 0
+      Hint = 'Restaurar Colunas Originais'
+      Visible = ivAlways
+    end
+    object dedDataIni: TdxBarDateCombo
+      Caption = 'In'#237'cio'
+      Category = 0
+      Hint = 'In'#237'cio'
+      Visible = ivNever
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        0400000000008000000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+        DDDDDDDD00000000000DDDDD0FFFFFFFFF0D00000F0000000F0D0FFF0FFFFFFF
+        FF0D0F000FFF11FFFF0D0FFF0FFF11FFFF0D0FF10FFFF11FFF0D0FF10FFFFF11
+        FF0D0FF10FF11111FF0D0FF10FFFFFFFFF0D0FF104444444440D0FFF04444444
+        440D044400000000000D04444444440DDDDD00000000000DDDDD}
+      ShowCaption = True
+    end
+    object dedDataFim: TdxBarDateCombo
+      Caption = 'T'#233'rmino'
+      Category = 0
+      Hint = 'T'#233'rmino'
+      Visible = ivNever
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        0400000000008000000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+        DDDDDDDD00000000000DDDDD0FFFFFFFFF0D00000F0000000F0D0FFF0FFFFFFF
+        FF0D0F000FFF11FFFF0D0FFF0FFF11FFFF0D0FF10FFFF11FFF0D0FF10FFFFF11
+        FF0D0FF10FF11111FF0D0FF10FFFFFFFFF0D0FF104444444440D0FFF04444444
+        440D044400000000000D04444444440DDDDD00000000000DDDDD}
+      ShowCaption = True
+    end
+    object cmbSelecionar2: TdxBarCombo
+      Caption = 'E'
+      Category = 0
+      Hint = 'E'
+      Visible = ivAlways
+      OnChange = cmbSelecionar2Change
+      ShowCaption = True
+      ItemIndex = -1
+    end
+    object edtSelecionar2: TdxBarEdit
+      Caption = 'Contendo'
+      Category = 0
+      Hint = 'Contendo'
+      Visible = ivAlways
+      OnChange = edtSelecionar2Change
+      OnKeyDown = edtSelecionarKeyDown
+      ShowCaption = True
+    end
+    object btnOcultos: TdxBarButton
+      Caption = 'Mostrar Ocultos'
+      Category = 0
+      Hint = 'Mostrar Ocultos'
+      Visible = ivNever
+      ButtonStyle = bsChecked
+      ImageIndex = 103
+      PaintStyle = psCaptionGlyph
+      OnClick = btnOcultosClick
+    end
+    object btnEmpresas: TdxBarButton
+      Caption = 'Mostrar todas as Empresas'
+      Category = 0
+      Hint = 'Mostrar todas as Empresas'
+      Visible = ivNever
+      ButtonStyle = bsChecked
+      ImageIndex = 40
+      PaintStyle = psCaptionGlyph
+      OnClick = btnEmpresasClick
+    end
+    object lbSEL: TdxBarStatic
+      Caption = '...'
+      Category = 0
+      Visible = ivNever
+    end
+    object btnAplicarData: TdxBarButton
+      Caption = 'Aplicar filtro'
+      Category = 0
+      Hint = 'Aplicar filtro'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+    end
+    object menuGrafico: TdxBarButton
+      Caption = 'Gr'#225'fico...'
+      Category = 0
+      Hint = 'Gr'#225'fico'
+      Visible = ivAlways
+      ImageIndex = 70
+    end
+  end
+  object cdsDados: TClientDataSet
+    Aggregates = <>
+    FetchOnDemand = False
+    Params = <>
+    RemoteServer = formPrincipal.SocketConnection
+    BeforeOpen = cdsDadosBeforeOpen
+    AfterOpen = cdsDadosAfterOpen
+    AfterEdit = cdsDadosAfterEdit
+    BeforePost = cdsDadosBeforePost
+    AfterScroll = cdsDadosAfterScroll
+    OnNewRecord = cdsDadosNewRecord
+    OnReconcileError = cdsDadosReconcileError
+    BeforeGetRecords = cdsDadosBeforeGetRecords
+    AfterGetRecords = cdsDadosAfterGetRecords
+    Left = 120
+    Top = 216
+  end
+  object dsrDados: TDataSource
+    DataSet = cdsDados
+    OnDataChange = dsrDadosDataChange
+    Left = 120
+    Top = 272
+  end
+  object tmrFocus: TTimer
+    Enabled = False
+    Interval = 512
+    OnTimer = tmrFocusTimer
+    Left = 120
+    Top = 160
+  end
+  object dxComponentPrinter: TdxComponentPrinter
+    CurrentLink = dxComponentPrinterLink1
+    PrintTitle = 'Impress'#227'o da Grade'
+    Version = 0
+    Left = 216
+    Top = 160
+    object dxComponentPrinterLink1: TdxGridReportLink
+      Active = True
+      Component = grdDados
+      PrinterPage.DMPaper = 1
+      PrinterPage.Footer = 6350
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 215900
+      PrinterPage.PageSize.Y = 279400
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 42615.943077858800000000
+      OptionsExpanding.ExpandGroupRows = True
+      OptionsOnEveryPage.Footers = False
+      OptionsOnEveryPage.Headers = False
+      OptionsOnEveryPage.FilterBar = False
+      OptionsSize.AutoWidth = True
+      OptionsView.Caption = False
+      OptionsView.FilterBar = False
+      BuiltInReportLink = True
+    end
+  end
+  object dxBarPopupPrint: TdxBarPopupMenu
+    BarManager = dxBarManagerCad
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'dxBarButton2'
+      end
+      item
+        Visible = True
+        ItemName = 'menuGrafico'
+      end
+      item
+        BeginGroup = True
+        Visible = True
+        ItemName = 'dxBarSubItem3'
+      end>
+    UseOwnFont = False
+    Left = 296
+    Top = 160
+  end
+  object actDetalhes: TActionList
+    State = asSuspended
+    Left = 216
+    Top = 104
+    object Action1: TAction
+      Caption = 'Action1'
+    end
+  end
+  object tmrRelogio: TTimer
+    Enabled = False
+    Interval = 1024
+    OnTimer = tmrRelogioTimer
+    Left = 120
+    Top = 104
+  end
+  object tmrLabel: TTimer
+    Enabled = False
+    Interval = 120
+    OnTimer = tmrLabelTimer
+    Left = 384
+    Top = 104
+  end
+  object menuGrade: TPopupMenu
+    OnPopup = menuGradePopup
+    Left = 384
+    Top = 160
+    object SelecionarTudo1: TMenuItem
+      Caption = '&Marcar tudo'
+      ShortCut = 118
+      OnClick = SelecionarTudo1Click
+    end
+    object Desmarcartudo1: TMenuItem
+      Caption = '&Desmarcar tudo'
+      ShortCut = 119
+      OnClick = Desmarcartudo1Click
+    end
+    object sep3: TMenuItem
+      Caption = '-'
+    end
+    object Invertermarcao1: TMenuItem
+      Caption = '&Inverter marca'#231#227'o'
+      OnClick = Invertermarcao1Click
+    end
+    object sep1: TMenuItem
+      Caption = '-'
+    end
+    object atualizargrade1: TMenuItem
+      Caption = 'Atualizar a &Grade'
+      RadioItem = True
+      ShortCut = 116
+      OnClick = atualizargrade1Click
+    end
+  end
+  object tmrFocus2: TTimer
+    Enabled = False
+    Interval = 256
+    OnTimer = tmrFocus2Timer
+    Left = 216
+    Top = 216
+  end
+  object memDataEntre: TdxMemData
+    Indexes = <>
+    SortOptions = []
+    Left = 488
+    Top = 104
+    object memDataEntreFILTRO: TStringField
+      FieldName = 'FILTRO'
+    end
+    object memDataEntreCAMPO: TStringField
+      FieldName = 'CAMPO'
+    end
+  end
+  object dsrDataEntre: TDataSource
+    AutoEdit = False
+    DataSet = memDataEntre
+    Left = 488
+    Top = 160
+  end
+  object tmrSemDireito: TTimer
+    Enabled = False
+    Interval = 1024
+    OnTimer = tmrSemDireitoTimer
+    Left = 296
+    Top = 216
+  end
+  object tmrSel: TTimer
+    Enabled = False
+    Interval = 512
+    OnTimer = tmrSelTimer
+    Left = 576
+    Top = 104
+  end
+  object memCampos: TdxMemData
+    Active = True
+    Indexes = <>
+    SortOptions = []
+    Left = 488
+    Top = 224
+    object memCamposSEL: TStringField
+      FieldName = 'SEL'
+      Size = 1
+    end
+    object memCamposCAMPO: TStringField
+      FieldName = 'CAMPO'
+      Size = 60
+    end
+    object memCamposCOLUNA: TIntegerField
+      FieldName = 'COLUNA'
+    end
+  end
+  object dsrCampos: TDataSource
+    DataSet = memCampos
+    Left = 488
+    Top = 280
+  end
+  object tmrMove: TTimer
+    Enabled = False
+    Interval = 768
+    OnTimer = tmrMoveTimer
+    Left = 576
+    Top = 160
+  end
+  object memDataGraph: TdxMemData
+    Active = True
+    Indexes = <>
+    SortOptions = []
+    Left = 576
+    Top = 224
+    object memDataGraphNome: TStringField
+      DisplayWidth = 20
+      FieldName = 'Nome'
+      Size = 40
+    end
+    object memDataGraphValor: TFloatField
+      DisplayWidth = 12
+      FieldName = 'Valor'
+    end
+  end
+  object FileSaveDialog: TFileSaveDialog
+    FavoriteLinks = <>
+    FileTypes = <>
+    Options = []
+    Title = 'Exportar Arquivo'
+    Left = 296
+    Top = 104
+  end
+  object SaveDialog: TSaveDialog
+    Left = 296
+    Top = 272
+  end
+  object tmrShift: TTimer
+    Enabled = False
+    Interval = 512
+    OnTimer = tmrShiftTimer
+    Left = 216
+    Top = 272
+  end
+end

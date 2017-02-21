@@ -1,0 +1,208 @@
+unit os;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, MODELO_OS, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  cxDataStorage, cxEdit, DB, cxDBData, cxCheckBox, cxLookAndFeelPainters,
+  dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev,
+  dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns, Menus, DBClient,
+  ActnList, dxBar, dxPSCore, ExtCtrls,
+  dxBarExtItems, dxStatusBar, cxDropDownEdit, cxCalendar, cxDBEdit,
+  cxRadioGroup, StdCtrls, cxButtons, cxGroupBox, cxMemo, cxMaskEdit,
+  cxContainer, cxTextEdit, DBCtrls, cxGridLevel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxControls,
+  cxGridCustomView, cxGrid, cxPC, dxPScxCommon, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, dxmdaset, dxBarExtDBItems,
+  cxLookAndFeels, dxSkinsCore, dxSkinOffice2007Blue, dxSkinscxPCPainter,
+  dxSkinsdxStatusBarPainter, dxSkinsdxBarPainter, dxPSPDFExportCore,
+  dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
+  dxPScxEditorProducers, dxPScxExtEditorProducers, dxPScxPageControlProducer,
+  dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinXmas2008Blue, cxPCdxBarPopupMenu, dxPScxGridLnk,
+  dxPScxGridLayoutViewLnk, cxNavigator, dxSkinsdxRibbonPainter;
+
+type
+  TformOS = class(TformModeloOS)
+    cdsDadosSEL: TStringField;
+    cdsDadosCODIGO: TIntegerField;
+    cdsDadosDATAAB: TDateField;
+    cdsDadosHORAAB: TTimeField;
+    cdsDadosPRIORIDADE: TIntegerField;
+    cdsDadosPRAZO: TFloatField;
+    cdsDadosCODCLIENTE: TIntegerField;
+    cdsDadosNOME: TStringField;
+    cdsDadosOSTIPO: TIntegerField;
+    cdsDadosTIPOOS: TStringField;
+    cdsDadosCODMARCA: TIntegerField;
+    cdsDadosMARCA: TStringField;
+    cdsDadosCODMODELO: TIntegerField;
+    cdsDadosMODELO: TStringField;
+    cdsDadosSERIE: TStringField;
+    cdsDadosCODDEFEITO: TIntegerField;
+    cdsDadosOCORRENCIA: TStringField;
+    cdsDadosCODPARCEIRO: TIntegerField;
+    cdsDadosPARCEIRO: TStringField;
+    cdsDadosCODVENDEDOR_ABRE: TIntegerField;
+    cdsDadosQUEMABRIU: TStringField;
+    cdsDadosSOLICITANTE: TStringField;
+    cdsDadosCONDICAOEXTERNA: TStringField;
+    cdsDadosACESSORIOS: TStringField;
+    cdsDadosSERVICOS: TStringField;
+    cdsDadosDEFEITO_DETECTADO: TStringField;
+    cdsDadosSERVICO_REALIZAR: TStringField;
+    cdsDadosAUTORIZADO: TStringField;
+    cdsDadosQUEM_AUTORIZOU: TStringField;
+    cdsDadosOPCIONAIS: TStringField;
+    cdsDadosCODVENDEDOR: TIntegerField;
+    cdsDadosUSUARIOFECHAMENTO: TStringField;
+    cdsDadosQUEM_RECEBEU: TStringField;
+    cdsDadosQUEM_ENTREGOU: TStringField;
+    cdsDadosOBSERVACOES: TStringField;
+    cdsDadosCODEMPRESA: TIntegerField;
+    cdsDadosES: TSmallintField;
+    cdsDadosTIPO: TSmallintField;
+    cdsDadosNOTA_FRETE: TSmallintField;
+    cdsDadosCONDICAO: TStringField;
+    cdsDadosGARANTIA: TStringField;
+    cdsDadosEMPRESTIMO: TStringField;
+    cdsDadosICMSSIMPLES: TStringField;
+    cdsDadosNOTA_CODNATUOPER: TStringField;
+    cdsDadosCODCENTRO: TIntegerField;
+    cxGrid1DBTableView1SEL: TcxGridDBColumn;
+    cxGrid1DBTableView1CODIGO: TcxGridDBColumn;
+    cxGrid1DBTableView1DATAAB: TcxGridDBColumn;
+    cxGrid1DBTableView1HORAAB: TcxGridDBColumn;
+    cxGrid1DBTableView1PRIORIDADE: TcxGridDBColumn;
+    cxGrid1DBTableView1PRAZO: TcxGridDBColumn;
+    cxGrid1DBTableView1STATUS: TcxGridDBColumn;
+    cxGrid1DBTableView1CODCLIENTE: TcxGridDBColumn;
+    cxGrid1DBTableView1NOME: TcxGridDBColumn;
+    cxGrid1DBTableView1TIPOOS: TcxGridDBColumn;
+    cxGrid1DBTableView1MARCA: TcxGridDBColumn;
+    cxGrid1DBTableView1MODELO: TcxGridDBColumn;
+    cxGrid1DBTableView1SERIE: TcxGridDBColumn;
+    cxGrid1DBTableView1OCORRENCIA: TcxGridDBColumn;
+    cxGrid1DBTableView1PARCEIRO: TcxGridDBColumn;
+    cxGrid1DBTableView1NOTA_VALOR_TOTAL: TcxGridDBColumn;
+    cxGrid1DBTableView1QUEMABRIU: TcxGridDBColumn;
+    cxGrid1DBTableView1SOLICITANTE: TcxGridDBColumn;
+    cxGrid1DBTableView1QUEM_AUTORIZOU: TcxGridDBColumn;
+    cxGrid1DBTableView1TECNICO: TcxGridDBColumn;
+    cxGrid1DBTableView1USUARIOFECHAMENTO: TcxGridDBColumn;
+    cxGrid1DBTableView1DATAFECHAMENTO: TcxGridDBColumn;
+    cxGrid1DBTableView1QUEM_RECEBEU: TcxGridDBColumn;
+    cxGrid1DBTableView1QUEM_ENTREGOU: TcxGridDBColumn;
+    cdsDadosLOG_USUARIO: TStringField;
+    cdsDadosLOG_TIPO: TStringField;
+    cdsDadosLOG_MAQUINA: TStringField;
+    cxGrid1DBTableView1DEFEITO_DETECTADO: TcxGridDBColumn;
+    cxGrid1DBTableView1SERVICO_REALIZAR: TcxGridDBColumn;
+    cdsDadosLOCALIZACAO: TStringField;
+    cxGrid1DBTableView1LOCALIZACAO: TcxGridDBColumn;
+    cdsDadosOPERADORA: TStringField;
+    cdsDadosSTATUS: TStringField;
+    cdsDadosVALOR_SERVICOS: TFloatField;
+    cdsDadosVALOR_ITENS: TFloatField;
+    cdsDadosNOTA_VALOR_FRETE: TFloatField;
+    cdsDadosNOTA_VALOR_SEGURO: TFloatField;
+    cdsDadosNOTA_VALOR_OUTROS: TFloatField;
+    cdsDadosVALOR_ICMS: TFloatField;
+    cdsDadosDESCONTO: TFloatField;
+    cdsDadosNOTA_QUANTIDADE: TFloatField;
+    cdsDadosNOTA_BASEICMS: TFloatField;
+    cdsDadosNOTA_BASEICMSSUBST: TFloatField;
+    cdsDadosNOTA_VALORICMSSUBST: TFloatField;
+    cdsDadosVALOR_IPI: TFloatField;
+    cdsDadosICMSSIMPALIQ: TFloatField;
+    cdsDadosISSALIQ: TFloatField;
+    cdsDadosNOTA_PESOBRUTO: TFloatField;
+    cdsDadosNOTA_PESOLIQUIDO: TFloatField;
+    cdsDadosDATA: TSQLTimeStampField;
+    cdsDadosTECNICO: TStringField;
+    cdsDadosDATAPREVISAO: TSQLTimeStampField;
+    cdsDadosNOTA_VALOR_TOTAL: TFMTBCDField;
+    cdsDadosDATA_AUTORIZADO: TSQLTimeStampField;
+    cdsDadosDATAFECHAMENTO: TSQLTimeStampField;
+    cdsDadosDATA_ENTREGA: TSQLTimeStampField;
+    cdsDadosNOTA_DATASAIDA: TSQLTimeStampField;
+    cdsDadosLOG_DATAREMOTO: TSQLTimeStampField;
+    cxTabSheet6: TcxTabSheet;
+    Label8: TLabel;
+    cxDBMemo3: TcxDBMemo;
+    Label9: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    Label10: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cdsDadosABERTO: TFMTBCDField;
+    cxGrid1DBTableView1ABERTO: TcxGridDBColumn;
+    procedure cdsDadosPRAZOGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
+    procedure btnSalvarClick(Sender: TObject); override;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formOS: TformOS;
+
+implementation
+
+uses principal;
+
+{$R *.dfm}
+
+procedure TformOS.btnSalvarClick(Sender: TObject);
+var
+  soma: extended;
+begin
+
+  { verificação das porcentagens da O.S. }
+  with cdsTecnicos do
+   begin
+     if Active and (not IsEmpty) then
+      begin
+        soma := 0;
+        first;
+        while not eof do
+         begin
+           soma := soma + cdsTecnicosporcentagem.AsFloat;
+           next;
+         end;
+        if soma <> 100 then
+         begin
+           formPrincipal.MsgError(
+             'As somas das porcentagens dos técnicos deve ser 100%.',
+             'Técnicos');
+           cxPageControl1.ActivePage := cxTabSheet2;
+           exit;
+         end;
+      end;
+   end;
+
+  inherited;
+
+end;
+
+procedure TformOS.cdsDadosPRAZOGetText(Sender: TField; var Text: String;
+  DisplayText: Boolean);
+begin
+  inherited;
+  DisplayText := True;
+
+  if (Sender.DataSet.FieldByName('STATUS').AsString <> 'OS ABERTA') and DisplayText then
+     Text := ''
+  else
+     Text := DataIntervalo(Sender.AsFloat);
+end;
+
+end.

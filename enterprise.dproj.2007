@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{c37b60cc-67c2-4dc2-b27e-450c2a5d3f88}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>C:\testes\enterprise\enterprise.exe</DCC_DependencyCheckOutputName>
+    <MainSource>enterprise.dpr</MainSource>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>RELEASE;</DCC_Define>
+    <DCC_ExeOutput>C:\testes\enterprise</DCC_ExeOutput>
+    <DCC_DcuOutput>C:\testes\temp</DCC_DcuOutput>
+    <DCC_ObjOutput>C:\testes\temp</DCC_ObjOutput>
+    <DCC_HppOutput>C:\testes\temp</DCC_HppOutput>
+    <DCC_MapFile>3</DCC_MapFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_Define>DEBUG</DCC_Define>
+    <DCC_ExeOutput>C:\testes\enterprise</DCC_ExeOutput>
+    <DCC_DcuOutput>C:\testes\temp</DCC_DcuOutput>
+    <DCC_ObjOutput>C:\testes\temp</DCC_ObjOutput>
+    <DCC_HppOutput>C:\testes\temp</DCC_HppOutput>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1046</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">enterprise.dpr</Source></Source><Excluded_Packages></Excluded_Packages></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="enterprise.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="compra\compra.pas">
+      <Form>formCompra</Form>
+    </DCCReference>
+    <DCCReference Include="compra\compras.pas">
+      <Form>formCompras</Form>
+    </DCCReference>
+    <DCCReference Include="contabilidade\lancontabil.pas">
+      <Form>formLanContabil</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\connconfig.pas">
+      <Form>formConnConfig</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\login.pas">
+      <Form>formLogin</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\reconcile.pas">
+      <Form>ReconcileErrorForm</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\regua.pas">
+      <Form>formRegua</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\selecionarempresa.pas">
+      <Form>formSelecionarEmpresa</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\senha.pas">
+      <Form>formSenha</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\trocasenha.pas">
+      <Form>formTrocaSenha</Form>
+    </DCCReference>
+    <DCCReference Include="dialogos\update.pas">
+      <Form>formUpdate</Form>
+    </DCCReference>
+    <DCCReference Include="ecf\bematech_mp20.pas" />
+    <DCCReference Include="ecf\daruma_fs345.pas" />
+    <DCCReference Include="ecf\ecf.pas" />
+    <DCCReference Include="exportar\prosoft.pas">
+      <Form>formProsoft</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\baixa.pas">
+      <Form>formBaixa</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\bancos.pas">
+      <Form>formBancos</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\centros.pas">
+      <Form>formCentros</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contapagaestorno.pas">
+      <Form>formContaPagaEstorno</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contapagar.pas">
+      <Form>formContaPagar</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contapagarlixo.pas">
+      <Form>formContaPagarLixo</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contareceber.pas">
+      <Form>formContaReceber</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contareceberlixo.pas">
+      <Form>formContaReceberLixo</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contarecebidaestorno.pas">
+      <Form>formContaRecebidaEstorno</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contas.pas">
+      <Form>formContas</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contaspagas.pas">
+      <Form>formContasPagas</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\contasrecebidas.pas">
+      <Form>formContasRecebidas</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\documentos.pas">
+      <Form>formDocumentos</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\extrato.pas">
+      <Form>formExtrato</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\formapagamento.pas">
+      <Form>formFormaPagamento</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\historicopag.pas">
+      <Form>formHistoricoPag</Form>
+    </DCCReference>
+    <DCCReference Include="financeiro\plancontas.pas">
+      <Form>formPlancontas</Form>
+    </DCCReference>
+    <DCCReference Include="funcoes\dosprint.pas" />
+    <DCCReference Include="funcoes\extenso.pas" />
+    <DCCReference Include="funcoes\funcoes.pas" />
+    <DCCReference Include="impressao\laycorpocampos.pas">
+      <Form>formCorpoCampos</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\laydupcampos.pas">
+      <Form>formDupCampos</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\layprintmov.pas">
+      <Form>formImpMov</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\layprintmovcorpo.pas">
+      <Form>formImpMovCorpo</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\layprintmovdup.pas">
+      <Form>formImpMovDup</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\layprintmovpro.pas">
+      <Form>formImpMovPro</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\layprintmovser.pas">
+      <Form>formImpMovSer</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\layprocampos.pas">
+      <Form>formProCampos</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\laysercampos.pas">
+      <Form>formSerCampos</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\printcupom.pas">
+      <Form>formPrintCupom</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\printmov.pas">
+      <Form>formPrintmov</Form>
+    </DCCReference>
+    <DCCReference Include="impressao\printrec.pas">
+      <Form>formPrintrec</Form>
+    </DCCReference>
+    <DCCReference Include="impressora\impressoras.pas">
+      <Form>formImpressoras</Form>
+    </DCCReference>
+    <DCCReference Include="natureza\natuoper.pas">
+      <Form>formNatuoper</Form>
+    </DCCReference>
+    <DCCReference Include="ncm\ncm.pas">
+      <Form>formNCM</Form>
+    </DCCReference>
+    <DCCReference Include="nfe\NFe_cancelar.pas">
+      <Form>formNFeCancelar</Form>
+    </DCCReference>
+    <DCCReference Include="nfe\NFe_gerar.pas">
+      <Form>formNFeGerar</Form>
+    </DCCReference>
+    <DCCReference Include="orcamento\data_orcamentos.pas">
+      <Form>dmoOrcamentos</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="orcamento\orcamento.pas">
+      <Form>formOrcamento</Form>
+    </DCCReference>
+    <DCCReference Include="orcamento\orcamentos.pas">
+      <Form>formOrcamentos</Form>
+    </DCCReference>
+    <DCCReference Include="os\data_os.pas">
+      <Form>dmoOS</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="os\defeitos.pas">
+      <Form>formDefeitos</Form>
+    </DCCReference>
+    <DCCReference Include="os\estornoos.pas">
+      <Form>formEstornoOS</Form>
+    </DCCReference>
+    <DCCReference Include="os\incluirtecnico.pas">
+      <Form>formIncluirTecnico</Form>
+    </DCCReference>
+    <DCCReference Include="os\marcas.pas">
+      <Form>formMarcas</Form>
+    </DCCReference>
+    <DCCReference Include="os\modelos.pas">
+      <Form>formModelos</Form>
+    </DCCReference>
+    <DCCReference Include="os\os.pas">
+      <Form>formOS</Form>
+    </DCCReference>
+    <DCCReference Include="os\osged.pas">
+      <Form>formOSGed</Form>
+    </DCCReference>
+    <DCCReference Include="os\oslocaliza.pas">
+      <Form>formOSLocaliza</Form>
+    </DCCReference>
+    <DCCReference Include="os\ostipos.pas">
+      <Form>formOSTipos</Form>
+    </DCCReference>
+    <DCCReference Include="os\status.pas">
+      <Form>formOSStatus</Form>
+    </DCCReference>
+    <DCCReference Include="os\veiculos.pas">
+      <Form>formVeiculos</Form>
+    </DCCReference>
+    <DCCReference Include="perfil\perfil.pas">
+      <Form>formPerfil</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\bairros.pas">
+      <Form>formBairros</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\cidades.pas">
+      <Form>formCidades</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\estados.pas">
+      <Form>formEstados</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\logradouros.pas">
+      <Form>formLogradouros</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\nova_localidade.pas">
+      <Form>formNovaLocalidade</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\pessoas.pas">
+      <Form>formPessoas</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\pessoasequp.pas">
+      <Form>formPessoasEquip</Form>
+    </DCCReference>
+    <DCCReference Include="pessoa\usuarios.pas">
+      <Form>formUsuarios</Form>
+    </DCCReference>
+    <DCCReference Include="principal\principal.pas">
+      <Form>formPrincipal</Form>
+    </DCCReference>
+    <DCCReference Include="produto\data_etiquetas.pas">
+      <Form>dmoEtiquetas</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="produto\grupos.pas">
+      <Form>formGrupos</Form>
+    </DCCReference>
+    <DCCReference Include="produto\individuais.pas">
+      <Form>formIndividuais</Form>
+    </DCCReference>
+    <DCCReference Include="produto\produtos.pas">
+      <Form>formProdutos</Form>
+    </DCCReference>
+    <DCCReference Include="produto\reajuste.pas">
+      <Form>formReajuste</Form>
+    </DCCReference>
+    <DCCReference Include="produto\transferencias.pas">
+      <Form>formTransferencias</Form>
+    </DCCReference>
+    <DCCReference Include="produto\tributario.pas">
+      <Form>formTributario</Form>
+    </DCCReference>
+    <DCCReference Include="produto\unidades.pas">
+      <Form>formUnidades</Form>
+    </DCCReference>
+    <DCCReference Include="relatorios\produtos_abc.pas">
+      <Form>formRepProdutosAbc</Form>
+    </DCCReference>
+    <DCCReference Include="relatorios\rel_estoque.pas">
+      <Form>formRelEstoque</Form>
+    </DCCReference>
+    <DCCReference Include="relatorios\rel_estoquedata.pas">
+      <Form>formRelEstoqueData</Form>
+    </DCCReference>
+    <DCCReference Include="relatorios\rel_estoqueminimo.pas">
+      <Form>formRelEstoqueMinimo</Form>
+    </DCCReference>
+    <DCCReference Include="relatorios\rep_procurvagrupo.pas">
+      <Form>formRepCurvaProGrupo</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_CAD.PAS">
+      <Form>formCadModelo</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_CONTA.pas">
+      <Form>formContaModelo</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_GRAFICO.pas">
+      <Form>formModeloGrafico</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_MOV.pas">
+      <Form>formMODELO_MOV</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_OS.pas">
+      <Form>formModeloOS</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_RELATORIO.pas">
+      <Form>formRepModelo</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_SELCAMPOS.pas">
+      <Form>formSelCampos</Form>
+    </DCCReference>
+    <DCCReference Include="repositorio\MODELO_VENDAS.pas">
+      <Form>formModeloVendas</Form>
+    </DCCReference>
+    <DCCReference Include="sequencia\sequencias.pas">
+      <Form>formSequencias</Form>
+    </DCCReference>
+    <DCCReference Include="servico\servicos.pas">
+      <Form>formServicos</Form>
+    </DCCReference>
+    <DCCReference Include="telecom\operadoras.pas">
+      <Form>formOperadoras</Form>
+    </DCCReference>
+    <DCCReference Include="telecom\planosservico.pas">
+      <Form>formPlanosServico</Form>
+    </DCCReference>
+    <DCCReference Include="threads\data_datahora.pas">
+      <Form>dmoDataHora</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="threads\data_log.pas">
+      <Form>dmoLog</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="threads\data_sequencia.pas">
+      <Form>dmoSequencia</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="threads\thDataHora.pas" />
+    <DCCReference Include="threads\thSequencia.pas" />
+    <DCCReference Include="venda\ativacao.pas">
+      <Form>formAtivacao</Form>
+    </DCCReference>
+    <DCCReference Include="venda\ativacoes.pas">
+      <Form>formAtivacoes</Form>
+    </DCCReference>
+    <DCCReference Include="venda\estornovendas.pas">
+      <Form>formEstornoVendas</Form>
+    </DCCReference>
+    <DCCReference Include="venda\saida.pas">
+      <Form>formSaida</Form>
+    </DCCReference>
+    <DCCReference Include="venda\saida_produtos.pas">
+      <Form>formSaidaProdutos</Form>
+    </DCCReference>
+    <DCCReference Include="venda\selpreco.pas">
+      <Form>formSelPreco</Form>
+    </DCCReference>
+    <DCCReference Include="venda\vendas.pas">
+      <Form>formVendas</Form>
+    </DCCReference>
+  </ItemGroup>
+</Project>
+<!-- EurekaLog First Line
+[Exception Log]
+EurekaLog Version=7001
+Activate=0
+AutoCrashOperation=2
+boHandleSafeCallExceptions=1
+boUseMainModuleOptions=1
+CompatibilityMode=1
+csoAllowedRenderMethods=64
+csoDisabledRenderMethods=-2
+csoShowWindowsThreads=1
+DeleteMapAfterCompile=1
+Dialog Class="TMessageBoxDialog"
+Email Address="suporte@taligent.com.br"
+Email Object="Enterprise"
+Encrypt Password=""
+Errors Number=32
+Errors Terminate=3
+Foreground Tab=0
+Freeze Timeout=1
+loCatchLeaks=0
+loEnableMMDebugMode=0
+loFreeAllLeaks=1
+loHideRTLLeaks=0
+loMaxLeaks=1024
+loOnlyUnderIDE=0
+loProcessesSection=1
+Output Path=""
+Save Log File=0
+Sender Classes="TELMailSMTPClientSender"
+SMTP From="suporte@taligent.com.br"
+SMTP Host="smtp.taligent.com.br"
+SMTP Password="M0r@15r315*"
+SMTP Port=587
+SMTP UserID="suporte@taligent.com.br"
+sndAddComputerNameInFileName=1
+sndScreenshot=3
+sndSendEntireLog=1
+sndShowSuccessMsg=0
+soActCtlsControlClass=1
+soActCtlsControlText=1
+soActCtlsFormClass=1
+soActCtlsFormText=1
+soAppCompilationDate=1
+soAppName=1
+soAppParameters=1
+soAppStartDate=1
+soAppUpTime=1
+soAppVersionNumber=1
+soCmpDisplayDPI=1
+soCmpDisplayMode=1
+soCmpFreeDisk=1
+soCmpFreeMemory=1
+soCmpName=1
+soCmpPrinter=1
+soCmpProcessor=1
+soCmpSysUpTime=1
+soCmpTotalDisk=1
+soCmpTotalMemory=1
+soCmpVideoCard=1
+soCustomData=1
+soExcCount=1
+soExcDate=1
+soExcModuleName=1
+soExcModuleVersion=1
+soExcNote=1
+soExcStatus=1
+soNetDHCP=1
+soNetDNS1=1
+soNetDNS2=1
+soNetGateway=1
+soNetIP=1
+soNetSubmask=1
+soOSBuildN=1
+soOSCharset=1
+soOSLanguage=1
+soOSType=1
+soOSUpdate=1
+soUserCompany=1
+soUserID=1
+soUserPrivileges=1
+TextsCollection=""
+TrakerUser=""
+WebPort=0
+WebURL=""
+EurekaLog Last Line -->

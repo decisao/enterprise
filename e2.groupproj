@@ -1,0 +1,114 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{cbe55f23-57fb-4779-83a1-9d12e666e7b8}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="enterprise.dproj" />
+    <Projects Include="SERVIDOR\BASE\BASE.dproj" />
+    <Projects Include="SERVIDOR\CLIENTES\BETA\BETA.dproj" />
+    <Projects Include="SERVIDOR\CLIENTES\HBOX\HBOX.dproj" />
+    <Projects Include="SERVIDOR\CLIENTES\INFO\INFO.dproj" />
+    <Projects Include="SERVIDOR\CLIENTES\SERV\SERV.dproj" />
+    <Projects Include="SERVIDOR\CLIENTES\TEST\TEST.dproj" />
+    <Projects Include="SERVIDOR\CLIENTES\TIMO\TIMO.dproj" />
+    <Projects Include="SERVIDOR\CLIENTES\TMGL\TMGL.dproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="enterprise">
+    <MSBuild Projects="enterprise.dproj" Targets="" />
+  </Target>
+  <Target Name="enterprise:Clean">
+    <MSBuild Projects="enterprise.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="enterprise:Make">
+    <MSBuild Projects="enterprise.dproj" Targets="Make" />
+  </Target>
+  <Target Name="BASE">
+    <MSBuild Projects="SERVIDOR\BASE\BASE.dproj" Targets="" />
+  </Target>
+  <Target Name="BASE:Clean">
+    <MSBuild Projects="SERVIDOR\BASE\BASE.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="BASE:Make">
+    <MSBuild Projects="SERVIDOR\BASE\BASE.dproj" Targets="Make" />
+  </Target>
+  <Target Name="BETA">
+    <MSBuild Projects="SERVIDOR\CLIENTES\BETA\BETA.dproj" Targets="" />
+  </Target>
+  <Target Name="BETA:Clean">
+    <MSBuild Projects="SERVIDOR\CLIENTES\BETA\BETA.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="BETA:Make">
+    <MSBuild Projects="SERVIDOR\CLIENTES\BETA\BETA.dproj" Targets="Make" />
+  </Target>
+  <Target Name="HBOX">
+    <MSBuild Projects="SERVIDOR\CLIENTES\HBOX\HBOX.dproj" Targets="" />
+  </Target>
+  <Target Name="HBOX:Clean">
+    <MSBuild Projects="SERVIDOR\CLIENTES\HBOX\HBOX.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="HBOX:Make">
+    <MSBuild Projects="SERVIDOR\CLIENTES\HBOX\HBOX.dproj" Targets="Make" />
+  </Target>
+  <Target Name="INFO">
+    <MSBuild Projects="SERVIDOR\CLIENTES\INFO\INFO.dproj" Targets="" />
+  </Target>
+  <Target Name="INFO:Clean">
+    <MSBuild Projects="SERVIDOR\CLIENTES\INFO\INFO.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="INFO:Make">
+    <MSBuild Projects="SERVIDOR\CLIENTES\INFO\INFO.dproj" Targets="Make" />
+  </Target>
+  <Target Name="SERV">
+    <MSBuild Projects="SERVIDOR\CLIENTES\SERV\SERV.dproj" Targets="" />
+  </Target>
+  <Target Name="SERV:Clean">
+    <MSBuild Projects="SERVIDOR\CLIENTES\SERV\SERV.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="SERV:Make">
+    <MSBuild Projects="SERVIDOR\CLIENTES\SERV\SERV.dproj" Targets="Make" />
+  </Target>
+  <Target Name="TEST">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TEST\TEST.dproj" Targets="" />
+  </Target>
+  <Target Name="TEST:Clean">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TEST\TEST.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="TEST:Make">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TEST\TEST.dproj" Targets="Make" />
+  </Target>
+  <Target Name="TIMO">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TIMO\TIMO.dproj" Targets="" />
+  </Target>
+  <Target Name="TIMO:Clean">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TIMO\TIMO.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="TIMO:Make">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TIMO\TIMO.dproj" Targets="Make" />
+  </Target>
+  <Target Name="TMGL">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TMGL\TMGL.dproj" Targets="" />
+  </Target>
+  <Target Name="TMGL:Clean">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TMGL\TMGL.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="TMGL:Make">
+    <MSBuild Projects="SERVIDOR\CLIENTES\TMGL\TMGL.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="enterprise;BASE;BETA;HBOX;INFO;SERV;TEST;TIMO;TMGL" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="enterprise:Clean;BASE:Clean;BETA:Clean;HBOX:Clean;INFO:Clean;SERV:Clean;TEST:Clean;TIMO:Clean;TMGL:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="enterprise:Make;BASE:Make;BETA:Make;HBOX:Make;INFO:Make;SERV:Make;TEST:Make;TIMO:Make;TMGL:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

@@ -1,0 +1,524 @@
+/*
+** PRECO DE PRODUTOS E QUANTIDADE COM TRÊS DÍGITOS
+*/
+
+SET TERM ^ ;
+
+ALTER PROCEDURE REL_NOTAPRO (
+    CODMOVIMENTO INTEGER)
+RETURNS (
+    CODIGO INTEGER,
+    BARRA CHAR(13),
+    DESCRICAO1 VARCHAR(60),
+    DESCRICAO2 VARCHAR(80),
+    SERIE VARCHAR(20),
+    SERIE2 VARCHAR(20),
+    VALOR_VENDA NUMERIC(14,3),
+    ICMS_VENDA NUMERIC(14,4),
+    DESCONTO NUMERIC(14,3),
+    QUANTIDADE NUMERIC(14,3),
+    VALOR_PAGO NUMERIC(14,3),
+    VALOR_ICMS NUMERIC(14,3),
+    SITTRIBU CHAR(3),
+    UNIDADE CHAR(2),
+    VALOR_ITEM NUMERIC(14,3),
+    IPI NUMERIC(14,4),
+    LINHA VARCHAR(20),
+    OPERADORA VARCHAR(40),
+    PLANO VARCHAR(40),
+    CONTRATO VARCHAR(10),
+    VOUCHER VARCHAR(10),
+    TIPOATIVACAO CHAR(1),
+    CLASSFISCAL VARCHAR(20),
+    PESO NUMERIC(9,3))
+AS
+DECLARE VARIABLE ES INTEGER;
+DECLARE VARIABLE XIPI CHAR(1);
+DECLARE VARIABLE FATURA_CAIXAS CHAR(1);
+DECLARE VARIABLE CAIXA_ITENS INTEGER;
+BEGIN
+  /* VERIFICO SE EH COMPRA OU VENDA */
+  SELECT
+    ES
+  FROM
+    MOVIMENTOS
+  WHERE
+    CODIGO = :CODMOVIMENTO
+  INTO
+    :ES;
+
+  IF (ES = 1) THEN
+   BEGIN
+
+     /* COMPRA */
+     FOR
+     SELECT
+       TI.CODPRODUTO,
+       PO.BARRA,
+       PO.DESCRICAO,
+       PO.UNIDADE,
+       PO.CLASSFISCAL,
+       PO.PESO,
+       'N/F',
+       TI.VALOR_UNITARIO,
+       TI.ICMSCOMPRA,
+       TI.DESCONTO,
+       TI.SITTRIBU,
+       TI.QUANTIDADE,
+       TI.VALOR_TOTAL,
+       TI.VALOR_ICMSCOMPRA
+     FROM
+       TEMPITENS TI
+       LEFT JOIN PRODUTOS PO ON
+         ( PO.CODIGO = TI.CODPRODUTO )
+     WHERE
+       TI.CODMOVIMENTO = :CODMOVIMENTO
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :UNIDADE,
+       :CLASSFISCAL,
+       :PESO,
+       :SERIE,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :SITTRIBU,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS
+     DO
+     BEGIN
+
+       IF (SERIE <> 'N/F') THEN
+         DESCRICAO2 = UDF_TRIM(DESCRICAO1) || ' ' || SERIE;
+       ELSE
+         DESCRICAO2 = DESCRICAO1;
+
+       VALOR_ITEM = VALOR_VENDA - DESCONTO;
+       PESO = PESO * QUANTIDADE;
+       LINHA = NULL;
+       OPERADORA = NULL;
+       PLANO = NULL;
+       CONTRATO = NULL;
+       VOUCHER = NULL;
+       TIPOATIVACAO = NULL;
+       SUSPEND;
+
+    END
+
+   END ELSE
+   BEGIN
+
+     /* VERIFICO SE CORTO IPI */
+     SELECT
+       NA.IPI
+     FROM
+       NATUOPER NA
+       JOIN MOVIMENTOS MO ON
+         (MO.NOTA_CODNATUOPER = NA.CODIGO)
+     WHERE
+       MO.CODIGO = :CODMOVIMENTO
+     INTO
+       :XIPI;
+
+     /* VERIFICO SE VAI FATURAR POR CAIXAS */
+     SELECT
+       HG.FATURA_CAIXAS
+     FROM
+       HISTORICOPAG HG
+       JOIN MOVIMENTOS MO ON
+         (MO.CODHISTORICOPAG = HG.CODIGO)
+     WHERE
+       MO.CODIGO = :CODMOVIMENTO
+     INTO
+       :FATURA_CAIXAS;
+
+     /* VENDA */
+     FOR
+     SELECT
+       ID.CODPRODUTO,
+       ID.BARRA,
+       PO.DESCRICAO,
+       PO.UNIDADE,
+       PO.CLASSFISCAL,
+       PO.PESO,
+       PO.CAIXA_ITENS,
+       ID.SERIE,
+       ID.SERIE2,
+       ID.VALOR_VENDA,
+       ID.ICMSVENDA,
+       ID.DESCONTO,
+       TI.SITTRIBU,
+       TI.IPI,
+       ID.NUMERO_FONE,
+       ID.CONTRATO,
+       ID.VOUCHER,
+       ID.TIPOATIVACAO,
+       OP.NOME,
+       PL.NOME,
+       SUM(ID.QUANTIDADE),
+       SUM(ID.VALOR_PAGO),
+       SUM(ID.VALOR_ICMS)
+     FROM
+       INDIVIDUAIS ID
+       LEFT JOIN PRODUTOS PO ON
+         ( PO.CODIGO = ID.CODPRODUTO )
+       LEFT JOIN TEMPITENS TI ON
+         ( TI.CODMOVIMENTO = ID.CODMOVENTRADA AND
+           TI.CODPRODUTO   = ID.CODPRODUTO    AND
+           TI.CODIGO       = ID.CODITEM )
+       LEFT JOIN OPERADORAS OP ON
+         ( OP.CODIGO = ID.CODOPERADORA )
+       LEFT JOIN PLANOS PL ON
+         ( PL.CODIGO = ID.CODPLANO AND
+           PL.CODOPERADORA = ID.CODOPERADORA )
+     WHERE
+       ID.CODMOVSAIDA = :CODMOVIMENTO AND
+       ID.VENDIDO = 'S' AND
+       ID.PS = 'P'
+     GROUP BY
+       ID.CODPRODUTO,
+       ID.BARRA,
+       PO.DESCRICAO,
+       PO.UNIDADE,
+       PO.CLASSFISCAL,
+       PO.PESO,
+       PO.CAIXA_ITENS,
+       ID.SERIE,
+       ID.SERIE2,
+       ID.VALOR_VENDA,
+       ID.ICMSVENDA,
+       ID.DESCONTO,
+       TI.SITTRIBU,
+       TI.IPI,
+       ID.NUMERO_FONE,
+       ID.CONTRATO,
+       ID.VOUCHER,
+       ID.TIPOATIVACAO,
+       OP.NOME,
+       PL.NOME
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :UNIDADE,
+       :CLASSFISCAL,
+       :PESO,
+       :CAIXA_ITENS,
+       :SERIE,
+       :SERIE2,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :SITTRIBU,
+       :IPI,
+       :LINHA,
+       :CONTRATO,
+       :VOUCHER,
+       :TIPOATIVACAO,
+       :OPERADORA,
+       :PLANO,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS
+     DO
+     BEGIN
+
+       /* VERIFICO SE O SERIE2 CONTEM DADOS E SERIE NAO, MANDO SERIE2 */
+       IF ((UDF_TRIM(SERIE) = 'N/F') OR (UDF_TRIM(SERIE) = '')) THEN
+         IF (UDF_TRIM(SERIE2) > '') THEN
+           SERIE = SERIE2;
+
+       IF (SERIE <> 'N/F') THEN
+         DESCRICAO2 = UDF_TRIM(DESCRICAO1) || ' ' || SERIE;
+       ELSE
+         DESCRICAO2 = DESCRICAO1;
+
+       IF (CAIXA_ITENS IS NULL) THEN
+         CAIXA_ITENS = 0;
+
+       IF ((FATURA_CAIXAS = 'S') AND
+          (QUANTIDADE >= CAIXA_ITENS)) THEN
+        BEGIN
+          UNIDADE = 'CX';
+          QUANTIDADE = QUANTIDADE / CAIXA_ITENS;
+          VALOR_VENDA = VALOR_VENDA * CAIXA_ITENS;
+          DESCONTO = DESCONTO * CAIXA_ITENS;
+        END
+
+       VALOR_ITEM = VALOR_VENDA - DESCONTO;
+       PESO = PESO * QUANTIDADE;
+
+       IF (XIPI = 'N') THEN
+         IPI = NULL;
+
+       SUSPEND;
+
+     END
+   END
+END
+^
+
+SET TERM ; ^
+
+SET TERM ^ ;
+
+ALTER PROCEDURE REL_NOTAITENS (
+    CODMOVIMENTO INTEGER)
+RETURNS (
+    CODIGO INTEGER,
+    BARRA CHAR(13),
+    DESCRICAO1 VARCHAR(60),
+    DESCRICAO2 VARCHAR(80),
+    SERIE VARCHAR(20),
+    SERIE2 VARCHAR(20),
+    VALOR_VENDA NUMERIC(14,3),
+    ICMS_VENDA NUMERIC(14,4),
+    DESCONTO NUMERIC(14,3),
+    QUANTIDADE NUMERIC(14,3),
+    VALOR_PAGO NUMERIC(14,3),
+    VALOR_ICMS NUMERIC(14,3),
+    SITTRIBU CHAR(3),
+    UNIDADE CHAR(2),
+    VALOR_ITEM NUMERIC(14,3),
+    IPI NUMERIC(14,4),
+    LINHA VARCHAR(20),
+    OPERADORA VARCHAR(40),
+    PLANO VARCHAR(40),
+    ATIVACAO CHAR(1),
+    CONTRATO VARCHAR(10),
+    VOUCHER VARCHAR(10),
+    TIPOATIVACAO CHAR(1),
+    VALOR_CUSTO NUMERIC(14,3),
+    CLASSFISCAL VARCHAR(20),
+    PESO NUMERIC(9,3))
+AS
+DECLARE VARIABLE ESMOV INTEGER;
+DECLARE VARIABLE TIPOMOV INTEGER;
+BEGIN
+
+  SELECT
+    ES,
+    TIPO
+  FROM
+    MOVIMENTOS
+  WHERE
+    CODIGO = :CODMOVIMENTO
+  INTO
+    :ESMOV,
+    :TIPOMOV;
+
+  IF ((TIPOMOV = 9) OR ((ESMOV = 0) AND (TIPOMOV = 1))) THEN
+   BEGIN
+
+     /* ITENS ESTORNADOS OU DE ORÇAMENTO */
+     FOR
+     SELECT
+       TI.CODPRODUTO,
+       PO.BARRA,
+       PO.DESCRICAO,
+       PO.DESCRICAO,
+       TI.SERIE,
+       TI.SERIE2,
+       TI.VALOR_UNITARIO,
+       TI.ICMSVENDA,
+       TI.DESCONTO,
+       TI.QUANTIDADE,
+       TI.VALOR_TOTAL,
+       TI.VALOR_ICMSCOMPRA,
+       TI.SITTRIBU,
+       PO.UNIDADE,
+       PO.ATIVACAO,
+       (TI.VALOR_UNITARIO - TI.DESCONTO),
+       TI.IPI,
+       PO.PRECOCUSTO,
+       PO.PESO
+     FROM
+       TEMPITENS TI
+       JOIN PRODUTOS PO ON
+        (PO.CODIGO = TI.CODPRODUTO)
+     WHERE
+       CODMOVIMENTO = :CODMOVIMENTO
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :DESCRICAO2,
+       :SERIE,
+       :SERIE2,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS,
+       :SITTRIBU,
+       :UNIDADE,
+       :ATIVACAO,
+       :VALOR_ITEM,
+       :IPI,
+       :VALOR_CUSTO,
+       :PESO
+     DO
+     BEGIN
+
+       /* TRATAMENTO DA SERIE */
+       IF ((UDF_TRIM(SERIE) <> 'N/F') AND (UDF_TRIM(SERIE) > '')) THEN
+        BEGIN
+          DESCRICAO2 = UDF_TRIM(DESCRICAO1) || ' ' || UDF_TRIM(SERIE);
+        END ELSE
+        BEGIN
+          IF (UDF_TRIM(SERIE2) > '') THEN
+           BEGIN
+             DESCRICAO2 = UDF_TRIM(DESCRICAO1) || ' ' || UDF_TRIM(SERIE2);
+           END ELSE
+             DESCRICAO2 = UDF_TRIM(DESCRICAO1);
+        END
+
+       PESO = PESO * QUANTIDADE;
+
+       LINHA = NULL;
+       OPERADORA = NULL;
+       PLANO = NULL;
+       CONTRATO = NULL;
+       VOUCHER = NULL;
+       TIPOATIVACAO = NULL;
+       CLASSFISCAL = NULL;
+
+       SUSPEND;
+
+     END
+
+   END ELSE
+   BEGIN
+
+     /* PRODUTOS */
+     FOR
+     SELECT
+       CODIGO,
+       BARRA,
+       DESCRICAO1,
+       DESCRICAO2,
+       SERIE,
+       SERIE2,
+       VALOR_VENDA,
+       ICMS_VENDA,
+       DESCONTO,
+       QUANTIDADE,
+       VALOR_PAGO,
+       VALOR_ICMS,
+       SITTRIBU,
+       UNIDADE,
+       VALOR_ITEM,
+       IPI,
+       LINHA,
+       OPERADORA,
+       PLANO,
+       'N',
+       CONTRATO,
+       VOUCHER,
+       TIPOATIVACAO,
+       CLASSFISCAL,
+       PESO
+     FROM
+       REL_NOTAPRO(:CODMOVIMENTO)
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :DESCRICAO2,
+       :SERIE,
+       :SERIE2,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS,
+       :SITTRIBU,
+       :UNIDADE,
+       :VALOR_ITEM,
+       :IPI,
+       :LINHA,
+       :OPERADORA,
+       :PLANO,
+       :ATIVACAO,
+       :CONTRATO,
+       :VOUCHER,
+       :TIPOATIVACAO,
+       :CLASSFISCAL,
+       :PESO
+     DO
+     BEGIN
+
+       VALOR_CUSTO = 0;
+       SUSPEND;
+
+     END
+
+     /* SERVIÇOS */
+     FOR
+     SELECT
+       CODIGO,
+       BARRA,
+       DESCRICAO1,
+       DESCRICAO2,
+       SERIE,
+       SERIE2,
+       VALOR_VENDA,
+       ICMS_VENDA,
+       DESCONTO,
+       QUANTIDADE,
+       VALOR_PAGO,
+       VALOR_ICMS,
+       SITTRIBU,
+       'SE',
+       VALOR_ITEM,
+       0 AS IPI,
+       ATIVACAO
+     FROM
+       REL_NOTASER(:CODMOVIMENTO)
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :DESCRICAO2,
+       :SERIE,
+       :SERIE2,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS,
+       :SITTRIBU,
+       :UNIDADE,
+       :VALOR_ITEM,
+       :IPI,
+       :ATIVACAO
+     DO
+     BEGIN
+
+       PESO = 0;
+       LINHA = NULL;
+       OPERADORA = NULL;
+       PLANO = NULL;
+       CONTRATO = NULL;
+       VOUCHER = NULL;
+       TIPOATIVACAO = NULL;
+       VALOR_CUSTO = 0;
+       CLASSFISCAL = NULL;
+       SUSPEND;
+
+     END
+
+   END
+END
+^
+
+SET TERM ; ^
+
+INSERT INTO SCRIPTVER(NUMERO, DATA) VALUES (398, CURRENT_TIMESTAMP);
+COMMIT;

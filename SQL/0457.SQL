@@ -1,0 +1,280 @@
+/*
+** DISTINCAO DE PRODUTO/SERVICO NA NOTA_ITENS
+*/
+
+SET TERM ^ ;
+
+CREATE OR ALTER PROCEDURE REL_NOTAITENS (
+    CODMOVIMENTO INTEGER)
+RETURNS (
+    CODIGO INTEGER,
+    BARRA CHAR(13),
+    DESCRICAO1 VARCHAR(60),
+    DESCRICAO2 VARCHAR(80),
+    SERIE VARCHAR(20),
+    SERIE2 VARCHAR(20),
+    VALOR_VENDA NUMERIC(14,3),
+    ICMS_VENDA NUMERIC(14,4),
+    DESCONTO NUMERIC(14,3),
+    QUANTIDADE NUMERIC(14,3),
+    VALOR_PAGO NUMERIC(14,3),
+    VALOR_ICMS NUMERIC(14,3),
+    SITTRIBU CHAR(3),
+    UNIDADE CHAR(2),
+    VALOR_ITEM NUMERIC(14,3),
+    IPI NUMERIC(14,4),
+    LINHA VARCHAR(20),
+    OPERADORA VARCHAR(40),
+    PLANO VARCHAR(40),
+    ATIVACAO CHAR(1),
+    CONTRATO VARCHAR(10),
+    VOUCHER VARCHAR(10),
+    TIPOATIVACAO CHAR(1),
+    VALOR_CUSTO NUMERIC(14,3),
+    CLASSFISCAL VARCHAR(20),
+    PESO NUMERIC(9,3),
+    DESCONTO_ADM NUMERIC(9,2),
+    NCM INTEGER,
+    PS CHAR(1))
+AS
+DECLARE VARIABLE ESMOV INTEGER;
+DECLARE VARIABLE TIPOMOV INTEGER;
+BEGIN
+
+  SELECT
+    ES,
+    TIPO
+  FROM
+    MOVIMENTOS
+  WHERE
+    CODIGO = :CODMOVIMENTO
+  INTO
+    :ESMOV,
+    :TIPOMOV;
+
+  IF ((TIPOMOV = 9) OR ((ESMOV = 0) AND (TIPOMOV = 1))) THEN
+   BEGIN
+
+     /* ITENS ESTORNADOS OU DE ORÇAMENTO */
+     FOR
+     SELECT
+       TI.CODPRODUTO,
+       PO.BARRA,
+       PO.DESCRICAO,
+       PO.DESCRICAO,
+       TI.SERIE,
+       TI.SERIE2,
+       TI.VALOR_UNITARIO,
+       TI.ICMSVENDA,
+       TI.DESCONTO,
+       TI.QUANTIDADE,
+       TI.VALOR_TOTAL,
+       TI.VALOR_ICMSCOMPRA,
+       TI.SITTRIBU,
+       PO.UNIDADE,
+       PO.ATIVACAO,
+       (TI.VALOR_UNITARIO - TI.DESCONTO),
+       TI.IPI,
+       PO.PRECOCUSTO,
+       PO.PESO,
+       PO.CODNCM,
+       PO.PS
+     FROM
+       TEMPITENS TI
+       JOIN PRODUTOS PO ON
+        (PO.CODIGO = TI.CODPRODUTO)
+     WHERE
+       CODMOVIMENTO = :CODMOVIMENTO
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :DESCRICAO2,
+       :SERIE,
+       :SERIE2,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS,
+       :SITTRIBU,
+       :UNIDADE,
+       :ATIVACAO,
+       :VALOR_ITEM,
+       :IPI,
+       :VALOR_CUSTO,
+       :PESO,
+       :NCM,
+       :PS
+     DO
+     BEGIN
+
+       /* TRATAMENTO DA SERIE */
+       IF ((UDF_TRIM(SERIE) <> 'N/F') AND (UDF_TRIM(SERIE) > '')) THEN
+        BEGIN
+          DESCRICAO2 = UDF_TRIM(DESCRICAO1) || ' ' || UDF_TRIM(SERIE);
+        END ELSE
+        BEGIN
+          IF (UDF_TRIM(SERIE2) > '') THEN
+           BEGIN
+             DESCRICAO2 = UDF_TRIM(DESCRICAO1) || ' ' || UDF_TRIM(SERIE2);
+           END ELSE
+             DESCRICAO2 = UDF_TRIM(DESCRICAO1);
+        END
+
+       PESO = PESO * QUANTIDADE;
+
+       LINHA = NULL;
+       OPERADORA = NULL;
+       PLANO = NULL;
+       CONTRATO = NULL;
+       VOUCHER = NULL;
+       TIPOATIVACAO = NULL;
+       CLASSFISCAL = NULL;
+
+       SUSPEND;
+
+     END
+
+   END ELSE
+   BEGIN
+
+     /* PRODUTOS */
+     FOR
+     SELECT
+       CODIGO,
+       BARRA,
+       DESCRICAO1,
+       DESCRICAO2,
+       SERIE,
+       SERIE2,
+       VALOR_VENDA,
+       ICMS_VENDA,
+       DESCONTO,
+       QUANTIDADE,
+       VALOR_PAGO,
+       VALOR_ICMS,
+       SITTRIBU,
+       UNIDADE,
+       VALOR_ITEM,
+       IPI,
+       LINHA,
+       OPERADORA,
+       PLANO,
+       'N',
+       CONTRATO,
+       VOUCHER,
+       TIPOATIVACAO,
+       DESCONTO_ADM,
+       CLASSFISCAL,
+       PESO,
+       NCM,
+       'P'
+     FROM
+       REL_NOTAPRO(:CODMOVIMENTO)
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :DESCRICAO2,
+       :SERIE,
+       :SERIE2,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS,
+       :SITTRIBU,
+       :UNIDADE,
+       :VALOR_ITEM,
+       :IPI,
+       :LINHA,
+       :OPERADORA,
+       :PLANO,
+       :ATIVACAO,
+       :CONTRATO,
+       :VOUCHER,
+       :TIPOATIVACAO,
+       :DESCONTO_ADM,
+       :CLASSFISCAL,
+       :PESO,
+       :NCM,
+       :PS
+     DO
+     BEGIN
+
+       VALOR_CUSTO = 0;
+       SUSPEND;
+
+     END
+
+     /* SERVIÇOS */
+     FOR
+     SELECT
+       CODIGO,
+       BARRA,
+       DESCRICAO1,
+       DESCRICAO2,
+       SERIE,
+       SERIE2,
+       VALOR_VENDA,
+       ICMS_VENDA,
+       DESCONTO,
+       QUANTIDADE,
+       VALOR_PAGO,
+       VALOR_ICMS,
+       SITTRIBU,
+       'SE',
+       VALOR_ITEM,
+       0 AS IPI,
+       ATIVACAO,
+       'S'
+     FROM
+       REL_NOTASER(:CODMOVIMENTO)
+     INTO
+       :CODIGO,
+       :BARRA,
+       :DESCRICAO1,
+       :DESCRICAO2,
+       :SERIE,
+       :SERIE2,
+       :VALOR_VENDA,
+       :ICMS_VENDA,
+       :DESCONTO,
+       :QUANTIDADE,
+       :VALOR_PAGO,
+       :VALOR_ICMS,
+       :SITTRIBU,
+       :UNIDADE,
+       :VALOR_ITEM,
+       :IPI,
+       :ATIVACAO,
+       :PS
+     DO
+     BEGIN
+
+       PESO = 0;
+       LINHA = NULL;
+       OPERADORA = NULL;
+       PLANO = NULL;
+       CONTRATO = NULL;
+       VOUCHER = NULL;
+       TIPOATIVACAO = NULL;
+       DESCONTO_ADM = 0;
+       VALOR_CUSTO = 0;
+       CLASSFISCAL = NULL;
+       NCM = NULL;
+       SUSPEND;
+
+     END
+
+   END
+END
+^
+
+SET TERM ; ^
+
+INSERT INTO SCRIPTVER(NUMERO, DATA) VALUES (457, CURRENT_TIMESTAMP);
+COMMIT;
