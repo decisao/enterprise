@@ -350,7 +350,6 @@ type
     Fundo: TcxStyle;
     pnllogo: TPanel;
     imgFundo: TImage;
-    SaveDialog: TSaveDialog;
     procedure actSobreExecute(Sender: TObject);
     procedure actSelecionarEmpresaExecute(Sender: TObject);
     procedure actDesconectarExecute(Sender: TObject);
@@ -1209,7 +1208,7 @@ begin
     '© 1999-2012 Taligent' + #13#10 +
     '© 2013-2017 decisao.net - Gestão de Resultado' + #13#10#13#10 +
     'atendimento@decisao.net' + #13#10#13#10 +
-    'versão 2017.49 (28/04/2017)',
+    'versão 2017.42 (25/04/2017)',
     'Sobre...');
 end;
 
@@ -1490,35 +1489,33 @@ begin
         'Se você entende a concorda com os termos, clique em "Sim".', 'Backup') = IDYES then
        begin
 
-         if SaveDialog.Execute then
-          begin
+         if True then
 
-//          ShowMsg('Efetuando Backup...');
 
-            { tratamento do caminho do backup }
-            caminho := GetServerPath;
+//        ShowMsg('Efetuando Backup...');
 
-            { destino }
-//          stFBK := {'C:\' +} dbid + FormatDateTime('YYYYMMDD', now) + '.fbk';
-            stFBK := SaveDialog.FileName;
+        { tratamento do caminho do backup }
+        caminho := GetServerPath;
 
-            { desconecto do servidor }
-            SocketConnection.Close;
+        { destino }
+        stFBK := {'C:\' +} dbid + FormatDateTime('YYYYMMDD', now) + '.fbk';
 
-            { abro/executo o arquivo }
-            gbak := 'cmd.exe';
-            opcoes := ' /C ' + GetAppDir + '\gbak -b -v -t ' + caminho + ' ' + stFBK +
-                ' -user ' + usuario + ' -password ' + senha {+ ' > out.txt'};
+        { desconecto do servidor }
+        SocketConnection.Close;
 
-//          ShowMessage(gbak + opcoes);
+        { abro/executo o arquivo }
+        gbak := 'cmd.exe';
+        opcoes := ' /C ' + GetAppDir + '\gbak -b -v -t ' + caminho + ' ' + stFBK +
+          ' -user ' + usuario + ' -password ' + senha {+ ' > out.txt'};
 
-            ShellExecute(0, nil, PChar(gbak), PChar(opcoes), nil, SW_SHOWNORMAL);
+//        ShowMessage(gbak + opcoes);
 
-//          ExecAndWait(gbak, opcoes, sw_ShowNormal);
+        ShellExecute(0, nil, PChar(gbak), PChar(opcoes), nil, SW_SHOWNORMAL);
 
-//          formPrincipal.HideMsg;
+//        ExecAndWait(gbak, opcoes, sw_ShowNormal);
 
-          end;
+//        formPrincipal.HideMsg;
+
 
        end;
     except

@@ -350,7 +350,6 @@ type
     Fundo: TcxStyle;
     pnllogo: TPanel;
     imgFundo: TImage;
-    SaveDialog: TSaveDialog;
     procedure actSobreExecute(Sender: TObject);
     procedure actSelecionarEmpresaExecute(Sender: TObject);
     procedure actDesconectarExecute(Sender: TObject);
@@ -1209,7 +1208,7 @@ begin
     '© 1999-2012 Taligent' + #13#10 +
     '© 2013-2017 decisao.net - Gestão de Resultado' + #13#10#13#10 +
     'atendimento@decisao.net' + #13#10#13#10 +
-    'versão 2017.49 (28/04/2017)',
+    'versão 2017.42 (25/04/2017)',
     'Sobre...');
 end;
 
@@ -1490,35 +1489,37 @@ begin
         'Se você entende a concorda com os termos, clique em "Sim".', 'Backup') = IDYES then
        begin
 
-         if SaveDialog.Execute then
-          begin
+        ShowMsg('Efetuando Backup...');
 
-//          ShowMsg('Efetuando Backup...');
+        { tratamento do caminho do backup }
+        caminho := GetServerPath;
 
-            { tratamento do caminho do backup }
-            caminho := GetServerPath;
+        { destino }
+        stFBK := 'C:\' + dbid + FormatDateTime('YYYYMMDD', now) + '.fbk';
 
-            { destino }
-//          stFBK := {'C:\' +} dbid + FormatDateTime('YYYYMMDD', now) + '.fbk';
-            stFBK := SaveDialog.FileName;
+        { desconecto do servidor }
+        SocketConnection.Close;
 
-            { desconecto do servidor }
-            SocketConnection.Close;
+        { abro/executo o arquivo }
+        gbak := 'cmd.exe';
+        opcoes := ' /C "gbak -b -v -t ' + caminho + ' ' + stFBK +
+          ' -user ' + usuario + ' -password ' + senha + '" > out.txt';
 
-            { abro/executo o arquivo }
-            gbak := 'cmd.exe';
-            opcoes := ' /C ' + GetAppDir + '\gbak -b -v -t ' + caminho + ' ' + stFBK +
-                ' -user ' + usuario + ' -password ' + senha {+ ' > out.txt'};
+//        gbak := StringReplace(gbak, '\', '\\', [rfReplaceAll]);
+//        opcoes := StringReplace(opcoes, '\', '\\', [rfReplaceAll]);
 
-//          ShowMessage(gbak + opcoes);
+        ShowMessage(gbak + opcoes);
 
-            ShellExecute(0, nil, PChar(gbak), PChar(opcoes), nil, SW_SHOWNORMAL);
+//        ShellExecute(0, nil, PChar(gbak), PChar(opcoes), nil, SW_HIDE);
 
-//          ExecAndWait(gbak, opcoes, sw_ShowNormal);
+        ExecAndWait(gbak, opcoes, sw_ShowNormal);
 
-//          formPrincipal.HideMsg;
+        formPrincipal.HideMsg;
 
-          end;
+//        if ExecProcess(gbak, opcoes, SW_HIDE, 'Backup', True) then
+//          formPrincipal.MsgError('O backup foi concluído com sucesso! O arquivo ' +
+//            'com a cópia de reserva do seu banco de dados foi salvo em:' + #13#10#13#10 +
+//            stFBK, 'Backup OK!');
 
        end;
     except

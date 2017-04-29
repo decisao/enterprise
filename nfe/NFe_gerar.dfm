@@ -35,7 +35,6 @@ object formNFeGerar: TformNFeGerar
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 242
     object Image1: TImage
       Left = 11
       Top = 9
@@ -643,7 +642,6 @@ object formNFeGerar: TformNFeGerar
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 244
     object cxButton1: TcxButton
       Left = 176
       Top = 7

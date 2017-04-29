@@ -43312,11 +43312,4 @@ object formPrincipal: TformPrincipal
     Left = 616
     Top = 224
   end
-  object SaveDialog: TSaveDialog
-    DefaultExt = 'fbk'
-    Filter = 'Firebird backup (*.fbk)|*.fbk'
-    Title = 'Salvar backup em...'
-    Left = 616
-    Top = 136
-  end
 end

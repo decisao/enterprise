@@ -1209,7 +1209,7 @@ begin
     '© 1999-2012 Taligent' + #13#10 +
     '© 2013-2017 decisao.net - Gestão de Resultado' + #13#10#13#10 +
     'atendimento@decisao.net' + #13#10#13#10 +
-    'versão 2017.49 (28/04/2017)',
+    'versão 2017.42 (25/04/2017)',
     'Sobre...');
 end;
 

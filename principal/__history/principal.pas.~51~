@@ -812,10 +812,7 @@ begin
   if SocketConnection.Connected then
    begin
      s := SocketConnection.AppServer.GetServerPath;
-     if midtier_servertype = 'U' then
-        s := ReplaceStr(s, 'localhost', midtier_host + '/3051')
-     else
-        s := ReplaceStr(s, 'localhost', midtier_host);
+     s := midtier_host+':'+s;
      Result := s;
    end;
   if SocketConnection.Connected then
@@ -1209,9 +1206,9 @@ begin
   MsgError(
     'Enterprise' + #13#10#13#10 +
     '© 1999-2012 Taligent' + #13#10 +
-    '© 2013-2016 decisao.net - Gestão de Resultado' + #13#10#13#10 +
-    'decisao@decisao.net' + #13#10#13#10 +
-    'versão 2017.21 (16/02/2017)',
+    '© 2013-2017 decisao.net - Gestão de Resultado' + #13#10#13#10 +
+    'atendimento@decisao.net' + #13#10#13#10 +
+    'versão 2017.42 (25/04/2017)',
     'Sobre...');
 end;
 
@@ -1436,7 +1433,44 @@ var
   stFBK: string;
   usuario,
   senha,
-  opcoes: string;
+  gbak, opcoes: string;
+
+  function ExecProcess(FileName, Params: string; WindowState: Word; ProcessName: string = ''; Wait: Boolean =
+    True): Boolean;
+  var
+    SI: TStartupInfo;
+    PI: TProcessInformation;
+    CmdLine: string;
+    Status: Cardinal;
+  begin
+    CmdLine := FileName + ' ' + Params;
+    FillChar(SI, SizeOf(SI), #0);
+    with SI do
+      begin
+        cb := SizeOf(SI);
+        dwFillAttribute := FOREGROUND_RED;
+        if ProcessName <> '' then
+          lpTitle := PChar(ProcessName);
+        wShowWindow := WindowState;
+        dwFlags := STARTF_USESHOWWINDOW + STARTF_USEFILLATTRIBUTE;
+      end;
+    Result := CreateProcess(nil, PChar(CmdLine), nil, nil, False, CREATE_NEW_CONSOLE or NORMAL_PRIORITY_CLASS,
+      nil, PChar(ExtractFilePath(FileName)), SI, PI);
+    if Result then
+      begin
+        if Wait then
+          WaitForSingleObject(PI.hProcess, INFINITE);
+        {***********************************************}
+        {alteração para capturar o codigo retornado pelo processo}
+        {***********************************************}
+        GetExitCodeProcess(PI.hProcess, status);
+        Result := Status = 0;
+        {***********************************************}
+        CloseHandle(PI.hProcess);
+        CloseHandle(PI.hThread);
+      end;
+  end;
+
 begin
 
   { usuario e senha de backup }
@@ -1461,27 +1495,31 @@ begin
         caminho := GetServerPath;
 
         { destino }
-        stFBK := 'C:\' + dbid + FormatDateTime('YYYYMMDDHHNN', now) + '.FBK';
+        stFBK := 'C:\' + dbid + FormatDateTime('YYYYMMDD', now) + '.fbk';
 
         { desconecto do servidor }
         SocketConnection.Close;
 
         { abro/executo o arquivo }
-        opcoes := ' -b -v -t "' + caminho + '" "' + stFBK + '"' +
-          ' -user ' + usuario + ' -pas ' + senha;
+        gbak := 'cmd.exe';
+        opcoes := ' /C gbak -b -v -t ' + caminho + ' ' + stFBK +
+          ' -user ' + usuario + ' -password ' + senha + ' > out.txt';
 
-//        ShellExecute(0, 'open', PChar(GetAppDir + '\gbak.exe'), PChar(opcoes), nil, SW_SHOW);
+//        gbak := StringReplace(gbak, '\', '\\', [rfReplaceAll]);
+//        opcoes := StringReplace(opcoes, '\', '\\', [rfReplaceAll]);
 
-        ExecAndWait(funcoes.GetAppDir + '\gbak.exe',
-          ' -b -v -t "' + caminho + '" "' + stFBK + '"' +
-          ' -user ' + usuario + ' -pas ' + senha,
-          sw_ShowNormal);
+        ShowMessage(gbak + opcoes);
+
+//        ShellExecute(0, nil, PChar(gbak), PChar(opcoes), nil, SW_HIDE);
+
+        ExecAndWait(gbak, opcoes, sw_ShowNormal);
 
         formPrincipal.HideMsg;
 
-        formPrincipal.MsgError('O backup foi concluído com sucesso! O arquivo ' +
-          'com a cópia de reserva do seu banco de dados foi salvo em:' + #13#10#13#10 +
-          stFBK, 'Backup OK!');
+//        if ExecProcess(gbak, opcoes, SW_HIDE, 'Backup', True) then
+//          formPrincipal.MsgError('O backup foi concluído com sucesso! O arquivo ' +
+//            'com a cópia de reserva do seu banco de dados foi salvo em:' + #13#10#13#10 +
+//            stFBK, 'Backup OK!');
 
        end;
     except
@@ -1718,15 +1756,15 @@ end;
 
 procedure TformPrincipal.actNFPExecute(Sender: TObject);
 begin
-  if UserIn(Sender as TAction) then
-    try
-      WinExec(
-        PAnsiChar(GetAppDir + '\NFPaulista.exe ' + GetServerPath),
-         0);
-    finally
-      formPrincipal.HideMsg;
-      UserOut;
-    end;
+//  if UserIn(Sender as TAction) then
+//    try
+//      WinExec(
+//        PWideChar(GetAppDir + '\NFPaulista.exe ' + GetServerPath),
+//         0);
+//    finally
+//      formPrincipal.HideMsg;
+//      UserOut;
+//    end;
 end;
 
 procedure TformPrincipal.actServicosExecute(Sender: TObject);

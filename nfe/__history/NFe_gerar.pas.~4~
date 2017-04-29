@@ -327,7 +327,7 @@ begin
        if (ie = '') or (uppercase(ie) = 'ISENTO') then
         begin
           if MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
-                ['AM', 'BA', 'CE', 'GO', 'MG', 'MT', 'PE', 'RN', 'SE', 'SP', 'SC']) then
+                ['AM', 'BA', 'CE', 'GO', 'MG', 'MT', 'PE', 'RN', 'SE', 'SP']) then
             writeln(arquivo, 'indIEDest=9')
           else
             writeln(arquivo, 'indIEDest=2');
