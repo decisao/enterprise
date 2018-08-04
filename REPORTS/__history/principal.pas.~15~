@@ -1,0 +1,416 @@
+{******************************************************************************}
+{                                                                              }
+{                   ReportBuilder Report Component Library                     }
+{                                                                              }
+{             Copyright (c) 1996-1998 Digital Metaphors Corporation            }
+{                                                                              }
+{******************************************************************************}
+
+unit principal;
+
+interface
+
+
+
+{ By removing the 'x' which begins each of these compiler directives,
+  you can enable different functionality within the end-user reporting
+  solution.
+
+  DADE - the data tab where queries can be created by the end-user
+
+  BDE  - BDE support for the Query Tools
+
+  ADO  - ADO support for the Query Tools
+
+  IBExpress - Interbase Express support for the Query Tools
+
+  RAP -  the calc tab, where calculations can be coded at run-time
+         (RAP is included with ReportBuilder Enterprise)
+
+  CrossTab - adds the CrossTab component to the component palette in the
+             report designer.
+
+  CheckBox - adds a checkbox component to the component palette in the
+         report designer.
+
+  TeeChart - adds a teechart component to the report designer component
+         palette. You must have TeeChart installed. More information
+         is available in ..\RBuilder\TeeChart\ReadMe.doc
+
+  UseDesignPath - determines whether the path used by the Database
+         object on this form is replaced in the OnCreate event handler of
+         this form with the current path.}
+
+{$DEFINE DADE}            {remove the 'x' to enable DADE}
+{x$DEFINE BDE}            {remove the 'x' to enable Borland Database Engine (BDE) }
+{x$DEFINE ADO}            {remove the 'x' to enable ADO}
+{$DEFINE DBExpress}       {remove the 'x' to enable DB Express}
+{x$DEFINE IBExpress}       {remove the 'x' to enable Interbase Express}
+{$DEFINE CrossTab}        {remove the 'x' to enable CrossTab}
+{$DEFINE RAP}            {remove the 'x' to enable RAP}
+{$DEFINE CheckBox}       {remove the 'x' to enable CheckBox}
+{x$DEFINE TeeChart}       {remove the 'x' to enable standard TeeChart}
+{$DEFINE UseDesignPath}  {remove the 'x' to use the design-time settings of Database object on this form}
+
+uses
+//  TXComp,
+//  TXRB,
+
+{$IFDEF DADE}
+  daIDE, 
+{$ENDIF}
+
+{$IFDEF BDE}
+  daDBBDE,
+{$ENDIF}
+
+{$IFDEF ADO}
+  daADO,
+{$ENDIF}
+
+{$IFDEF IBExpress}
+  daIBExpress,
+{$ENDIF}
+
+{$IFDEF DBExpress}
+  daDBExpress,
+{$ENDIF}
+
+{$IFDEF CrossTab}
+  ppCTDsgn,
+{$ENDIF}
+
+{$IFDEF RAP}
+  raIDE,
+{$ENDIF}
+
+{$IFDEF CheckBox}
+  myChkBox,
+{$ENDIF}
+
+{$IFDEF TeeChart}
+  ppChrtUI,
+{$ENDIF}
+
+
+  ppJPEG, Windows, Classes, Controls, SysUtils, Forms, StdCtrls, ExtCtrls,
+  Dialogs, Graphics, DB, ppComm, ppCache, ppClass, ppProd, ppReport,
+  ppRptExp, ppBands, ppEndUsr, ppDBPipe, ppDB, ppPrnabl, ppStrtch, ppDsgnDB,
+  ppRelatv, ppModule, Grids, DBGrids, IBDatabase, IBCustomDataSet, IBTable,
+  SqlExpr, Provider, DBClient, ppFormWrapper,
+  SimpleDS, ActnList, dxBar, cxGraphics, cxControls, dxStatusBar,
+  dxBarExtItems, ImgList, iniFiles, WideStrings, cxClasses, Tlhelp32,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinXmas2008Blue, dxSkinsdxStatusBarPainter,
+  dxSkinsdxBarPainter, ppParameter, dxSkinOffice2010Black, DBXDevartInterBase,
+  ppDesignLayer;
+
+type
+
+  TformPrincipal = class(TForm)
+    Shape11: TShape;
+    Label6: TLabel;
+    Shape12: TShape;
+    Shape9: TShape;
+    Label5: TLabel;
+    Shape10: TShape;
+    Shape6: TShape;
+    Label7: TLabel;
+    Shape5: TShape;
+    ppDesigner1: TppDesigner;
+    Shape4: TShape;
+    Label8: TLabel;
+    Shape3: TShape;
+    dsItem: TDataSource;
+    ppReport1: TppReport;
+    Label1: TLabel;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape15: TShape;
+    Label2: TLabel;
+    Shape16: TShape;
+    dsFolder: TDataSource;
+    ppReportExplorer1: TppReportExplorer;
+    Shape22: TShape;
+    Label10: TLabel;
+    Shape23: TShape;
+    Shape24: TShape;
+    Shape25: TShape;
+    Shape26: TShape;
+    Shape7: TShape;
+    Shape20: TShape;
+    ppHeaderBand1: TppHeaderBand;
+    ppDetailBand1: TppDetailBand;
+    ppFooterBand1: TppFooterBand;
+    plFolder: TppDBPipeline;
+    plItem: TppDBPipeline;
+    Shape29: TShape;
+    Shape18: TShape;
+    Shape17: TShape;
+    Shape8: TShape;
+    Shape13: TShape;
+    Label3: TLabel;
+    Shape14: TShape;
+    Label9: TLabel;
+    Shape19: TShape;
+    Shape21: TShape;
+    Shape27: TShape;
+    Label4: TLabel;
+    Shape28: TShape;
+    euSQLConnection: TSQLConnection;
+    sdsFolder: TSimpleDataSet;
+    sdsItem: TSimpleDataSet;
+    dxBarManager1: TdxBarManager;
+    dxBarButton1: TdxBarButton;
+    dxBarButton2: TdxBarButton;
+    dxBarSubItem1: TdxBarSubItem;
+    dxBarButton3: TdxBarButton;
+    dxBarButton5: TdxBarButton;
+    ActionList1: TActionList;
+    actSobre: TAction;
+    actConfig: TAction;
+    actSair: TAction;
+    actReports: TAction;
+    dxStatusBar: TdxStatusBar;
+    dxBarLargeButton1: TdxBarLargeButton;
+    imgToolbar: TImageList;
+    procedure FormCreate(Sender: TObject);
+    procedure btnLaunchClick(Sender: TObject);
+    procedure actSairExecute(Sender: TObject);
+    procedure actSobreExecute(Sender: TObject);
+    procedure actReportsExecute(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure sdsFolderAfterPost(DataSet: TDataSet);
+    procedure sdsFolderAfterDelete(DataSet: TDataSet);
+    procedure sdsItemAfterDelete(DataSet: TDataSet);
+    procedure sdsItemAfterPost(DataSet: TDataSet);
+    procedure ppReportExplorer1Activate(Sender: TObject);
+  private
+    msgon: boolean;
+    formSysWait: TForm;
+    function GetAppDir: string;
+    procedure LoadEndEvent(Sender: TObject);
+  public
+    procedure MsgError(msg, titulo: string);
+    function Pergunta(msg, titulo: string): integer;
+    procedure ShowMsg(Msg: string);
+    procedure HideMsg;
+    procedure ReiniciarRelogio;
+  end;
+
+var
+  formPrincipal: TformPrincipal;
+
+implementation
+
+{$R *.DFM}
+
+{------------------------------------------------------------------------------}
+{ TmyReportObjects.FormCreate }
+
+function TformPrincipal.GetAppDir: string;
+var
+  diretorio: string;
+begin
+  diretorio := ExtractFilePath(ParamStr(0));
+  if diretorio > '' then
+   if diretorio[length(diretorio)] = '\' then
+     Result := copy(diretorio, 1, length(diretorio) - 1)
+   else
+     Result := diretorio
+  else Result := '';
+end;
+
+procedure TformPrincipal.LoadEndEvent(Sender: TObject);
+begin
+  ppReport1.AllowPrintToArchive := True;
+  ppReport1.AllowPrintToFile := True;
+end;
+
+{ mostro o formulário de erro }
+procedure TformPrincipal.MsgError(msg, titulo: string);
+var
+  formSysError: TForm;
+begin
+  HideMsg;
+  formSysError := CreateMessageDialog(msg, mtWarning, [mbOk]);
+  try
+    TButton(formSysError.FindComponent('Ok')).Caption := 'Fechar';
+    TButton(formSysError.FindComponent('Ok')).Cursor := crHandPoint;
+    formSysError.Caption := titulo;
+    formSysError.Color := clWhite;
+    formSysError.ShowModal;
+  finally
+    try
+      formSysError.Release;
+    finally
+      formSysError := nil;
+    end;
+  end;
+end;
+
+{ mostro o formulário de pergunta }
+function TformPrincipal.Pergunta(msg, titulo: string): integer;
+var
+  formSysPergunta: TForm;
+begin
+  HideMsg;
+  formSysPergunta := CreateMessageDialog(msg, mtConfirmation, [mbYes, mbNo], mbNo);
+  try
+    TButton(formSysPergunta.FindComponent('Yes')).Caption := 'Sim';
+    TButton(formSysPergunta.FindComponent('Yes')).Cursor := crHandPoint;
+    TButton(formSysPergunta.FindComponent('No')).Caption := 'Não';
+    TButton(formSysPergunta.FindComponent('No')).Cursor := crHandPoint;
+    formSysPergunta.Caption := titulo;
+    formSysPergunta.Color := clWhite;
+    result := formSysPergunta.ShowModal;
+  finally
+    try
+      formSysPergunta.Release;
+    finally
+      formSysPergunta := nil;
+    end;
+  end;
+end;
+
+procedure TformPrincipal.ppReportExplorer1Activate(Sender: TObject);
+begin
+  HideMsg;
+end;
+
+procedure TformPrincipal.ShowMsg(Msg: string);
+begin
+  if msgon then exit else
+   try
+     formSysWait := CreateMessageDialog(msg, mtInformation, []);
+     formSysWait.FormStyle := fsNormal;
+     formSysWait.BorderIcons := [biSystemMenu];
+     formSysWait.BorderStyle := bsDialog;
+     formSysWait.Caption := '';
+     formSysWait.Height := formSysWait.Height - 40;
+     formSysWait.Color := clWhite;
+     formSysWait.Show;
+     msgon := true;
+     Application.ProcessMessages;
+   except
+     formSysWait := nil;
+   end
+end;
+
+procedure TformPrincipal.HideMsg;
+begin
+  if msgon then
+   begin
+     msgon := false;
+     if formSysWait <> nil then
+      try
+        formSysWait.Close;
+      finally
+        formSysWait.Release;
+        formSysWait := nil;
+      end;
+   end;
+end;
+
+procedure TformPrincipal.ReiniciarRelogio;
+begin
+  repeat until true;
+end;
+
+procedure TformPrincipal.FormCreate(Sender: TObject);
+begin
+
+  ppReport1.Template.OnLoadEnd := LoadEndEvent;
+
+  msgon := false;
+//  ClientHeight := btnLaunch.Top + btnLaunch.Height + pnlStatusBar.Height + 8;
+//  euSQLConnection.Params.Values['DataBase'] := ParamStr(1);
+
+end; {procedure, FormCreate}
+
+{------------------------------------------------------------------------------}
+{ TmyReportObjects.btnLaunchClick }
+
+procedure TformPrincipal.btnLaunchClick(Sender: TObject);
+begin
+end; {procedure, btnLaunchClick}
+
+procedure TformPrincipal.actSairExecute(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TformPrincipal.actSobreExecute(Sender: TObject);
+begin
+  MsgError(
+    'Enteprise Reports' + #13#10 +
+    'Relatórios Customizados' + #13#10#13#10 +
+    'Copyright (C) 1999-2007 Taligent' + #13#10 +
+    'Copyright (C) 2008-2017 decisao.net' + #13#10 +
+    'Todos os direitos reservados',
+    'Sobre...');
+end;
+
+procedure TformPrincipal.actReportsExecute(Sender: TObject);
+begin
+
+//  ShowMsg('Conectando...');
+    dxStatusBar.Panels[1].Text := 'Conectando... Aguarde';
+
+  if not(ppReportExplorer1.Execute) then
+    begin
+      dxStatusBar.Panels[1].Text := 'Erro: ' + ppReportExplorer1.ErrorMessage;
+      MessageBeep(0);
+    end
+  else
+    dxStatusBar.Panels[1].Text := 'Conectado!'
+
+end;
+
+procedure TformPrincipal.Button1Click(Sender: TObject);
+begin
+  try
+    sdsFolder.Open;
+  except
+    raise;
+  end;
+end;
+
+procedure TformPrincipal.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  CanClose := Pergunta(
+    'Deseja mesmo sair do programa?',
+    'Sair') = IDYES;
+end;
+
+procedure TformPrincipal.sdsFolderAfterPost(DataSet: TDataSet);
+begin
+  sdsFolder.ApplyUpdates(-1);
+end;
+
+procedure TformPrincipal.sdsFolderAfterDelete(DataSet: TDataSet);
+begin
+  sdsFolder.ApplyUpdates(-1);
+end;
+
+procedure TformPrincipal.sdsItemAfterDelete(DataSet: TDataSet);
+begin
+  sdsItem.ApplyUpdates(-1);
+end;
+
+procedure TformPrincipal.sdsItemAfterPost(DataSet: TDataSet);
+begin
+  sdsItem.ApplyUpdates(-1);
+end;
+
+end.
+
+

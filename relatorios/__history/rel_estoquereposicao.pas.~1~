@@ -1,0 +1,31 @@
+unit rel_estoquereposicao;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, MODELO_RELATORIO, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinDevExpressStyle, ComCtrls, dxCore, cxDateUtils, Menus, ppParameter,
+  ppDesignLayer, ppBands, ppCtrls, ppStrtch, ppMemo, ppVar, ppPrnabl, ppClass,
+  ppCache, ppProd, ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, DB, DBClient,
+  StdCtrls, cxButtons, cxCheckBox, cxDropDownEdit, cxCalendar, cxTextEdit,
+  cxMaskEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  dxGDIPlusClasses, ExtCtrls;
+
+type
+  TformRepModelo1 = class(TformRepModelo)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formRepModelo1: TformRepModelo1;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,70 @@
+unit rel_estoquereposicao;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, MODELO_RELATORIO, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinDevExpressStyle, ComCtrls, dxCore, cxDateUtils, Menus, ppParameter,
+  ppDesignLayer, ppBands, ppCtrls, ppStrtch, ppMemo, ppVar, ppPrnabl, ppClass,
+  ppCache, ppProd, ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, DB, DBClient,
+  StdCtrls, cxButtons, cxCheckBox, cxDropDownEdit, cxCalendar, cxTextEdit,
+  cxMaskEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  dxGDIPlusClasses, ExtCtrls;
+
+type
+  TformRelEstoqueReposicao = class(TformRepModelo)
+    ppLabel1: TppLabel;
+    ppLabel2: TppLabel;
+    ppLabel4: TppLabel;
+    ppLabel3: TppLabel;
+    ppDBText3: TppDBText;
+    ppDBText5: TppDBText;
+    ppDBText6: TppDBText;
+    ppDBText7: TppDBText;
+    cdsRelatorioCODIGO: TIntegerField;
+    cdsRelatorioBARRA: TStringField;
+    cdsRelatorioPARTNUMBER: TStringField;
+    cdsRelatorioDESCRICAO: TStringField;
+    cdsRelatorioESTOQUE: TFMTBCDField;
+    cdsRelatorioVENDIDOS: TFMTBCDField;
+    cdsRelatorioMINIMO: TFloatField;
+    cdsRelatorioPRECOCUSTO: TFMTBCDField;
+    ppLabel5: TppLabel;
+    ppDBText1: TppDBText;
+    ppLabel6: TppLabel;
+    ppDBText2: TppDBText;
+    ppLabel7: TppLabel;
+    ppDBText4: TppDBText;
+    procedure cxButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formRelEstoqueReposicao: TformRelEstoqueReposicao;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformRelEstoqueReposicao.cxButton1Click(Sender: TObject);
+begin
+  cdsRelatorio.Params[0].AsInteger := StrToInt(dlcEmpresa.EditValue);
+  cdsRelatorio.Params[1].AsInteger := StrToInt(dlcEmpresa.EditValue);
+  cdsRelatorio.Params[2].Value := dedDataIni.Date;
+  cdsRelatorio.Params[3].Value := dedDataFim.Date;
+
+  SetTitulo('Estoque para Reposição');
+
+  SetDescricao(Format('Reposição de estoque empresa %s - %s período %s a %s',
+    [dlcEmpresa.EditValue, dlcEmpresa.Text, FormatDateTime('DD/MM/YYYY', dedDataIni.Date), FormatDateTime('DD/MM/YYYY', dedDataFim.Date)]));
+
+  inherited;
+
+end;
+
+end.

@@ -1,0 +1,2258 @@
+inherited formProdutos: TformProdutos
+  Left = 246
+  Top = 95
+  Caption = 'Produtos'
+  ClientHeight = 527
+  ClientWidth = 751
+  ExplicitWidth = 759
+  ExplicitHeight = 554
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgcDados: TcxPageControl
+    Width = 751
+    Height = 507
+    Properties.ActivePage = tabDetalhe
+    ExplicitWidth = 751
+    ExplicitHeight = 507
+    ClientRectBottom = 506
+    ClientRectRight = 750
+    inherited tabVisual: TcxTabSheet
+      ExplicitWidth = 749
+      ExplicitHeight = 505
+      inherited dxBarDockControl_BotoesSelecao: TdxBarDockControl
+        Width = 749
+        ExplicitWidth = 749
+      end
+      inherited dxBarDockControl_Selecao: TdxBarDockControl
+        Top = 476
+        Width = 749
+        ExplicitTop = 476
+        ExplicitWidth = 749
+      end
+      inherited pnlFundoGrade: TPanel
+        Width = 749
+        Height = 399
+        ExplicitTop = 77
+        ExplicitWidth = 749
+        ExplicitHeight = 399
+        inherited dxBarDockControl_Links: TdxBarDockControl
+          Top = 377
+          Width = 749
+          ExplicitTop = 377
+          ExplicitWidth = 749
+        end
+        inherited dxBarDockControlWhere: TdxBarDockControl
+          Width = 749
+          ExplicitWidth = 749
+        end
+        inherited grdDados: TcxGrid
+          Width = 749
+          Height = 355
+          ExplicitWidth = 749
+          ExplicitHeight = 355
+          inherited cxGrid1DBTableView1: TcxGridDBTableView
+            OptionsData.Deleting = True
+            OptionsData.DeletingConfirmation = True
+            OptionsData.Inserting = True
+            object cxGrid1DBTableView1SEL: TcxGridDBColumn
+              Caption = '*'
+              DataBinding.FieldName = 'SEL'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              MinWidth = 32
+              Options.Filtering = False
+              Options.FilteringMRUItemsList = False
+              Options.IncSearch = False
+              Options.Grouping = False
+              Options.HorzSizing = False
+              Options.Moving = False
+              Options.Sorting = False
+              Width = 32
+            end
+            object cxGrid1DBTableView1BARRA: TcxGridDBColumn
+              Caption = 'C'#243'd.Barras'
+              DataBinding.FieldName = 'BARRA'
+              Options.Editing = False
+              Options.Focusing = False
+              Width = 110
+            end
+            object cxGrid1DBTableView1DESCRICAO: TcxGridDBColumn
+              Caption = 'Descri'#231#227'o'
+              DataBinding.FieldName = 'DESCRICAO'
+              Options.Editing = False
+              Options.Focusing = False
+              SortIndex = 0
+              SortOrder = soAscending
+              Width = 400
+            end
+            object cxGrid1DBTableView1ESTOQUE: TcxGridDBColumn
+              Caption = 'Estoque'
+              DataBinding.FieldName = 'ESTOQUE'
+              Width = 80
+            end
+            object cxGrid1DBTableView1ESTOQUETOTAL: TcxGridDBColumn
+              Caption = 'Estoque Total'
+              DataBinding.FieldName = 'ESTOQUETOTAL'
+              Width = 80
+            end
+            object cxGrid1DBTableView1PRECOVENDA: TcxGridDBColumn
+              Caption = 'Valor'
+              DataBinding.FieldName = 'PRECOVENDA'
+              Options.Editing = False
+              Options.Focusing = False
+              Width = 80
+            end
+            object cxGrid1DBTableView1PRECOVENDA2: TcxGridDBColumn
+              Caption = 'Valor 2'
+              DataBinding.FieldName = 'PRECOVENDA2'
+              Width = 80
+            end
+            object cxGrid1DBTableView1PRECOVENDA3: TcxGridDBColumn
+              Caption = 'Valor 3'
+              DataBinding.FieldName = 'PRECOVENDA3'
+              Width = 80
+            end
+            object cxGrid1DBTableView1PRECOVENDA4: TcxGridDBColumn
+              Caption = 'Valor 4'
+              DataBinding.FieldName = 'PRECOVENDA4'
+              Width = 80
+            end
+            object cxGrid1DBTableView1PRECOVENDA5: TcxGridDBColumn
+              Caption = 'Valor 5'
+              DataBinding.FieldName = 'PRECOVENDA5'
+              Width = 80
+            end
+            object cxGrid1DBTableView1PRECOTOTAL: TcxGridDBColumn
+              Caption = 'Valor c/Servi'#231'o'
+              DataBinding.FieldName = 'PRECOTOTAL'
+              Options.Editing = False
+              Options.Focusing = False
+              Width = 80
+            end
+            object cxGrid1DBTableView1LOCALIZACAO: TcxGridDBColumn
+              Caption = 'Localiza'#231#227'o'
+              DataBinding.FieldName = 'LOCALIZACAO'
+              Options.Editing = False
+              Options.Focusing = False
+              Width = 166
+            end
+            object cxGrid1DBTableView1CODIGO: TcxGridDBColumn
+              Caption = 'C'#243'digo'
+              DataBinding.FieldName = 'CODIGO'
+              Options.Editing = False
+              Options.Focusing = False
+            end
+            object cxGrid1DBTableView1OCULTO: TcxGridDBColumn
+              DataBinding.FieldName = 'OCULTO'
+            end
+            object cxGrid1DBTableView1UNIDADE: TcxGridDBColumn
+              Caption = 'Unidade'
+              DataBinding.FieldName = 'UNIDADE'
+            end
+            object cxGrid1DBTableView1GRUPO: TcxGridDBColumn
+              Caption = 'Grupo'
+              DataBinding.FieldName = 'GRUPO'
+            end
+            object cxGrid1DBTableView1CODSERVICO: TcxGridDBColumn
+              Caption = 'C'#243'd.Servi'#231'o'
+              DataBinding.FieldName = 'CODSERVICO'
+            end
+            object cxGrid1DBTableView1COMISSIONADO: TcxGridDBColumn
+              Caption = 'Comissionado'
+              DataBinding.FieldName = 'COMISSIONADO'
+            end
+            object cxGrid1DBTableView1PRECOSERVICO: TcxGridDBColumn
+              Caption = 'Valor Servi'#231'o'
+              DataBinding.FieldName = 'PRECOSERVICO'
+            end
+            object cxGrid1DBTableView1GARANTIA: TcxGridDBColumn
+              Caption = 'Garantia'
+              DataBinding.FieldName = 'GARANTIA'
+            end
+            object cxGrid1DBTableView1SERVICO: TcxGridDBColumn
+              Caption = 'Servi'#231'o'
+              DataBinding.FieldName = 'SERVICO'
+            end
+            object cxGrid1DBTableView1MARCA: TcxGridDBColumn
+              DataBinding.FieldName = 'MARCA'
+            end
+            object cxGrid1DBTableView1MODELO: TcxGridDBColumn
+              DataBinding.FieldName = 'MODELO'
+            end
+            object cxGrid1DBTableView1CENTRO: TcxGridDBColumn
+              DataBinding.FieldName = 'CENTRO'
+            end
+            object cxGrid1DBTableView1PARTNUMBER: TcxGridDBColumn
+              DataBinding.FieldName = 'PARTNUMBER'
+            end
+          end
+        end
+      end
+    end
+    inherited tabDetalhe: TcxTabSheet
+      ExplicitWidth = 749
+      ExplicitHeight = 505
+      inherited dbnDetalhes: TDBNavigator
+        Hints.Strings = ()
+      end
+      inherited dxBarDockControl_BotesDetalhes: TdxBarDockControl
+        Width = 749
+        ExplicitWidth = 749
+      end
+      inherited pnlEdicao: TPanel
+        Width = 749
+        Height = 428
+        ExplicitTop = 77
+        ExplicitWidth = 749
+        ExplicitHeight = 428
+        object cxPageControl1: TcxPageControl
+          Left = 0
+          Top = 91
+          Width = 749
+          Height = 337
+          Align = alClient
+          PopupMenu = menuImagem
+          TabOrder = 0
+          Properties.ActivePage = cxTabSheet1
+          Properties.CustomButtons.Buttons = <>
+          LookAndFeel.NativeStyle = True
+          OnChange = cxPageControl1Change
+          ClientRectBottom = 335
+          ClientRectLeft = 2
+          ClientRectRight = 747
+          ClientRectTop = 22
+          object cxTabSheet1: TcxTabSheet
+            Caption = 'Cadastro'
+            ImageIndex = 0
+            object Label4: TLabel
+              Left = 8
+              Top = 88
+              Width = 31
+              Height = 13
+              Caption = 'ICMS'
+              FocusControl = dedICMS
+            end
+            object Label6: TLabel
+              Left = 8
+              Top = 128
+              Width = 100
+              Height = 13
+              Caption = 'C'#243'digo de Barras'
+              FocusControl = dedBARRA
+            end
+            object Label8: TLabel
+              Left = 8
+              Top = 8
+              Width = 46
+              Height = 13
+              Caption = 'Unidade'
+              FocusControl = dblUnidade
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = []
+              ParentFont = False
+              OnClick = Label8Click
+              OnMouseEnter = lbModeloMouseEnter
+              OnMouseLeave = lbModeloMouseLeave
+            end
+            object Label9: TLabel
+              Left = 168
+              Top = 8
+              Width = 35
+              Height = 13
+              Caption = 'Grupo'
+              FocusControl = dblGrupo
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = []
+              ParentFont = False
+              OnClick = Label9Click
+              OnMouseEnter = lbModeloMouseEnter
+              OnMouseLeave = lbModeloMouseLeave
+            end
+            object Label10: TLabel
+              Left = 8
+              Top = 24
+              Width = 51
+              Height = 13
+              Caption = 'Lendo...'
+              FocusControl = dedICMS
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clGray
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label11: TLabel
+              Left = 168
+              Top = 24
+              Width = 51
+              Height = 13
+              Caption = 'Lendo...'
+              FocusControl = dedICMS
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clGray
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label12: TLabel
+              Left = 8
+              Top = 48
+              Width = 116
+              Height = 13
+              Caption = 'Servi'#231'o Relacionado'
+              FocusControl = cxDBTextEdit1
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label13: TLabel
+              Left = 104
+              Top = 88
+              Width = 40
+              Height = 13
+              Caption = 'M'#237'nimo'
+              FocusControl = DEDMINIMO
+            end
+            object Label14: TLabel
+              Left = 200
+              Top = 88
+              Width = 49
+              Height = 13
+              Caption = 'Volumes'
+              FocusControl = DEDVOLUMES
+            end
+            object Label15: TLabel
+              Left = 296
+              Top = 88
+              Width = 79
+              Height = 13
+              Caption = 'Pre'#231'o Servi'#231'o'
+              FocusControl = cxDBTextEdit4
+            end
+            object Label5: TLabel
+              Left = 200
+              Top = 128
+              Width = 65
+              Height = 13
+              Caption = 'Localiza'#231#227'o'
+              FocusControl = DEDLOCALIZACAO
+            end
+            object Label24: TLabel
+              Left = 8
+              Top = 168
+              Width = 109
+              Height = 13
+              Caption = 'Classifica'#231#227'o Fiscal'
+              FocusControl = cxDBTextEdit2
+            end
+            object Label25: TLabel
+              Left = 200
+              Top = 168
+              Width = 89
+              Height = 13
+              Caption = 'Itens por Caixa'
+              FocusControl = cxDBTextEdit3
+            end
+            object Label26: TLabel
+              Left = 320
+              Top = 168
+              Width = 63
+              Height = 13
+              Caption = 'Base ICMS'
+              FocusControl = cxDBTextEdit5
+            end
+            object Label32: TLabel
+              Left = 8
+              Top = 208
+              Width = 58
+              Height = 13
+              Caption = 'Peso (KG)'
+              FocusControl = cxDBTextEdit8
+            end
+            object Label33: TLabel
+              Left = 200
+              Top = 208
+              Width = 26
+              Height = 13
+              Caption = 'NCM'
+              FocusControl = cxDBTextEdit10
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsUnderline]
+              ParentFont = False
+              OnClick = Label33Click
+            end
+            object Label34: TLabel
+              Left = 122
+              Top = 208
+              Width = 45
+              Height = 13
+              Caption = 'Sit.Trib.'
+            end
+            object lbPartNumber: TLabel
+              Left = 321
+              Top = 208
+              Width = 68
+              Height = 13
+              Caption = 'PartNumber'
+              FocusControl = dedPartNumber
+            end
+            object lbTributos: TLabel
+              Left = 322
+              Top = 248
+              Width = 72
+              Height = 13
+              Caption = 'Tributos (%)'
+              FocusControl = dedTributos
+            end
+            object dedICMS: TcxDBTextEdit
+              Left = 7
+              Top = 103
+              DataBinding.DataField = 'ICMS'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 2
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 82
+            end
+            object dedBARRA: TcxDBTextEdit
+              Left = 7
+              Top = 143
+              DataBinding.DataField = 'BARRA'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 5
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 178
+            end
+            object dblUnidade: TcxDBLookupComboBox
+              Left = 7
+              Top = 23
+              DataBinding.DataField = 'UNIDADE'
+              DataBinding.DataSource = dsrDados
+              Properties.KeyFieldNames = 'SIGLA'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'UNIDADE'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = formPrincipal.dsrUnidades
+              TabOrder = 0
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 145
+            end
+            object dblGrupo: TcxDBLookupComboBox
+              Left = 167
+              Top = 23
+              DataBinding.DataField = 'GRUPO'
+              DataBinding.DataSource = dsrDados
+              Properties.KeyFieldNames = 'CODIGO'
+              Properties.ListColumns = <
+                item
+                  SortOrder = soAscending
+                  FieldName = 'GRUPO'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = formPrincipal.dsrGrupos
+              TabOrder = 1
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 249
+            end
+            object cxDBTextEdit1: TcxDBTextEdit
+              Left = 7
+              Top = 63
+              TabStop = False
+              DataBinding.DataField = 'DESCRICAO_1'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Properties.ReadOnly = True
+              Style.Color = clBtnFace
+              TabOrder = 10
+              Width = 410
+            end
+            object DEDMINIMO: TcxDBTextEdit
+              Left = 103
+              Top = 103
+              DataBinding.DataField = 'MINIMO'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 3
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 82
+            end
+            object DEDVOLUMES: TcxDBTextEdit
+              Left = 199
+              Top = 103
+              DataBinding.DataField = 'NUMETIQ'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 4
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 82
+            end
+            object cxDBTextEdit4: TcxDBTextEdit
+              Left = 295
+              Top = 103
+              TabStop = False
+              DataBinding.DataField = 'PRECOSERVICO'
+              DataBinding.DataSource = dsrDados
+              Enabled = False
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 11
+              Width = 121
+            end
+            object DEDLOCALIZACAO: TcxDBTextEdit
+              Left = 199
+              Top = 143
+              DataBinding.DataField = 'LOCALIZACAO'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 6
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 218
+            end
+            object CKETIQUETAS: TcxDBCheckBox
+              Left = 8
+              Top = 275
+              Caption = 'Imprimir Etiquetas'
+              DataBinding.DataField = 'ETIQUETA'
+              DataBinding.DataSource = dsrDados
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              TabOrder = 17
+              Width = 153
+            end
+            object CKINDIVIDUAL: TcxDBCheckBox
+              Left = 8
+              Top = 255
+              Caption = 'Produto com numera'#231#227'o individual'
+              DataBinding.DataField = 'INDIVIDUAL'
+              DataBinding.DataSource = dsrDados
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              TabOrder = 16
+              Width = 257
+            end
+            object cxDBTextEdit2: TcxDBTextEdit
+              Left = 7
+              Top = 183
+              DataBinding.DataField = 'CLASSFISCAL'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 7
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 178
+            end
+            object cxDBTextEdit3: TcxDBTextEdit
+              Left = 199
+              Top = 183
+              DataBinding.DataField = 'CAIXA_ITENS'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 8
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 106
+            end
+            object cxDBTextEdit5: TcxDBTextEdit
+              Left = 319
+              Top = 183
+              DataBinding.DataField = 'ICMS_BASE'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 9
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 98
+            end
+            object cxDBTextEdit8: TcxDBTextEdit
+              Left = 7
+              Top = 223
+              DataBinding.DataField = 'PESO'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 12
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 98
+            end
+            object cxDBTextEdit10: TcxDBTextEdit
+              Left = 199
+              Top = 223
+              DataBinding.DataField = 'CODNCM'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 14
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 106
+            end
+            object cxDBComboBox1: TcxDBComboBox
+              Left = 121
+              Top = 223
+              DataBinding.DataField = 'SITTRIBU'
+              DataBinding.DataSource = dsrDados
+              Properties.Items.Strings = (
+                '000'
+                '010'
+                '020'
+                '030'
+                '040'
+                '041'
+                '050'
+                '051'
+                '060'
+                '070'
+                '090'
+                '100'
+                '110'
+                '120'
+                '130'
+                '140'
+                '141'
+                '150'
+                '151'
+                '160'
+                '170'
+                '190'
+                '200'
+                '210'
+                '220'
+                '230'
+                '240'
+                '241'
+                '250'
+                '251'
+                '260'
+                '270'
+                '290'
+                '300'
+                '310'
+                '320'
+                '330'
+                '340'
+                '341'
+                '350'
+                '351'
+                '360'
+                '370'
+                '390'
+                '400'
+                '410'
+                '420'
+                '430'
+                '440'
+                '441'
+                '450'
+                '451'
+                '460'
+                '470'
+                '490'
+                '500'
+                '510'
+                '520'
+                '530'
+                '540'
+                '541'
+                '550'
+                '551'
+                '560'
+                '570'
+                '590'
+                '600'
+                '610'
+                '620'
+                '630'
+                '640'
+                '641'
+                '650'
+                '651'
+                '660'
+                '670'
+                '690'
+                '700'
+                '710'
+                '720'
+                '730'
+                '740'
+                '741'
+                '750'
+                '751'
+                '760'
+                '770'
+                '790'
+                '800'
+                '810'
+                '820'
+                '830'
+                '840'
+                '841'
+                '850'
+                '851'
+                '860'
+                '870'
+                '890'
+                '')
+              TabOrder = 13
+              Width = 64
+            end
+            object dedPartNumber: TcxDBTextEdit
+              Left = 320
+              Top = 223
+              DataBinding.DataField = 'PARTNUMBER'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 15
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 98
+            end
+            object dedTributos: TcxDBTextEdit
+              Left = 321
+              Top = 263
+              DataBinding.DataField = 'TRIBUTOS'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              TabOrder = 18
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 98
+            end
+          end
+          object tabCusto: TcxTabSheet
+            Caption = 'Custo'
+            ImageIndex = 5
+            object lbMargem: TLabel
+              Left = 152
+              Top = 8
+              Width = 46
+              Height = 13
+              Caption = 'Margem'
+              FocusControl = DEDMARGEM
+            end
+            object Label17: TLabel
+              Left = 296
+              Top = 8
+              Width = 72
+              Height = 13
+              Caption = 'Pre'#231'o Venda'
+              FocusControl = DEDVENDA
+            end
+            object Label18: TLabel
+              Left = 8
+              Top = 8
+              Width = 73
+              Height = 13
+              Caption = #218'ltimo Custo'
+              FocusControl = DEDCUSTO
+            end
+            object Label19: TLabel
+              Left = 9
+              Top = 214
+              Width = 113
+              Height = 13
+              Cursor = crHandPoint
+              Caption = 'Servi'#231'o relacionado'
+              FocusControl = cxDBTextEdit9
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsUnderline]
+              ParentFont = False
+              OnClick = Label12Click
+              OnMouseEnter = lbModeloMouseEnter
+              OnMouseLeave = lbModeloMouseLeave
+            end
+            object Label20: TLabel
+              Left = 298
+              Top = 214
+              Width = 79
+              Height = 13
+              Caption = 'Pre'#231'o Servi'#231'o'
+              FocusControl = DEDSERVICO
+            end
+            object Label23: TLabel
+              Left = 10
+              Top = 256
+              Width = 141
+              Height = 13
+              Cursor = crHandPoint
+              Caption = 'Centro de custo ou lucro'
+              FocusControl = cxDBTextEdit11
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsUnderline]
+              ParentFont = False
+              OnClick = Label23Click
+              OnMouseEnter = lbModeloMouseEnter
+              OnMouseLeave = lbModeloMouseLeave
+            end
+            object Label27: TLabel
+              Left = 296
+              Top = 48
+              Width = 83
+              Height = 13
+              Caption = 'Pre'#231'o Venda 2'
+              FocusControl = cxDBTextEdit6
+            end
+            object Label31: TLabel
+              Left = 296
+              Top = 88
+              Width = 83
+              Height = 13
+              Caption = 'Pre'#231'o Venda 3'
+              FocusControl = cxDBTextEdit7
+            end
+            object lbMargem2: TLabel
+              Left = 152
+              Top = 48
+              Width = 57
+              Height = 13
+              Caption = 'Margem 2'
+              FocusControl = dedMargem2
+            end
+            object lbMargem3: TLabel
+              Left = 152
+              Top = 88
+              Width = 57
+              Height = 13
+              Caption = 'Margem 3'
+              FocusControl = dedMargem3
+            end
+            object Label16: TLabel
+              Left = 139
+              Top = 214
+              Width = 110
+              Height = 13
+              Cursor = crHandPoint
+              Caption = 'desvincular servi'#231'o'
+              FocusControl = cxDBTextEdit9
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsUnderline]
+              ParentFont = False
+              OnClick = Label16Click
+              OnMouseEnter = lbModeloMouseEnter
+              OnMouseLeave = lbModeloMouseLeave
+            end
+            object lbPreco4: TLabel
+              Left = 297
+              Top = 128
+              Width = 83
+              Height = 13
+              Caption = 'Pre'#231'o Venda 4'
+              FocusControl = dedPreco4
+            end
+            object lbPreco5: TLabel
+              Left = 297
+              Top = 168
+              Width = 83
+              Height = 13
+              Caption = 'Pre'#231'o Venda 5'
+              FocusControl = dedPreco5
+            end
+            object DEDMARGEM: TcxDBTextEdit
+              Left = 151
+              Top = 23
+              DataBinding.DataField = 'MARGEM'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 1
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object DEDVENDA: TcxDBTextEdit
+              Left = 295
+              Top = 23
+              DataBinding.DataField = 'PRECOVENDA'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 2
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object DEDCUSTO: TcxDBTextEdit
+              Left = 7
+              Top = 23
+              DataBinding.DataField = 'PRECOCUSTO'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 0
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object cxDBTextEdit9: TcxDBTextEdit
+              Left = 8
+              Top = 229
+              TabStop = False
+              DataBinding.DataField = 'DESCRICAO_1'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Properties.ReadOnly = True
+              Style.Color = clBtnFace
+              TabOrder = 10
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 269
+            end
+            object DEDSERVICO: TcxDBTextEdit
+              Left = 297
+              Top = 229
+              DataBinding.DataField = 'PRECOSERVICO'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 9
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object cxDBTextEdit11: TcxDBTextEdit
+              Left = 9
+              Top = 271
+              TabStop = False
+              DataBinding.DataField = 'CENTRO'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Properties.ReadOnly = True
+              Style.Color = clBtnFace
+              TabOrder = 11
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 410
+            end
+            object cxDBTextEdit6: TcxDBTextEdit
+              Left = 295
+              Top = 63
+              DataBinding.DataField = 'PRECOVENDA2'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 4
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object cxDBTextEdit7: TcxDBTextEdit
+              Left = 295
+              Top = 103
+              DataBinding.DataField = 'PRECOVENDA3'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 6
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object dedMargem2: TcxDBTextEdit
+              Left = 151
+              Top = 63
+              DataBinding.DataField = 'MARGEM2'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 3
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object dedMargem3: TcxDBTextEdit
+              Left = 151
+              Top = 103
+              DataBinding.DataField = 'MARGEM3'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 5
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object ckCOMISSIONADO: TcxDBCheckBox
+              Left = 10
+              Top = 176
+              Caption = 'Gera comissionamento'
+              DataBinding.DataField = 'COMISSIONADO'
+              DataBinding.DataSource = dsrDados
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              TabOrder = 12
+              Width = 169
+            end
+            object dedPreco4: TcxDBTextEdit
+              Left = 296
+              Top = 143
+              DataBinding.DataField = 'PRECOVENDA4'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 7
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+            object dedPreco5: TcxDBTextEdit
+              Left = 296
+              Top = 183
+              DataBinding.DataField = 'PRECOVENDA5'
+              DataBinding.DataSource = dsrDados
+              Properties.CharCase = ecUpperCase
+              Style.Color = clWindow
+              TabOrder = 8
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Width = 121
+            end
+          end
+          object cxTabSheet2: TcxTabSheet
+            Caption = 'Estoque'
+            ImageIndex = 1
+            object Panel3: TPanel
+              Left = 0
+              Top = 0
+              Width = 745
+              Height = 313
+              Align = alClient
+              BevelOuter = bvNone
+              Caption = 'Executando invent'#225'rio...'
+              TabOrder = 0
+              object gridEstoque: TcxGrid
+                Left = 0
+                Top = 0
+                Width = 745
+                Height = 313
+                Align = alClient
+                TabOrder = 0
+                Visible = False
+                LookAndFeel.NativeStyle = True
+                object DBTableView1: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
+                  DataController.DataSource = dsrEstoque
+                  DataController.Summary.DefaultGroupSummaryItems = <>
+                  DataController.Summary.FooterSummaryItems = <>
+                  DataController.Summary.SummaryGroups = <>
+                  OptionsView.GroupByBox = False
+                  object DBTableView1NOME: TcxGridDBColumn
+                    Caption = 'Empresa'
+                    DataBinding.FieldName = 'NOME'
+                    SortIndex = 0
+                    SortOrder = soAscending
+                    Width = 314
+                  end
+                  object DBTableView1QUANTIDADE: TcxGridDBColumn
+                    Caption = 'Estoque'
+                    DataBinding.FieldName = 'QUANTIDADE'
+                    HeaderAlignmentHorz = taRightJustify
+                    Width = 82
+                  end
+                end
+                object Level1: TcxGridLevel
+                  GridView = DBTableView1
+                end
+              end
+            end
+          end
+          object cxTabSheet5: TcxTabSheet
+            Caption = 'Imagem'
+            ImageIndex = 2
+            object Panel4: TPanel
+              Left = 0
+              Top = 0
+              Width = 745
+              Height = 10
+              Align = alTop
+              BevelOuter = bvNone
+              Color = clCream
+              PopupMenu = menuImagem
+              TabOrder = 0
+            end
+            object Panel5: TPanel
+              Left = 0
+              Top = 10
+              Width = 10
+              Height = 293
+              Align = alLeft
+              BevelOuter = bvNone
+              Color = clCream
+              TabOrder = 1
+            end
+            object Panel6: TPanel
+              Left = 0
+              Top = 303
+              Width = 745
+              Height = 10
+              Align = alBottom
+              BevelOuter = bvNone
+              Color = clCream
+              PopupMenu = menuImagem
+              TabOrder = 2
+            end
+            object pnlImagem: TPanel
+              Left = 10
+              Top = 10
+              Width = 735
+              Height = 293
+              Align = alClient
+              BevelOuter = bvNone
+              Color = clCream
+              TabOrder = 3
+              Visible = False
+              object cxImage: TImage
+                Left = 0
+                Top = 0
+                Width = 513
+                Height = 293
+                Align = alClient
+                IncrementalDisplay = True
+                PopupMenu = menuImagem
+                ExplicitWidth = 378
+                ExplicitHeight = 259
+              end
+              object pnlAjuste: TPanel
+                Left = 513
+                Top = 0
+                Width = 222
+                Height = 293
+                Align = alRight
+                BevelOuter = bvNone
+                Color = clCream
+                PopupMenu = menuImagem
+                TabOrder = 0
+                object ckAjustar: TcxCheckBox
+                  Left = 8
+                  Top = 0
+                  Cursor = crHandPoint
+                  Caption = 'Ajustar imagem na tela'
+                  TabOrder = 0
+                  OnClick = ckAjustarClick
+                  Width = 185
+                end
+              end
+            end
+          end
+          object cxTabSheet6: TcxTabSheet
+            Caption = 'Comportamento'
+            ImageIndex = 6
+            object lbMARCA: TLabel
+              Left = 8
+              Top = 32
+              Width = 34
+              Height = 13
+              Cursor = crHandPoint
+              Caption = 'Marca'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsUnderline]
+              ParentFont = False
+              OnClick = lbMARCAClick
+              OnMouseEnter = lbModeloMouseEnter
+              OnMouseLeave = lbModeloMouseLeave
+            end
+            object lbMODELO: TLabel
+              Left = 192
+              Top = 32
+              Width = 40
+              Height = 13
+              Cursor = crHandPoint
+              Caption = 'Modelo'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Height = -11
+              Font.Name = 'Verdana'
+              Font.Style = [fsUnderline]
+              ParentFont = False
+              OnClick = lbMODELOClick
+              OnMouseEnter = lbModeloMouseEnter
+              OnMouseLeave = lbModeloMouseLeave
+            end
+            object cxDBCheckBox3: TcxDBCheckBox
+              Left = 8
+              Top = 8
+              Caption = 'Cadastrar equipamento automaticamente'
+              DataBinding.DataField = 'CADEQUIPAMENTO'
+              DataBinding.DataSource = dsrDados
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              TabOrder = 0
+              Width = 361
+            end
+            object dedMARCA: TcxDBTextEdit
+              Left = 7
+              Top = 47
+              TabStop = False
+              DataBinding.DataField = 'MARCA'
+              DataBinding.DataSource = dsrDados
+              Properties.ReadOnly = True
+              Style.Color = clBtnFace
+              TabOrder = 1
+              Width = 170
+            end
+            object dedMODELO: TcxDBTextEdit
+              Left = 191
+              Top = 47
+              TabStop = False
+              DataBinding.DataField = 'MODELO'
+              DataBinding.DataSource = dsrDados
+              Properties.ReadOnly = True
+              Style.Color = clBtnFace
+              TabOrder = 2
+              Width = 218
+            end
+          end
+          object cxTabSheet7: TcxTabSheet
+            Caption = 'Outros'
+            ImageIndex = 7
+            object Label22: TLabel
+              Left = 8
+              Top = 8
+              Width = 116
+              Height = 13
+              Caption = 'Detalhes do Produto'
+              FocusControl = cxDBMemo1
+            end
+            object cxDBMemo1: TcxDBMemo
+              Left = 7
+              Top = 23
+              DataBinding.DataField = 'OBSERVACOES'
+              DataBinding.DataSource = dsrDados
+              TabOrder = 0
+              OnEnter = edtPesquisar2Enter
+              OnExit = edtPesquisar2Exit
+              Height = 235
+              Width = 538
+            end
+            object cxDBCheckBox1: TcxDBCheckBox
+              Tag = 77
+              Left = 8
+              Top = 264
+              Caption = 'Ocultar produto'
+              DataBinding.DataField = 'OCULTO'
+              DataBinding.DataSource = dsrDados
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              TabOrder = 1
+              Width = 185
+            end
+          end
+          object cxTabSheet3: TcxTabSheet
+            Tag = 99
+            Caption = #218'ltimo Log'
+            ImageIndex = 3
+            object Label21: TLabel
+              Left = 8
+              Top = 8
+              Width = 47
+              Height = 13
+              Caption = 'Registro'
+              FocusControl = cxDBMaskEdit1
+            end
+            object Label29: TLabel
+              Left = 8
+              Top = 48
+              Width = 71
+              Height = 13
+              Caption = 'Computador'
+              FocusControl = cxDBMaskEdit3
+            end
+            object Label28: TLabel
+              Left = 168
+              Top = 8
+              Width = 43
+              Height = 13
+              Caption = 'Usu'#225'rio'
+              FocusControl = cxDBMaskEdit2
+            end
+            object Label30: TLabel
+              Left = 168
+              Top = 48
+              Width = 127
+              Height = 13
+              Caption = 'Data (no computador)'
+              FocusControl = cxDBMaskEdit4
+            end
+            object cxDBMaskEdit1: TcxDBMaskEdit
+              Left = 7
+              Top = 23
+              DataBinding.DataField = 'LOG_TIPO'
+              DataBinding.DataSource = dsrDados
+              Properties.MaxLength = 0
+              Style.Color = clBtnFace
+              TabOrder = 0
+              Width = 146
+            end
+            object cxDBMaskEdit3: TcxDBMaskEdit
+              Left = 7
+              Top = 63
+              DataBinding.DataField = 'LOG_MAQUINA'
+              DataBinding.DataSource = dsrDados
+              Properties.MaxLength = 0
+              Style.Color = clBtnFace
+              TabOrder = 1
+              Width = 146
+            end
+            object cxDBMaskEdit2: TcxDBMaskEdit
+              Left = 167
+              Top = 23
+              DataBinding.DataField = 'LOG_USUARIO'
+              DataBinding.DataSource = dsrDados
+              Properties.MaxLength = 0
+              Style.Color = clBtnFace
+              TabOrder = 2
+              Width = 146
+            end
+            object cxDBMaskEdit4: TcxDBMaskEdit
+              Left = 167
+              Top = 63
+              DataBinding.DataField = 'LOG_DATAREMOTO'
+              DataBinding.DataSource = dsrDados
+              Properties.MaxLength = 0
+              Style.Color = clBtnFace
+              TabOrder = 3
+              Width = 146
+            end
+          end
+          object cxTabSheet4: TcxTabSheet
+            Tag = 99
+            Caption = 'Outros Logs'
+            ImageIndex = 4
+            object pnlLog: TPanel
+              Left = 0
+              Top = 0
+              Width = 745
+              Height = 313
+              Align = alClient
+              BevelOuter = bvNone
+              Caption = 'Nenhum registro de Log'
+              TabOrder = 0
+              object Splitter1: TSplitter
+                Left = 0
+                Top = 81
+                Width = 745
+                Height = 3
+                Cursor = crVSplit
+                Align = alTop
+                ExplicitWidth = 610
+              end
+              object cxGridLog1: TcxGrid
+                Left = 0
+                Top = 0
+                Width = 745
+                Height = 81
+                Align = alTop
+                TabOrder = 0
+                LookAndFeel.NativeStyle = True
+                object cxGridDBTableView1: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
+                  DataController.DataSource = dmoLog.dsrLog1
+                  DataController.Summary.DefaultGroupSummaryItems = <>
+                  DataController.Summary.FooterSummaryItems = <>
+                  DataController.Summary.SummaryGroups = <>
+                  OptionsCustomize.ColumnFiltering = False
+                  OptionsCustomize.ColumnGrouping = False
+                  OptionsCustomize.ColumnHidingOnGrouping = False
+                  OptionsCustomize.ColumnSorting = False
+                  OptionsData.CancelOnExit = False
+                  OptionsData.Deleting = False
+                  OptionsData.DeletingConfirmation = False
+                  OptionsData.Editing = False
+                  OptionsData.Inserting = False
+                  OptionsSelection.CellSelect = False
+                  OptionsView.GroupByBox = False
+                  OptionsView.Indicator = True
+                  object DBTableView1LOG_TIPO: TcxGridDBColumn
+                    Caption = 'Registro'
+                    DataBinding.FieldName = 'LOG_TIPO'
+                    Width = 117
+                  end
+                  object DBTableView1LOG_USUARIO: TcxGridDBColumn
+                    Caption = 'Usu'#225'rio'
+                    DataBinding.FieldName = 'LOG_USUARIO'
+                    Width = 159
+                  end
+                  object DBTableView1LOG_MAQUINA: TcxGridDBColumn
+                    Caption = 'M'#225'quina'
+                    DataBinding.FieldName = 'LOG_MAQUINA'
+                  end
+                  object DBTableView1LOG_DATAREMOTO: TcxGridDBColumn
+                    Caption = 'Data Remoto'
+                    DataBinding.FieldName = 'LOG_DATAREMOTO'
+                    Width = 170
+                  end
+                  object DBTableView1LOG_DATASERVIDOR: TcxGridDBColumn
+                    Caption = 'Data Servidor'
+                    DataBinding.FieldName = 'LOG_DATASERVIDOR'
+                    Width = 170
+                  end
+                end
+                object cxGridLevel1: TcxGridLevel
+                  GridView = cxGridDBTableView1
+                end
+              end
+              object cxGridLog2: TcxGrid
+                Left = 0
+                Top = 84
+                Width = 745
+                Height = 229
+                Align = alClient
+                TabOrder = 1
+                LookAndFeel.NativeStyle = True
+                object cxGrid2DBTableView2: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
+                  DataController.DataSource = dmoLog.dsrLog2
+                  DataController.Summary.DefaultGroupSummaryItems = <>
+                  DataController.Summary.FooterSummaryItems = <>
+                  DataController.Summary.SummaryGroups = <>
+                  OptionsCustomize.ColumnFiltering = False
+                  OptionsCustomize.ColumnGrouping = False
+                  OptionsCustomize.ColumnHidingOnGrouping = False
+                  OptionsCustomize.ColumnSorting = False
+                  OptionsData.CancelOnExit = False
+                  OptionsData.Deleting = False
+                  OptionsData.DeletingConfirmation = False
+                  OptionsData.Editing = False
+                  OptionsData.Inserting = False
+                  OptionsSelection.CellSelect = False
+                  OptionsView.GroupByBox = False
+                  OptionsView.Indicator = True
+                  object cxGrid2DBTableView2LOG_CAMPO: TcxGridDBColumn
+                    Caption = 'Campo'
+                    DataBinding.FieldName = 'LOG_CAMPO'
+                    Width = 185
+                  end
+                  object cxGrid2DBTableView2LOG_VALORANTIGO: TcxGridDBColumn
+                    Caption = 'Valor Anterior'
+                    DataBinding.FieldName = 'LOG_VALORANTIGO'
+                    Width = 221
+                  end
+                  object cxGrid2DBTableView2LOG_VALORNOVO: TcxGridDBColumn
+                    Caption = 'Valor Novo'
+                    DataBinding.FieldName = 'LOG_VALORNOVO'
+                    Width = 240
+                  end
+                end
+                object cxGrid2Level2: TcxGridLevel
+                  GridView = cxGrid2DBTableView2
+                end
+              end
+            end
+          end
+        end
+        object Panel2: TPanel
+          Left = 0
+          Top = 0
+          Width = 749
+          Height = 91
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clCream
+          TabOrder = 1
+          object Label1: TLabel
+            Left = 8
+            Top = 8
+            Width = 40
+            Height = 13
+            Caption = 'C'#243'digo'
+            FocusControl = dedCODIGO
+          end
+          object Label2: TLabel
+            Left = 8
+            Top = 48
+            Width = 56
+            Height = 13
+            Caption = 'Descri'#231#227'o'
+            FocusControl = dedDESCRICAO
+          end
+          object Label3: TLabel
+            Left = 160
+            Top = 8
+            Width = 72
+            Height = 13
+            Caption = 'Pre'#231'o Venda'
+            FocusControl = dedPRECOVENDA
+          end
+          object Label7: TLabel
+            Left = 296
+            Top = 8
+            Width = 107
+            Height = 13
+            Caption = 'Pre'#231'o com Servi'#231'o'
+            FocusControl = dedPRECOTOTAL
+          end
+          object dedCODIGO: TcxDBTextEdit
+            Tag = 1
+            Left = 7
+            Top = 23
+            DataBinding.DataField = 'CODIGO'
+            DataBinding.DataSource = dsrDados
+            Properties.CharCase = ecUpperCase
+            TabOrder = 0
+            OnEnter = edtPesquisar2Enter
+            OnExit = edtPesquisar2Exit
+            Width = 89
+          end
+          object dedDESCRICAO: TcxDBTextEdit
+            Left = 7
+            Top = 63
+            DataBinding.DataField = 'DESCRICAO'
+            DataBinding.DataSource = dsrDados
+            Properties.CharCase = ecUpperCase
+            TabOrder = 1
+            OnEnter = edtPesquisar2Enter
+            OnExit = edtPesquisar2Exit
+            Width = 409
+          end
+          object dedPRECOVENDA: TcxDBTextEdit
+            Left = 159
+            Top = 23
+            TabStop = False
+            DataBinding.DataField = 'PRECOVENDA'
+            DataBinding.DataSource = dsrDados
+            Properties.CharCase = ecUpperCase
+            Properties.ReadOnly = True
+            Style.Color = clBtnFace
+            TabOrder = 2
+            Width = 121
+          end
+          object dedPRECOTOTAL: TcxDBTextEdit
+            Left = 295
+            Top = 23
+            DataBinding.DataField = 'PRECOTOTAL'
+            DataBinding.DataSource = dsrDados
+            Properties.CharCase = ecUpperCase
+            Properties.ReadOnly = True
+            Style.Color = clBtnFace
+            TabOrder = 3
+            Width = 121
+          end
+        end
+      end
+    end
+  end
+  inherited dxStatusBar: TdxStatusBar
+    Top = 507
+    Width = 751
+    Panels = <
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.ParentFont = False
+        Width = 60
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarKeyboardStatePanelStyle'
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.CapsLockKeyAppearance.ActiveCaption = 'CAPS'
+        PanelStyle.CapsLockKeyAppearance.InactiveCaption = 'CAPS'
+        PanelStyle.NumLockKeyAppearance.ActiveCaption = 'NUM'
+        PanelStyle.NumLockKeyAppearance.InactiveCaption = 'NUM'
+        PanelStyle.ScrollLockKeyAppearance.ActiveCaption = 'SCRL'
+        PanelStyle.ScrollLockKeyAppearance.InactiveCaption = 'SCRL'
+        PanelStyle.InsertKeyAppearance.ActiveCaption = 'OVR'
+        PanelStyle.InsertKeyAppearance.InactiveCaption = 'INS'
+        PanelStyle.ParentFont = False
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.ParentFont = False
+        Width = 220
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Font.Charset = ANSI_CHARSET
+        PanelStyle.Font.Color = clWindowText
+        PanelStyle.Font.Height = -11
+        PanelStyle.Font.Name = 'Verdana'
+        PanelStyle.Font.Style = [fsBold]
+        PanelStyle.ParentFont = False
+      end>
+    ExplicitTop = 507
+    ExplicitWidth = 751
+  end
+  inherited dxBarManagerCad: TdxBarManager
+    Left = 616
+    Top = 167
+    DockControlHeights = (
+      0
+      0
+      0
+      0)
+    inherited dxBarManagerCadBar1: TdxBar
+      FloatClientWidth = 251
+      FloatClientHeight = 45
+      ItemLinks = <
+        item
+          UserDefine = [udWidth]
+          UserWidth = 92
+          Visible = True
+          ItemName = 'cmbSelecionar'
+        end
+        item
+          UserDefine = [udWidth]
+          UserWidth = 107
+          Visible = True
+          ItemName = 'edtSelecionar'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'cmbSelecionar2'
+        end
+        item
+          Visible = True
+          ItemName = 'edtSelecionar2'
+        end>
+    end
+    inherited dxBarManagerCadBar2: TdxBar
+      FloatClientHeight = 280
+    end
+    inherited dxBarManagerCadBar3: TdxBar
+      FloatClientWidth = 23
+      FloatClientHeight = 22
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'lbSEL'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnEmpresas'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnOcultos'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'dxBarButton13'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'dxBarButton14'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'dxBarButton15'
+        end>
+      OldName = 'Links'
+    end
+    inherited dxBarManagerCadBar4: TdxBar
+      FloatClientWidth = 69
+      FloatClientHeight = 22
+      OldName = 'Where'
+    end
+    inherited dxBarManagerCadBar5: TdxBar
+      FloatClientWidth = 88
+      FloatClientHeight = 223
+      OldName = 'BotoesDetalhes'
+    end
+    inherited btnAdicionar: TdxBarLargeButton
+      ImageIndex = 96
+    end
+    inherited cmbSelecionar: TdxBarCombo
+      Tag = 1
+    end
+    inherited btnAjuda: TdxBarLargeButton
+      SyncImageIndex = False
+      ImageIndex = 0
+    end
+    object dxBarButton6: TdxBarButton
+      Caption = 'Composi'#231#227'o'
+      Category = 0
+      Hint = 'Composi'#231#227'o'
+      Visible = ivAlways
+      PaintStyle = psCaptionGlyph
+    end
+    object dxBarButton7: TdxBarButton
+      Caption = 'Mostrar ocultos'
+      Category = 0
+      Hint = 'Mostrar ocultos'
+      Visible = ivAlways
+      ImageIndex = 0
+      PaintStyle = psCaptionGlyph
+    end
+    object dxBarButton8: TdxBarButton
+      Caption = 'Imprimir Etiquetas 4x20 sem pre'#231'o'
+      Category = 0
+      Hint = 'Imprimir Etiquetas 4x20 sem pre'#231'o'
+      Visible = ivAlways
+      OnClick = dxBarButton8Click
+    end
+    object dxBarButton9: TdxBarButton
+      Caption = 'Imprimir Etiquetas 4x20 com pre'#231'o'
+      Category = 0
+      Hint = 'Imprimir Etiquetas 4x20 com pre'#231'o'
+      Visible = ivAlways
+      OnClick = dxBarButton9Click
+    end
+    object dxBarButton10: TdxBarButton
+      Caption = 'Imprimir Etiquetas 3x10 sem pre'#231'o'
+      Category = 0
+      Hint = 'Imprimir Etiquetas 3x10 sem pre'#231'o'
+      Visible = ivAlways
+      OnClick = dxBarButton10Click
+    end
+    object dxBarButton11: TdxBarButton
+      Caption = 'Imprimir Etiquetas 3x10 com pre'#231'o'
+      Category = 0
+      Hint = 'Imprimir Etiquetas 3x10 com pre'#231'o'
+      Visible = ivAlways
+      OnClick = dxBarButton11Click
+    end
+    object dxBarSubItem4: TdxBarSubItem
+      Caption = 'Outros'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarButton12: TdxBarButton
+      Caption = '&Pre'#231'os'
+      Category = 0
+      Hint = 'Pre'#231'os'
+      Visible = ivAlways
+    end
+    object dxBarButton13: TdxBarButton
+      Tag = 11
+      Caption = 'Movimentos'
+      Category = 0
+      Hint = 'Movimentos'
+      Visible = ivAlways
+      ImageIndex = 8
+      PaintStyle = psCaptionGlyph
+      OnClick = dxBarButton13Click
+    end
+    object dxBarButton14: TdxBarButton
+      Caption = '&Reajuste'
+      Category = 0
+      Hint = 'Reajuste'
+      Visible = ivAlways
+      ImageIndex = 14
+      PaintStyle = psCaptionGlyph
+      OnClick = dxBarButton14Click
+    end
+    object dxBarButton15: TdxBarButton
+      Caption = 'Tribut'#225'rio'
+      Category = 0
+      Hint = 'Tribut'#225'rio'
+      Visible = ivAlways
+      ImageIndex = 79
+      PaintStyle = psCaptionGlyph
+      OnClick = dxBarButton15Click
+    end
+  end
+  inherited cdsDados: TClientDataSet
+    CommandText = 
+      'SELECT '#39'N'#39' AS SEL, PO.*, (SELECT SUM(INDIVIDUAIS.QUANTIDADE) FRO' +
+      'M INDIVIDUAIS WHERE INDIVIDUAIS.CODPRODUTO = PO.CODIGO AND INDIV' +
+      'IDUAIS.VENDIDO = '#39'N'#39' AND INDIVIDUAIS.CODEMPRESA = #CODEMPRESA#) ' +
+      'AS ESTOQUE, (SELECT SUM(INDIVIDUAIS.QUANTIDADE) FROM INDIVIDUAIS' +
+      ' WHERE INDIVIDUAIS.CODPRODUTO = PO.CODIGO AND INDIVIDUAIS.VENDID' +
+      'O = '#39'N'#39') AS ESTOQUETOTAL, SE.DESCRICAO AS DESCRICAO_1, MA.DESCRI' +
+      'CAO AS MARCA, MO.DESCRICAO AS MODELO, CE.DESCRICAO AS CENTRO FRO' +
+      'M PRODUTOS PO LEFT JOIN PRODUTOS SE ON (SE.CODIGO = PO.CODSERVIC' +
+      'O) LEFT JOIN MARCAS MA ON (MA.CODIGO = PO.CODMARCA) LEFT JOIN MO' +
+      'DELOS MO ON (MO.CODIGO = PO.CODMODELO AND MO.CODEQUIPAMENTO = PO' +
+      '.CODMARCA) LEFT JOIN CENTROS CE ON (CE.CODIGO = PO.CODCENTRO) WH' +
+      'ERE PO.PS= '#39'P'#39
+    ProviderName = 'pvProdutos'
+    Left = 584
+    Top = 336
+    object cdsDadosSEL: TStringField
+      FieldName = 'SEL'
+      ProviderFlags = []
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      OnChange = cdsDadosCODIGOChange
+    end
+    object cdsDadosDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Required = True
+      FixedChar = True
+      Size = 60
+    end
+    object cdsDadosUNIDADE: TStringField
+      FieldName = 'UNIDADE'
+      Required = True
+      FixedChar = True
+      Size = 2
+    end
+    object cdsDadosGRUPO: TIntegerField
+      FieldName = 'GRUPO'
+      Required = True
+    end
+    object cdsDadosPRECOCUSTO: TFMTBCDField
+      FieldName = 'PRECOCUSTO'
+      DisplayFormat = '#,##0.00'
+      Precision = 20
+      Size = 3
+    end
+    object cdsDadosPRECOVENDA: TFMTBCDField
+      FieldName = 'PRECOVENDA'
+      DisplayFormat = '#,##0.00'
+      Precision = 20
+      Size = 3
+    end
+    object cdsDadosICMS: TFloatField
+      FieldName = 'ICMS'
+    end
+    object cdsDadosMINIMO: TFloatField
+      FieldName = 'MINIMO'
+    end
+    object cdsDadosDATACADAST: TSQLTimeStampField
+      FieldName = 'DATACADAST'
+    end
+    object cdsDadosETIQUETA: TStringField
+      FieldName = 'ETIQUETA'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosNUMETIQ: TIntegerField
+      FieldName = 'NUMETIQ'
+      Required = True
+    end
+    object cdsDadosINDIVIDUAL: TStringField
+      FieldName = 'INDIVIDUAL'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosSEQUENCIA: TIntegerField
+      FieldName = 'SEQUENCIA'
+      Required = True
+    end
+    object cdsDadosOBSERVACOES: TStringField
+      FieldName = 'OBSERVACOES'
+      Size = 2048
+    end
+    object cdsDadosBARRA: TStringField
+      FieldName = 'BARRA'
+      Required = True
+      FixedChar = True
+      Size = 14
+    end
+    object cdsDadosPS: TStringField
+      FieldName = 'PS'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosCODSERVICO: TIntegerField
+      FieldName = 'CODSERVICO'
+    end
+    object cdsDadosLOCALIZACAO: TStringField
+      FieldName = 'LOCALIZACAO'
+      FixedChar = True
+      Size = 40
+    end
+    object cdsDadosCOMISSIONADO: TStringField
+      FieldName = 'COMISSIONADO'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosOCULTO: TStringField
+      DisplayLabel = 'Oculto'
+      FieldName = 'OCULTO'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosMARGEM: TFloatField
+      FieldName = 'MARGEM'
+      DisplayFormat = '##0.00%'
+    end
+    object cdsDadosCODCENTRO: TIntegerField
+      FieldName = 'CODCENTRO'
+      Required = True
+    end
+    object cdsDadosPRECOSERVICO: TFloatField
+      FieldName = 'PRECOSERVICO'
+      DisplayFormat = '#,##0.00'
+    end
+    object cdsDadosPRECOTOTAL: TFloatField
+      FieldName = 'PRECOTOTAL'
+      DisplayFormat = '#,##0.00'
+    end
+    object cdsDadosATIVACAO: TStringField
+      FieldName = 'ATIVACAO'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosCADEQUIPAMENTO: TStringField
+      FieldName = 'CADEQUIPAMENTO'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosCODMARCA: TIntegerField
+      FieldName = 'CODMARCA'
+    end
+    object cdsDadosCODMODELO: TIntegerField
+      FieldName = 'CODMODELO'
+    end
+    object cdsDadosGARANTIA: TIntegerField
+      FieldName = 'GARANTIA'
+    end
+    object cdsDadosTIPOPRODUTO: TStringField
+      FieldName = 'TIPOPRODUTO'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosLOG_USUARIO: TStringField
+      FieldName = 'LOG_USUARIO'
+      FixedChar = True
+      Size = 30
+    end
+    object cdsDadosLOG_TIPO: TStringField
+      FieldName = 'LOG_TIPO'
+      FixedChar = True
+      Size = 10
+    end
+    object cdsDadosLOG_MAQUINA: TStringField
+      FieldName = 'LOG_MAQUINA'
+      FixedChar = True
+      Size = 30
+    end
+    object cdsDadosLOG_DATAREMOTO: TSQLTimeStampField
+      FieldName = 'LOG_DATAREMOTO'
+    end
+    object cdsDadosMATPRIMA: TStringField
+      FieldName = 'MATPRIMA'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsDadosCLASSFISCAL: TStringField
+      FieldName = 'CLASSFISCAL'
+      FixedChar = True
+    end
+    object cdsDadosCAIXA_ITENS: TIntegerField
+      FieldName = 'CAIXA_ITENS'
+    end
+    object cdsDadosICMS_BASE: TFloatField
+      FieldName = 'ICMS_BASE'
+    end
+    object cdsDadosPRECOVENDA2: TFloatField
+      FieldName = 'PRECOVENDA2'
+      DisplayFormat = '#,##0.00'
+    end
+    object cdsDadosPRECOVENDA3: TFloatField
+      FieldName = 'PRECOVENDA3'
+      DisplayFormat = '#,##0.00'
+    end
+    object cdsDadosPESO: TFloatField
+      FieldName = 'PESO'
+    end
+    object cdsDadosMARGEM2: TFloatField
+      FieldName = 'MARGEM2'
+      DisplayFormat = '##0.00%'
+    end
+    object cdsDadosMARGEM3: TFloatField
+      FieldName = 'MARGEM3'
+      DisplayFormat = '##0.00%'
+    end
+    object cdsDadosMARCA: TStringField
+      DisplayLabel = 'Marca'
+      FieldName = 'MARCA'
+      ProviderFlags = []
+      FixedChar = True
+      Size = 40
+    end
+    object cdsDadosMODELO: TStringField
+      DisplayLabel = 'Modelo'
+      FieldName = 'MODELO'
+      ProviderFlags = []
+      FixedChar = True
+      Size = 40
+    end
+    object cdsDadosCENTRO: TStringField
+      DisplayLabel = 'Centro'
+      FieldName = 'CENTRO'
+      ProviderFlags = []
+      FixedChar = True
+      Size = 40
+    end
+    object cdsDadosDESCRICAO_1: TStringField
+      FieldName = 'DESCRICAO_1'
+      ProviderFlags = []
+      FixedChar = True
+      Size = 60
+    end
+    object cdsDadosESTOQUE: TFMTBCDField
+      FieldName = 'ESTOQUE'
+      ProviderFlags = []
+      DisplayFormat = '####.###'
+      Precision = 20
+      Size = 3
+    end
+    object cdsDadosESTOQUETOTAL: TFMTBCDField
+      FieldName = 'ESTOQUETOTAL'
+      ProviderFlags = []
+      DisplayFormat = '####.###'
+      Precision = 20
+      Size = 3
+    end
+    object cdsDadosCODNCM: TIntegerField
+      DisplayLabel = 'NCM'
+      FieldName = 'CODNCM'
+    end
+    object cdsDadosSITTRIBU: TStringField
+      DisplayLabel = 'Sit.Trib.'
+      FieldName = 'SITTRIBU'
+      FixedChar = True
+      Size = 3
+    end
+    object cdsDadosPARTNUMBER: TStringField
+      DisplayLabel = 'PartNumber'
+      FieldName = 'PARTNUMBER'
+      FixedChar = True
+      Size = 30
+    end
+    object cdsDadosTRIBUTOS: TFloatField
+      DisplayLabel = 'Tributos'
+      FieldName = 'TRIBUTOS'
+    end
+    object cdsDadosPRECOVENDA4: TFloatField
+      FieldName = 'PRECOVENDA4'
+      DisplayFormat = '#,##0.00'
+    end
+    object cdsDadosPRECOVENDA5: TFloatField
+      FieldName = 'PRECOVENDA5'
+      DisplayFormat = '#,##0.00'
+    end
+  end
+  inherited dsrDados: TDataSource
+    Left = 568
+    Top = 392
+  end
+  inherited tmrFocus: TTimer
+    Left = 696
+    Top = 168
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    Left = 792
+    Top = 168
+    inherited dxComponentPrinterLink1: TdxGridReportLink
+      ReportDocument.CreationDate = 39476.759807581020000000
+      AssignedFormatValues = []
+      BuiltInReportLink = True
+    end
+  end
+  inherited dxBarPopupPrint: TdxBarPopupMenu
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'dxBarButton2'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarSubItem3'
+      end
+      item
+        BeginGroup = True
+        Visible = True
+        ItemName = 'dxBarButton8'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarButton9'
+      end
+      item
+        BeginGroup = True
+        Visible = True
+        ItemName = 'dxBarButton10'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarButton11'
+      end>
+    Left = 192
+    Top = 120
+  end
+  inherited actDetalhes: TActionList
+    Left = 792
+    Top = 112
+  end
+  inherited tmrRelogio: TTimer
+    Left = 696
+    Top = 112
+  end
+  inherited tmrFocus2: TTimer
+    Left = 296
+    Top = 208
+  end
+  inherited tmrSemDireito: TTimer
+    Top = 272
+  end
+  inherited tmrSel: TTimer
+    Left = 552
+  end
+  inherited tmrMove: TTimer
+    Left = 544
+    Top = 192
+  end
+  inherited SaveDialog: TSaveDialog
+    Left = 872
+    Top = 112
+  end
+  object cdsEstoque: TClientDataSet
+    Aggregates = <>
+    FetchOnDemand = False
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'CODPRODUTO'
+        ParamType = ptInput
+      end>
+    ProviderName = 'pcEstoque'
+    RemoteServer = formPrincipal.SocketConnection
+    BeforeOpen = cdsEstoqueBeforeOpen
+    AfterOpen = cdsEstoqueAfterOpen
+    BeforeClose = cdsEstoqueBeforeClose
+    Left = 776
+    Top = 216
+    object cdsEstoqueNOME: TStringField
+      FieldName = 'NOME'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      FixedChar = True
+      Size = 40
+    end
+    object cdsEstoqueQUANTIDADE: TFMTBCDField
+      FieldName = 'QUANTIDADE'
+      DisplayFormat = '####.###'
+      Precision = 20
+      Size = 3
+    end
+  end
+  object dsrEstoque: TDataSource
+    AutoEdit = False
+    DataSet = cdsEstoque
+    Left = 776
+    Top = 264
+  end
+  object tmrEstoque: TTimer
+    Enabled = False
+    Interval = 256
+    OnTimer = tmrEstoqueTimer
+    Left = 848
+    Top = 216
+  end
+  object tmrImagem: TTimer
+    Enabled = False
+    Interval = 256
+    OnTimer = tmrImagemTimer
+    Left = 344
+    Top = 56
+  end
+  object OpenPictureDialog: TOpenPictureDialog
+    Filter = 'JPEG Image File (*.jpg)|*.jpg'
+    Title = 'Carregar Imagem de...'
+    Left = 266
+    Top = 81
+  end
+  object menuImagem: TPopupMenu
+    Left = 266
+    Top = 129
+    object Carregarimagem1: TMenuItem
+      Caption = '&Carregar imagem...'
+      OnClick = Carregarimagem1Click
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Excluir1: TMenuItem
+      Caption = '&Excluir'
+      OnClick = Excluir1Click
+    end
+  end
+  object tmrLog: TTimer
+    Enabled = False
+    Interval = 256
+    OnTimer = tmrLogTimer
+    Left = 344
+    Top = 112
+  end
+  object cdsProfoto: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'CODPRODUTO'
+        ParamType = ptInput
+      end>
+    ProviderName = 'pvProfoto'
+    RemoteServer = formPrincipal.SocketConnection
+    Left = 528
+    Top = 328
+    object cdsProfotoCODPRODUTO: TIntegerField
+      FieldName = 'CODPRODUTO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object cdsProfotoIMAGEM: TBlobField
+      FieldName = 'IMAGEM'
+    end
+  end
+end

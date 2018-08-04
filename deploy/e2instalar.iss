@@ -50,23 +50,33 @@ Name: "quicklaunchicon"; Description: "Criar ícone na barra de tarefas"; GroupDe
 Source: "C:\enterprise\teste\enterprise.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\connect.ini"; DestDir: "{app}"; Flags: onlyifdoesntexist
 Source: "C:\enterprise\teste\language.ini"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Windows\SysWOW64\midas.dll"; DestDir: "{app}"; Flags: sharedfile regserver
+Source: "C:\Windows\System32\midas.dll"; DestDir: "{app}"; Flags: sharedfile regserver
 Source: "C:\enterprise\teste\e2admrep.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\NFPaulista.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\NFPaulista32Dll.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Program Files (x86)\Embarcadero\RAD Studio\8.0\bin\borlndmm.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\enterprise\teste\GDS32.DLL"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\enterprise\teste\fbclient.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Windows\SysWOW64\dbexpida.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Program Files\Embarcadero\RAD Studio\8.0\bin\borlndmm.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\GDS32.DLL"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\fbclient.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\icudt52.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\icudt52l.dat"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\icuin52.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\icuuc52.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\msvcp100.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\msvcr100.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\Windows\SysWOW64\dbexpida.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\Windows\SysWOW64\dbexpida40.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\gbak.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\enterprise\teste\gfix.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\enterprise\teste\isql.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\enterprise\teste\nbackup.exe"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\gfix.exe"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\isql.exe"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\nbackup.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\BemaFI32.ini"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\BemaFI32.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\BemaMFD.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\BemaMFD2.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\Daruma32.dll"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "C:\enterprise\teste\vccrt8_Win32.msi"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "C:\enterprise\teste\Firebird-3.0.3.32900_0_Win32.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "C:\enterprise\teste\dbxida42.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -76,5 +86,8 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Enterprise"; Filen
 
 [Run]
 ; NOTE: The following entry contains an English phrase ("Launch"). You are free to translate it into another language if required.
+; Filename: msiexec; Flags: runascurrentuser waituntilterminated; Parameters: "/i {tmp}\vccrt8_Win32.msi"; StatusMsg: Instalando Bibliotecas (1/2)...
+Filename: "{tmp}\Firebird-3.0.3.32900_0_Win32.exe"; Flags: runascurrentuser waituntilterminated; Parameters: "/COMPONENTS=""ClientComponent"" /TASKS=""CopyFbClientToSysTask,CopyFbClientAsGds32Task,EnableLegacyClientAuth"" /SILENT"; StatusMsg: Instalando Bibliotecas (1/2)...
+Filename: "{tmp}\dbxida42.exe"; Flags: runascurrentuser waituntilterminated; Parameters: "/silent"; StatusMsg: Instalando Bibliotecas (2/2)...
 Filename: "{app}\enterprise.exe"; Description: "Abrir o Enterprise"; WorkingDir: "{app}"; Flags: nowait postinstall skipifsilent
 

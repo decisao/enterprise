@@ -17,7 +17,8 @@ uses
   dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2010Black,
   dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
   dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue;
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue,
+  dxSkinDevExpressStyle, ComCtrls, dxCore, cxDateUtils, ppDesignLayer;
 
 type
   TformRelEstoqueData = class(TformRepModelo)

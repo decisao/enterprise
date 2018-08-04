@@ -18,7 +18,7 @@ uses
   dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
   dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, ComCtrls, dxCore, cxDateUtils, ppDesignLayer;
 
 type
   TformRelEstoque = class(TformRepModelo)
@@ -44,6 +44,13 @@ type
     ppLabel3: TppLabel;
     ppDBText3: TppDBText;
     Label1: TLabel;
+    ppDBText4: TppDBText;
+    ppDBText5: TppDBText;
+    ppLabel4: TppLabel;
+    ppLabel5: TppLabel;
+    ppSummaryBand1: TppSummaryBand;
+    ppDBCalc1: TppDBCalc;
+    ppDBCalc2: TppDBCalc;
     procedure cxButton1Click(Sender: TObject);
   private
     { Private declarations }

@@ -1,0 +1,48 @@
+unit rel_estoquereposicao;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, MODELO_RELATORIO, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinDevExpressStyle, ComCtrls, dxCore, cxDateUtils, Menus, ppParameter,
+  ppDesignLayer, ppBands, ppCtrls, ppStrtch, ppMemo, ppVar, ppPrnabl, ppClass,
+  ppCache, ppProd, ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, DB, DBClient,
+  StdCtrls, cxButtons, cxCheckBox, cxDropDownEdit, cxCalendar, cxTextEdit,
+  cxMaskEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  dxGDIPlusClasses, ExtCtrls;
+
+type
+  TformRepModelo1 = class(TformRepModelo)
+    procedure cxButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formRepModelo1: TformRepModelo1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformRepModelo1.cxButton1Click(Sender: TObject);
+begin
+  cdsRelatorio.Params[0].AsInteger := StrToInt(dlcEmpresa.EditValue);
+  cdsRelatorio.Params[1].AsInteger := StrToInt(dlcEmpresa.EditValue);
+  cdsRelatorio.Params[2].Value := dedDataIni.Date;
+  cdsRelatorio.Params[3].Value := dedDataFim.Date;
+
+  SetTitulo('Estoque para Reposição');
+
+  SetDescricao(Format('Reposição de estoque empresa %s - %s período %s a %s',
+    [dlcEmpresa.EditValue, dlcEmpresa.Text, FormatDateTime('DD/MM/YYYY', dedDataIni.Date), FormatDateTime('DD/MM/YYYY', dedDataFim.Date)]));
+
+  inherited;
+
+end;
+
+end.

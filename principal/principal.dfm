@@ -2034,6 +2034,10 @@ object formPrincipal: TformPrincipal
       ImageIndex = 47
       OnExecute = actLocalizaExecute
     end
+    object actRelEstoqueReposicao: TAction
+      Caption = 'Estoque Reposi'#231#227'o'
+      OnExecute = actRelEstoqueReposicaoExecute
+    end
   end
   object dxBarManager: TdxBarManager
     AllowReset = False
@@ -3167,6 +3171,10 @@ object formPrincipal: TformPrincipal
         item
           Visible = True
           ItemName = 'dxBarButton95'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton89'
         end>
     end
     object dxBarButton97: TdxBarButton
@@ -3198,6 +3206,10 @@ object formPrincipal: TformPrincipal
     end
     object dxBarButton100: TdxBarButton
       Action = actLocaliza
+      Category = 0
+    end
+    object dxBarButton89: TdxBarButton
+      Action = actRelEstoqueReposicao
       Category = 0
     end
   end

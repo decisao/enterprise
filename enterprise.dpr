@@ -116,7 +116,8 @@ uses
   compras in 'compra\compras.pas' {formCompras},
   oslocaliza in 'os\oslocaliza.pas' {formOSLocaliza},
   status in 'os\status.pas' {formOSStatus},
-  update in 'dialogos\update.pas' {formUpdate};
+  update in 'dialogos\update.pas' {formUpdate},
+  rel_estoquereposicao in 'relatorios\rel_estoquereposicao.pas' {formRelEstoqueReposicao};
 
 {$R *.res}
 

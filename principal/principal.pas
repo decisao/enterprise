@@ -351,6 +351,8 @@ type
     pnllogo: TPanel;
     imgFundo: TImage;
     SaveDialog: TSaveDialog;
+    dxBarButton89: TdxBarButton;
+    actRelEstoqueReposicao: TAction;
     procedure actSobreExecute(Sender: TObject);
     procedure actSelecionarEmpresaExecute(Sender: TObject);
     procedure actDesconectarExecute(Sender: TObject);
@@ -438,6 +440,7 @@ type
     procedure ApplicationEventsException(Sender: TObject; E: Exception);
     procedure actStatusExecute(Sender: TObject);
     procedure actLocalizaExecute(Sender: TObject);
+    procedure actRelEstoqueReposicaoExecute(Sender: TObject);
   private
     { Private declarations }
     counterdown,
@@ -515,7 +518,7 @@ uses login, logradouros, pessoas,
   contarecebidaestorno, senha, transferencias,
   funcoes, lancontabil, produtos_abc, rep_procurvagrupo, regua, layprintmov,
   ativacoes, ncm, rel_estoque, rel_estoquedata, rel_estoqueminimo, prosoft,
-  estados, cidades, bairros, status, oslocaliza, update;
+  estados, cidades, bairros, status, oslocaliza, update, rel_estoquereposicao;
 
 {$R *.dfm}
 
@@ -1203,13 +1206,12 @@ end;
 {####################################################################}
 
 procedure TformPrincipal.actSobreExecute(Sender: TObject);
-begin
-  MsgError(
+begin  MsgError(
     'Enterprise' + #13#10#13#10 +
     '© 1999-2012 Taligent' + #13#10 +
-    '© 2013-2017 decisao.net - Gestão de Resultado' + #13#10#13#10 +
+    '© 2013-2018 decisao.net - Gestão de Resultado' + #13#10#13#10 +
     'atendimento@decisao.net' + #13#10#13#10 +
-    'versão 2017.49 (28/04/2017)',
+    'versão 2018.73 (31/07/2018)',
     'Sobre...');
 end;
 
@@ -1507,7 +1509,7 @@ begin
 
             { abro/executo o arquivo }
             gbak := 'cmd.exe';
-            opcoes := ' /C ' + GetAppDir + '\gbak -b -v -t ' + caminho + ' ' + stFBK +
+            opcoes := ' /C echo Fazendo backup... Não feche a janela, ela fechará sozinha no final. & ' + GetAppDir + '\gbak -b -t ' + caminho + ' ' + stFBK +
                 ' -user ' + usuario + ' -password ' + senha {+ ' > out.txt'};
 
 //          ShowMessage(gbak + opcoes);
@@ -2209,6 +2211,22 @@ begin
       try
         UserOut;
         formRelEstoqueMinimo.Release;
+      except
+      end
+    end
+end;
+
+procedure TformPrincipal.actRelEstoqueReposicaoExecute(Sender: TObject);
+begin
+  if UserIn(Sender as TAction) then
+    try
+      formRelEstoqueReposicao := TformRelEstoqueReposicao.Create(Self);
+      formRelEstoqueReposicao.Tag := TAction(Sender).Tag;
+      formRelEstoqueReposicao.ShowModal;
+    finally
+      try
+        UserOut;
+        formRelEstoqueReposicao.Release;
       except
       end
     end

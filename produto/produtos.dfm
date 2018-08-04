@@ -4,8 +4,8 @@ inherited formProdutos: TformProdutos
   Caption = 'Produtos'
   ClientHeight = 527
   ClientWidth = 751
-  ExplicitWidth = 767
-  ExplicitHeight = 566
+  ExplicitWidth = 759
+  ExplicitHeight = 554
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcDados: TcxPageControl
@@ -23,20 +23,21 @@ inherited formProdutos: TformProdutos
         ExplicitWidth = 749
       end
       inherited dxBarDockControl_Selecao: TdxBarDockControl
-        Top = 474
+        Top = 476
         Width = 749
-        ExplicitTop = 474
+        ExplicitTop = 476
         ExplicitWidth = 749
       end
       inherited pnlFundoGrade: TPanel
         Width = 749
-        Height = 395
+        Height = 399
+        ExplicitTop = 77
         ExplicitWidth = 749
-        ExplicitHeight = 395
+        ExplicitHeight = 399
         inherited dxBarDockControl_Links: TdxBarDockControl
-          Top = 373
+          Top = 377
           Width = 749
-          ExplicitTop = 373
+          ExplicitTop = 377
           ExplicitWidth = 749
         end
         inherited dxBarDockControlWhere: TdxBarDockControl
@@ -45,9 +46,9 @@ inherited formProdutos: TformProdutos
         end
         inherited grdDados: TcxGrid
           Width = 749
-          Height = 351
+          Height = 355
           ExplicitWidth = 749
-          ExplicitHeight = 351
+          ExplicitHeight = 355
           inherited cxGrid1DBTableView1: TcxGridDBTableView
             OptionsData.Deleting = True
             OptionsData.DeletingConfirmation = True
@@ -200,32 +201,29 @@ inherited formProdutos: TformProdutos
       end
       inherited pnlEdicao: TPanel
         Width = 749
-        Height = 426
-        ExplicitTop = 79
+        Height = 428
+        ExplicitTop = 77
         ExplicitWidth = 749
-        ExplicitHeight = 426
+        ExplicitHeight = 428
         object cxPageControl1: TcxPageControl
           Left = 0
           Top = 91
           Width = 749
-          Height = 335
+          Height = 337
           Align = alClient
           PopupMenu = menuImagem
           TabOrder = 0
           Properties.ActivePage = cxTabSheet1
+          Properties.CustomButtons.Buttons = <>
           LookAndFeel.NativeStyle = True
           OnChange = cxPageControl1Change
-          ClientRectBottom = 331
-          ClientRectLeft = 4
-          ClientRectRight = 745
-          ClientRectTop = 24
+          ClientRectBottom = 335
+          ClientRectLeft = 2
+          ClientRectRight = 747
+          ClientRectTop = 22
           object cxTabSheet1: TcxTabSheet
             Caption = 'Cadastro'
             ImageIndex = 0
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label4: TLabel
               Left = 8
               Top = 88
@@ -329,7 +327,7 @@ inherited formProdutos: TformProdutos
             object Label14: TLabel
               Left = 200
               Top = 88
-              Width = 48
+              Width = 49
               Height = 13
               Caption = 'Volumes'
               FocusControl = DEDVOLUMES
@@ -400,7 +398,7 @@ inherited formProdutos: TformProdutos
             object Label34: TLabel
               Left = 122
               Top = 208
-              Width = 44
+              Width = 45
               Height = 13
               Caption = 'Sit.Trib.'
             end
@@ -415,7 +413,7 @@ inherited formProdutos: TformProdutos
             object lbTributos: TLabel
               Left = 322
               Top = 248
-              Width = 71
+              Width = 72
               Height = 13
               Caption = 'Tributos (%)'
               FocusControl = dedTributos
@@ -617,10 +615,6 @@ inherited formProdutos: TformProdutos
               DataBinding.DataField = 'SITTRIBU'
               DataBinding.DataSource = dsrDados
               Properties.Items.Strings = (
-                '101'
-                '400'
-                '500'
-                '900'
                 '000'
                 '010'
                 '020'
@@ -653,7 +647,74 @@ inherited formProdutos: TformProdutos
                 '251'
                 '260'
                 '270'
-                '290')
+                '290'
+                '300'
+                '310'
+                '320'
+                '330'
+                '340'
+                '341'
+                '350'
+                '351'
+                '360'
+                '370'
+                '390'
+                '400'
+                '410'
+                '420'
+                '430'
+                '440'
+                '441'
+                '450'
+                '451'
+                '460'
+                '470'
+                '490'
+                '500'
+                '510'
+                '520'
+                '530'
+                '540'
+                '541'
+                '550'
+                '551'
+                '560'
+                '570'
+                '590'
+                '600'
+                '610'
+                '620'
+                '630'
+                '640'
+                '641'
+                '650'
+                '651'
+                '660'
+                '670'
+                '690'
+                '700'
+                '710'
+                '720'
+                '730'
+                '740'
+                '741'
+                '750'
+                '751'
+                '760'
+                '770'
+                '790'
+                '800'
+                '810'
+                '820'
+                '830'
+                '840'
+                '841'
+                '850'
+                '851'
+                '860'
+                '870'
+                '890'
+                '')
               TabOrder = 13
               Width = 64
             end
@@ -683,10 +744,6 @@ inherited formProdutos: TformProdutos
           object tabCusto: TcxTabSheet
             Caption = 'Custo'
             ImageIndex = 5
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbMargem: TLabel
               Left = 152
               Top = 8
@@ -698,7 +755,7 @@ inherited formProdutos: TformProdutos
             object Label17: TLabel
               Left = 296
               Top = 8
-              Width = 71
+              Width = 72
               Height = 13
               Caption = 'Pre'#231'o Venda'
               FocusControl = DEDVENDA
@@ -758,7 +815,7 @@ inherited formProdutos: TformProdutos
             object Label27: TLabel
               Left = 296
               Top = 48
-              Width = 82
+              Width = 83
               Height = 13
               Caption = 'Pre'#231'o Venda 2'
               FocusControl = cxDBTextEdit6
@@ -766,7 +823,7 @@ inherited formProdutos: TformProdutos
             object Label31: TLabel
               Left = 296
               Top = 88
-              Width = 82
+              Width = 83
               Height = 13
               Caption = 'Pre'#231'o Venda 3'
               FocusControl = cxDBTextEdit7
@@ -808,7 +865,7 @@ inherited formProdutos: TformProdutos
             object lbPreco4: TLabel
               Left = 297
               Top = 128
-              Width = 82
+              Width = 83
               Height = 13
               Caption = 'Pre'#231'o Venda 4'
               FocusControl = dedPreco4
@@ -816,7 +873,7 @@ inherited formProdutos: TformProdutos
             object lbPreco5: TLabel
               Left = 297
               Top = 168
-              Width = 82
+              Width = 83
               Height = 13
               Caption = 'Pre'#231'o Venda 5'
               FocusControl = dedPreco5
@@ -984,15 +1041,11 @@ inherited formProdutos: TformProdutos
           object cxTabSheet2: TcxTabSheet
             Caption = 'Estoque'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Panel3: TPanel
               Left = 0
               Top = 0
-              Width = 741
-              Height = 307
+              Width = 745
+              Height = 313
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Executando invent'#225'rio...'
@@ -1000,13 +1053,14 @@ inherited formProdutos: TformProdutos
               object gridEstoque: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 741
-                Height = 307
+                Width = 745
+                Height = 313
                 Align = alClient
                 TabOrder = 0
                 Visible = False
                 LookAndFeel.NativeStyle = True
                 object DBTableView1: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dsrEstoque
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -1035,14 +1089,10 @@ inherited formProdutos: TformProdutos
           object cxTabSheet5: TcxTabSheet
             Caption = 'Imagem'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Panel4: TPanel
               Left = 0
               Top = 0
-              Width = 741
+              Width = 745
               Height = 10
               Align = alTop
               BevelOuter = bvNone
@@ -1054,7 +1104,7 @@ inherited formProdutos: TformProdutos
               Left = 0
               Top = 10
               Width = 10
-              Height = 287
+              Height = 293
               Align = alLeft
               BevelOuter = bvNone
               Color = clCream
@@ -1062,8 +1112,8 @@ inherited formProdutos: TformProdutos
             end
             object Panel6: TPanel
               Left = 0
-              Top = 297
-              Width = 741
+              Top = 303
+              Width = 745
               Height = 10
               Align = alBottom
               BevelOuter = bvNone
@@ -1074,8 +1124,8 @@ inherited formProdutos: TformProdutos
             object pnlImagem: TPanel
               Left = 10
               Top = 10
-              Width = 731
-              Height = 287
+              Width = 735
+              Height = 293
               Align = alClient
               BevelOuter = bvNone
               Color = clCream
@@ -1084,8 +1134,8 @@ inherited formProdutos: TformProdutos
               object cxImage: TImage
                 Left = 0
                 Top = 0
-                Width = 509
-                Height = 287
+                Width = 513
+                Height = 293
                 Align = alClient
                 IncrementalDisplay = True
                 PopupMenu = menuImagem
@@ -1093,10 +1143,10 @@ inherited formProdutos: TformProdutos
                 ExplicitHeight = 259
               end
               object pnlAjuste: TPanel
-                Left = 509
+                Left = 513
                 Top = 0
                 Width = 222
-                Height = 287
+                Height = 293
                 Align = alRight
                 BevelOuter = bvNone
                 Color = clCream
@@ -1117,10 +1167,6 @@ inherited formProdutos: TformProdutos
           object cxTabSheet6: TcxTabSheet
             Caption = 'Comportamento'
             ImageIndex = 6
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbMARCA: TLabel
               Left = 8
               Top = 32
@@ -1192,10 +1238,6 @@ inherited formProdutos: TformProdutos
           object cxTabSheet7: TcxTabSheet
             Caption = 'Outros'
             ImageIndex = 7
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label22: TLabel
               Left = 8
               Top = 8
@@ -1232,10 +1274,6 @@ inherited formProdutos: TformProdutos
             Tag = 99
             Caption = #218'ltimo Log'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label21: TLabel
               Left = 8
               Top = 8
@@ -1313,15 +1351,11 @@ inherited formProdutos: TformProdutos
             Tag = 99
             Caption = 'Outros Logs'
             ImageIndex = 4
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pnlLog: TPanel
               Left = 0
               Top = 0
-              Width = 741
-              Height = 307
+              Width = 745
+              Height = 313
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Nenhum registro de Log'
@@ -1329,7 +1363,7 @@ inherited formProdutos: TformProdutos
               object Splitter1: TSplitter
                 Left = 0
                 Top = 81
-                Width = 741
+                Width = 745
                 Height = 3
                 Cursor = crVSplit
                 Align = alTop
@@ -1338,12 +1372,13 @@ inherited formProdutos: TformProdutos
               object cxGridLog1: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 741
+                Width = 745
                 Height = 81
                 Align = alTop
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object cxGridDBTableView1: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dmoLog.dsrLog1
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -1392,12 +1427,13 @@ inherited formProdutos: TformProdutos
               object cxGridLog2: TcxGrid
                 Left = 0
                 Top = 84
-                Width = 741
-                Height = 223
+                Width = 745
+                Height = 229
                 Align = alClient
                 TabOrder = 1
                 LookAndFeel.NativeStyle = True
                 object cxGrid2DBTableView2: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dmoLog.dsrLog2
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -1465,7 +1501,7 @@ inherited formProdutos: TformProdutos
           object Label3: TLabel
             Left = 160
             Top = 8
-            Width = 71
+            Width = 72
             Height = 13
             Caption = 'Pre'#231'o Venda'
             FocusControl = dedPRECOVENDA
@@ -2060,6 +2096,7 @@ inherited formProdutos: TformProdutos
     Top = 168
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.759807581020000000
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

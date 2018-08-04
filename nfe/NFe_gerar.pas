@@ -89,7 +89,7 @@ var
   i, j, vista: integer;
   CFOP, CFOP_SALVO, CST, CSOSN: string;
   base, desconto, descontoun,
-  rateio, rateio_resto, quant_itens: currency;
+  rateio, rateiofrete, rateio_resto, rateiofrete_resto, quant_itens: currency;
   devicms1, devicmstotal: currency;
   simples, dev: boolean;
   tipo,
@@ -186,8 +186,8 @@ begin
   ReWrite(arquivo);
   try
     writeln(arquivo, 'NFe.CriarEnviarNFe("');
-//    writeln(arquivo, '[infNFe]');
-//    writeln(arquivo, 'versao=3.10');
+    writeln(arquivo, '[infNFe]');
+    writeln(arquivo, 'versao=4.0');
     writeln(arquivo, '[Identificacao]');
 
     { cabeçalho da nota }
@@ -200,7 +200,7 @@ begin
     { ICMS outro estado para partilha }
     if MatchStr(cdsNota.FieldByName('EMPRESA_ESTADO').AsString, ['SP', 'MG', 'RJ', 'PR', 'SC', 'RS']) and
        MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
-          ['ES', 'RR', 'AP', 'AM', 'PA', 'MA', 'CE', 'RN', 'PB', 'AL', 'SE', 'BA', 'AC', 'RO', 'TO', 'DF', 'GO', 'MT', 'MS']) then
+          ['ES', 'RR', 'AP', 'AM', 'PA', 'MA', 'CE', 'RN', 'PB', 'AL', 'SE', 'BA', 'AC', 'RO', 'TO', 'DF', 'GO', 'MT', 'MS', 'PE']) then
       icmsdest := '7'
     else
       icmsdest := '12';
@@ -308,7 +308,7 @@ begin
     writeln(arquivo, 'CNAE=' + cdsNota.FieldByName('EMPRESA_CNAE').AsString);
     writeln(arquivo, 'PaisCod=1058');
     writeln(arquivo, 'Pais=BRASIL');
-    if simples and (tipo = '1') then
+    if simples {and (tipo = '1')} then
      begin
        writeln(arquivo, 'CRT=1');
      end;
@@ -327,7 +327,7 @@ begin
        if (ie = '') or (uppercase(ie) = 'ISENTO') then
         begin
           if MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
-                ['AM', 'BA', 'CE', 'GO', 'MG', 'MT', 'PE', 'RN', 'SE', 'SP', 'SC']) then
+                ['AM', 'BA', 'CE', 'GO', 'MG', 'MT', 'PE', 'RN', 'SE', 'SP', 'SC', 'RS']) then
             writeln(arquivo, 'indIEDest=9')
           else
             writeln(arquivo, 'indIEDest=2');
@@ -357,12 +357,16 @@ begin
     if ckAcrescimo.Checked then
      begin
        quant_itens := cdsItens.RecordCount;
-       rateio := trunc(((edtAcrescimo.Value+edtFrete.Value) / quant_itens) * 100) / 100;
-       rateio_resto := (edtAcrescimo.Value+edtFrete.Value) - (rateio * quant_itens);
+       rateio := trunc((edtAcrescimo.Value / quant_itens) * 100) / 100;
+       rateio_resto := edtAcrescimo.Value - (rateio * quant_itens);
+       rateiofrete := trunc((edtFrete.Value / quant_itens) * 100) / 100;
+       rateiofrete_resto := edtFrete.Value - (rateiofrete * quant_itens);
      end else
      begin
        rateio := 0;
        rateio_resto := 0;
+       rateiofrete := 0;
+       rateiofrete_resto := 0;
      end;
     i := 0;
     base := 0;
@@ -384,8 +388,13 @@ begin
 //            if (CFOP='6949') or (CFOP='5949') then
 //              CSOSN := '400'
 //            else
-            CSOSN := '900';
-            base := base + cdsItens.FieldByName('VALOR_PAGO').AsCurrency;
+            if CST='41' then
+              CSOSN := '500'
+            else
+            begin
+              CSOSN := '900';
+              base := base + cdsItens.FieldByName('VALOR_PAGO').AsCurrency;
+            end;
           end else
           begin
             if simples then
@@ -429,6 +438,8 @@ begin
                    end;
                   if CST='90' then
                     CSOSN := '400';
+                  if (CST='41') and (CFOP='5411') then
+                    CSOSN := '500';
                 end;
                if (CST<>'41') and (CST<>'90') then
                  base := base + cdsItens.FieldByName('VALOR_PAGO').AsCurrency;
@@ -442,6 +453,7 @@ begin
           else
             writeln(arquivo, 'Codigo=' + cdsItens.FieldByName('CODIGO').AsString);
           writeln(arquivo, 'EAN=' + cdsItens.FieldByName('BARRA').AsString);
+          writeln(arquivo, 'cEANTrib=' + cdsItens.FieldByName('BARRA').AsString);
           if cdsItens.FieldByName('NCM').AsInteger > 0 then
             writeln(arquivo, 'NCM=' + cdsItens.FieldByName('NCM').AsString)
           else if cdsItens.FieldByName('NCM').AsInteger = 0 then
@@ -466,9 +478,14 @@ begin
           if ckAcrescimo.Checked then
            begin
              if (i = 1) then
-                writeln(arquivo, 'vOutro=' + FloatToStrF(rateio+rateio_resto, ffFixed, 18, 2))
-             else
+              begin
+                writeln(arquivo, 'vOutro=' + FloatToStrF(rateio+rateio_resto, ffFixed, 18, 2));
+                writeln(arquivo, 'vFrete=' + FloatToStrF(rateiofrete+rateiofrete_resto, ffFixed, 18, 2))
+              end else
+              begin
                 writeln(arquivo, 'vOutro=' + FloatToStrF(rateio, ffFixed, 18, 2));
+                writeln(arquivo, 'vFrete=' + FloatToStrF(rateiofrete, ffFixed, 18, 2));
+              end;
            end;
 
           writeln(arquivo, 'indTot=1');
@@ -509,15 +526,19 @@ begin
                 if (CSOSN <> '400') and (CFOP <> '6915')
                    and (not comie) then
                  begin
-                   writeln(arquivo, Format('[ICMSUFDEST%.3d]', [i]));
-                   writeln(arquivo, 'vBCUFDest=0');       // simples
-                   writeln(arquivo, 'pFCPUFDest=2');      // simples
-                   writeln(arquivo, 'pICMSUFDest=0');     // simples
-                   writeln(arquivo, 'pICMSinter='+icmsdest);
-                   writeln(arquivo, 'pICMSinterPart=60'); // 2017
-                   writeln(arquivo, 'vFCPUFDest=0');
-                   writeln(arquivo, 'vICMSUFDest=0');
-                   writeln(arquivo, 'vICMSUFRemet=0');    // simples
+                   if not MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
+                      ['RJ']) then
+                    begin
+                     writeln(arquivo, Format('[ICMSUFDEST%.3d]', [i]));
+                     writeln(arquivo, 'vBCUFDest=0');       // simples
+                     writeln(arquivo, 'pFCPUFDest=2');      // simples
+                     writeln(arquivo, 'pICMSUFDest=0');     // simples
+                     writeln(arquivo, 'pICMSinter='+icmsdest);
+                     writeln(arquivo, 'pICMSinterPart=80'); // 2017
+                     writeln(arquivo, 'vFCPUFDest=0');
+                     writeln(arquivo, 'vICMSUFDest=0');
+                     writeln(arquivo, 'vICMSUFRemet=0');    // simples
+                    end;
                  end;
               end;
 
@@ -658,6 +679,13 @@ begin
        inc(i);
        cdsPagamentos.Next;
      end;
+
+    { fatura }
+    writeln(arquivo, '[PAG001]');
+    writeln(arquivo, 'tpag=01');
+    writeln(arquivo, 'tpIntegra=2');
+    writeln(arquivo, 'vPag='+FloatToStrF(cdsNota.FieldByName('NOTA_VALOR_TOTAL').AsCurrency, ffFixed, 18, 2));
+    writeln(arquivo, 'vTroca=0');
 
     { dados adicionais }
     writeln(arquivo, '[DadosAdicionais]');

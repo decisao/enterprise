@@ -3,7 +3,7 @@ program e2admrep;
 uses
   Forms,
   principal in 'principal.pas' {formPrincipal},
-  funcoes in '..\PROJETO\funcoes.pas';
+  funcoes in '..\funcoes\funcoes.pas';
 
 {$R *.RES}
 
