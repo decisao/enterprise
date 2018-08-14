@@ -186,8 +186,8 @@ begin
   ReWrite(arquivo);
   try
     writeln(arquivo, 'NFe.CriarEnviarNFe("');
-//    writeln(arquivo, '[infNFe]');
-//    writeln(arquivo, 'versao=3.10');
+    writeln(arquivo, '[infNFe]');
+    writeln(arquivo, 'versao=4.0');
     writeln(arquivo, '[Identificacao]');
 
     { cabeçalho da nota }
@@ -200,7 +200,7 @@ begin
     { ICMS outro estado para partilha }
     if MatchStr(cdsNota.FieldByName('EMPRESA_ESTADO').AsString, ['SP', 'MG', 'RJ', 'PR', 'SC', 'RS']) and
        MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
-          ['ES', 'RR', 'AP', 'AM', 'PA', 'MA', 'CE', 'RN', 'PB', 'AL', 'SE', 'BA', 'AC', 'RO', 'TO', 'DF', 'GO', 'MT', 'MS']) then
+          ['ES', 'RR', 'AP', 'AM', 'PA', 'MA', 'CE', 'RN', 'PB', 'AL', 'SE', 'BA', 'AC', 'RO', 'TO', 'DF', 'GO', 'MT', 'MS', 'PE']) then
       icmsdest := '7'
     else
       icmsdest := '12';
@@ -391,8 +391,10 @@ begin
             if CST='41' then
               CSOSN := '500'
             else
+            begin
               CSOSN := '900';
-            base := base + cdsItens.FieldByName('VALOR_PAGO').AsCurrency;
+              base := base + cdsItens.FieldByName('VALOR_PAGO').AsCurrency;
+            end;
           end else
           begin
             if simples then
@@ -451,6 +453,7 @@ begin
           else
             writeln(arquivo, 'Codigo=' + cdsItens.FieldByName('CODIGO').AsString);
           writeln(arquivo, 'EAN=' + cdsItens.FieldByName('BARRA').AsString);
+          writeln(arquivo, 'cEANTrib=' + cdsItens.FieldByName('BARRA').AsString);
           if cdsItens.FieldByName('NCM').AsInteger > 0 then
             writeln(arquivo, 'NCM=' + cdsItens.FieldByName('NCM').AsString)
           else if cdsItens.FieldByName('NCM').AsInteger = 0 then
@@ -523,15 +526,19 @@ begin
                 if (CSOSN <> '400') and (CFOP <> '6915')
                    and (not comie) then
                  begin
-                   writeln(arquivo, Format('[ICMSUFDEST%.3d]', [i]));
-                   writeln(arquivo, 'vBCUFDest=0');       // simples
-                   writeln(arquivo, 'pFCPUFDest=2');      // simples
-                   writeln(arquivo, 'pICMSUFDest=0');     // simples
-                   writeln(arquivo, 'pICMSinter='+icmsdest);
-                   writeln(arquivo, 'pICMSinterPart=60'); // 2017
-                   writeln(arquivo, 'vFCPUFDest=0');
-                   writeln(arquivo, 'vICMSUFDest=0');
-                   writeln(arquivo, 'vICMSUFRemet=0');    // simples
+                   if not MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
+                      ['RJ']) then
+                    begin
+                     writeln(arquivo, Format('[ICMSUFDEST%.3d]', [i]));
+                     writeln(arquivo, 'vBCUFDest=0');       // simples
+                     writeln(arquivo, 'pFCPUFDest=2');      // simples
+                     writeln(arquivo, 'pICMSUFDest=0');     // simples
+                     writeln(arquivo, 'pICMSinter='+icmsdest);
+                     writeln(arquivo, 'pICMSinterPart=80'); // 2017
+                     writeln(arquivo, 'vFCPUFDest=0');
+                     writeln(arquivo, 'vICMSUFDest=0');
+                     writeln(arquivo, 'vICMSUFRemet=0');    // simples
+                    end;
                  end;
               end;
 
@@ -672,6 +679,13 @@ begin
        inc(i);
        cdsPagamentos.Next;
      end;
+
+    { fatura }
+    writeln(arquivo, '[PAG001]');
+    writeln(arquivo, 'tpag=01');
+    writeln(arquivo, 'tpIntegra=2');
+    writeln(arquivo, 'vPag='+FloatToStrF(cdsNota.FieldByName('NOTA_VALOR_TOTAL').AsCurrency, ffFixed, 18, 2));
+    writeln(arquivo, 'vTroca=0');
 
     { dados adicionais }
     writeln(arquivo, '[DadosAdicionais]');

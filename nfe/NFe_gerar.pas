@@ -621,43 +621,48 @@ begin
        writeln(arquivo, 'ValorNota=' + FloatToStrF(cdsNota.FieldByName('NOTA_VALOR_TOTAL').AsCurrency, ffFixed, 18, 2));
      end;
 
-    { transportador }
-    writeln(arquivo, '[Transportador]');
-    if trim(cdsNota.FieldByName('TRA_NOME').AsString) = '' then
-     begin
-       writeln(arquivo, 'FretePorConta=0');
-     end else
-     begin
-       writeln(arquivo, 'FretePorConta=' + cdsNota.fieldByName('NOTA_FRETE').AsString);
-       writeln(arquivo, 'CnpjCpf=' + cdsNota.fieldByName('TRA_CPFCGC').AsString);
-       writeln(arquivo, 'IE=' + cdsNota.fieldByName('TRA_RGIE').AsString);
-       writeln(arquivo, 'NomeRazao=' + cdsNota.fieldByName('TRA_NOME').AsString);
-       writeln(arquivo, 'Endereco=' + trim(cdsNota.FieldByName('TRA_LOGRADOURO').AsString) + ' ' + cdsNota.FieldByName('TRA_NUMERO').AsString);
-       writeln(arquivo, 'CidadeCod=' + cdsNota.FieldByName('TRA_MUNIBGE').AsString);
-       writeln(arquivo, 'Cidade=' + cdsNota.FieldByName('TRA_CIDADE').AsString);
-       writeln(arquivo, 'UF=' + cdsNota.FieldByName('TRA_ESTADO').AsString);
-       writeln(arquivo, 'CEP=' + cdsNota.FieldByName('TRA_CEP').AsString);
-       writeln(arquivo, 'Placa=' + cdsNota.FieldByName('NOTA_PLACAVEICULO').AsString);
-       if trim(cdsNota.FieldByName('NOTA_UFVEICULO').AsString) > '' then
-         writeln(arquivo, 'UFPlaca=' + cdsNota.FieldByName('NOTA_UFVEICULO').AsString)
-       else
-         writeln(arquivo, 'UFPlaca=AAA9999');
 
-       if cdsNota.FieldByName('EMPRESA_ESTADO').AsString = cdsNota.FieldByName('CLI_ESTADO').AsString then
-         writeln(arquivo, 'CFOP=5353') else
-         writeln(arquivo, 'CFOP=6353');
-       if cdsNota.FieldByName('NOTA_QUANTIDADE').AsInteger > 0 then
-        begin
-          writeln(arquivo, '[Volume001]');
-          writeln(arquivo, 'Quantidade=' + cdsNota.fieldByName('NOTA_QUANTIDADE').AsString);
-          writeln(arquivo, 'Especie=CAIXAS');
-          writeln(arquivo, 'Marca=');
-          writeln(arquivo, 'Numeracao=1');
-          writeln(arquivo, 'PesoLiquido=' + cdsNota.fieldByName('NOTA_PESOLIQUIDO').AsString);
-          writeln(arquivo, 'PesoBruto=' + cdsNota.fieldByName('NOTA_PESOBRUTO').AsString);
-        end;
+    if cdsNota.FieldByName('EMPRESA_ESTADO').AsString = cdsNota.FieldByName('CLI_ESTADO').AsString then
+     begin
+
+      { transportador }
+      writeln(arquivo, '[Transportador]');
+      if trim(cdsNota.FieldByName('TRA_NOME').AsString) = '' then
+       begin
+         writeln(arquivo, 'FretePorConta=0');
+       end else
+       begin
+         writeln(arquivo, 'FretePorConta=' + cdsNota.fieldByName('NOTA_FRETE').AsString);
+         writeln(arquivo, 'CnpjCpf=' + cdsNota.fieldByName('TRA_CPFCGC').AsString);
+         writeln(arquivo, 'IE=' + cdsNota.fieldByName('TRA_RGIE').AsString);
+         writeln(arquivo, 'NomeRazao=' + cdsNota.fieldByName('TRA_NOME').AsString);
+         writeln(arquivo, 'Endereco=' + trim(cdsNota.FieldByName('TRA_LOGRADOURO').AsString) + ' ' + cdsNota.FieldByName('TRA_NUMERO').AsString);
+         writeln(arquivo, 'CidadeCod=' + cdsNota.FieldByName('TRA_MUNIBGE').AsString);
+         writeln(arquivo, 'Cidade=' + cdsNota.FieldByName('TRA_CIDADE').AsString);
+         writeln(arquivo, 'UF=' + cdsNota.FieldByName('TRA_ESTADO').AsString);
+         writeln(arquivo, 'CEP=' + cdsNota.FieldByName('TRA_CEP').AsString);
+         writeln(arquivo, 'Placa=' + cdsNota.FieldByName('NOTA_PLACAVEICULO').AsString);
+         if trim(cdsNota.FieldByName('NOTA_UFVEICULO').AsString) > '' then
+           writeln(arquivo, 'UFPlaca=' + cdsNota.FieldByName('NOTA_UFVEICULO').AsString)
+         else
+           writeln(arquivo, 'UFPlaca=AAA9999');
+
+         if cdsNota.FieldByName('EMPRESA_ESTADO').AsString = cdsNota.FieldByName('CLI_ESTADO').AsString then
+           writeln(arquivo, 'CFOP=5353') else
+           writeln(arquivo, 'CFOP=6353');
+         if cdsNota.FieldByName('NOTA_QUANTIDADE').AsInteger > 0 then
+          begin
+            writeln(arquivo, '[Volume001]');
+            writeln(arquivo, 'Quantidade=' + cdsNota.fieldByName('NOTA_QUANTIDADE').AsString);
+            writeln(arquivo, 'Especie=CAIXAS');
+            writeln(arquivo, 'Marca=');
+            writeln(arquivo, 'Numeracao=1');
+            writeln(arquivo, 'PesoLiquido=' + cdsNota.fieldByName('NOTA_PESOLIQUIDO').AsString);
+            writeln(arquivo, 'PesoBruto=' + cdsNota.fieldByName('NOTA_PESOBRUTO').AsString);
+          end;
+       end;
+
      end;
-
 
     { fatura }
     writeln(arquivo, '[Fatura]');
@@ -666,26 +671,39 @@ begin
     writeln(arquivo, 'ValorDesconto= 0,00');
     writeln(arquivo, 'ValorLiquido=' + FloatToStrF(cdsNota.FieldByName('NOTA_VALOR_TOTAL').AsCurrency, ffFixed, 18, 2));
 
-    { duplicatas }
-    i := 1;
-    cdsPagamentos.First;
-    while not (cdsPagamentos.Eof) do
+    if dev then
      begin
-       writeln(arquivo, Format('[Duplicata%.3d]', [i]));
-       writeln(arquivo, 'Numero=' + FormatFloat('000000',nf_numero) + '-' + IntToStr(i));
-       writeln(arquivo, 'DataVencimento=' + FormatDateTime('dd/mm/yyyy',cdsPagamentosDATAVENCIMENTO.AsDateTime));
-//       writeln(arquivo, 'Valor=' + FormatFloat('#,###,##0.00',cdsPagamentosVALOR.AsCurrency));
-       writeln(arquivo, 'Valor=' + FloatToStrF(cdsPagamentosVALOR.AsCurrency, ffFixed, 18, 2));
-       inc(i);
-       cdsPagamentos.Next;
+
+      { fatura }
+      writeln(arquivo, '[PAG001]');
+      writeln(arquivo, 'tpag=90');
+
+     end else
+     begin
+
+      { duplicatas }
+      i := 1;
+      cdsPagamentos.First;
+      while not (cdsPagamentos.Eof) do
+       begin
+         writeln(arquivo, Format('[Duplicata%.3d]', [i]));
+         writeln(arquivo, 'Numero=' + FormatFloat('000000',nf_numero) + '-' + IntToStr(i));
+         writeln(arquivo, 'DataVencimento=' + FormatDateTime('dd/mm/yyyy',cdsPagamentosDATAVENCIMENTO.AsDateTime));
+  //       writeln(arquivo, 'Valor=' + FormatFloat('#,###,##0.00',cdsPagamentosVALOR.AsCurrency));
+         writeln(arquivo, 'Valor=' + FloatToStrF(cdsPagamentosVALOR.AsCurrency, ffFixed, 18, 2));
+         inc(i);
+         cdsPagamentos.Next;
+       end;
+
+      { fatura }
+      writeln(arquivo, '[PAG001]');
+      writeln(arquivo, 'tpag=01');
+      writeln(arquivo, 'tpIntegra=2');
+      writeln(arquivo, 'vPag='+FloatToStrF(cdsNota.FieldByName('NOTA_VALOR_TOTAL').AsCurrency, ffFixed, 18, 2));
+      writeln(arquivo, 'vTroca=0');
+
      end;
 
-    { fatura }
-    writeln(arquivo, '[PAG001]');
-    writeln(arquivo, 'tpag=01');
-    writeln(arquivo, 'tpIntegra=2');
-    writeln(arquivo, 'vPag='+FloatToStrF(cdsNota.FieldByName('NOTA_VALOR_TOTAL').AsCurrency, ffFixed, 18, 2));
-    writeln(arquivo, 'vTroca=0');
 
     { dados adicionais }
     writeln(arquivo, '[DadosAdicionais]');
