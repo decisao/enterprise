@@ -687,7 +687,8 @@ begin
       while not (cdsPagamentos.Eof) do
        begin
          writeln(arquivo, Format('[Duplicata%.3d]', [i]));
-         writeln(arquivo, 'Numero=' + FormatFloat('000000',nf_numero) + '-' + IntToStr(i));
+         writeln(arquivo, 'Numero=' + Format('%.3d', [i]));
+//         writeln(arquivo, 'Numero=' + FormatFloat('000000',nf_numero) + '-' + IntToStr(i));
          writeln(arquivo, 'DataVencimento=' + FormatDateTime('dd/mm/yyyy',cdsPagamentosDATAVENCIMENTO.AsDateTime));
   //       writeln(arquivo, 'Valor=' + FormatFloat('#,###,##0.00',cdsPagamentosVALOR.AsCurrency));
          writeln(arquivo, 'Valor=' + FloatToStrF(cdsPagamentosVALOR.AsCurrency, ffFixed, 18, 2));
