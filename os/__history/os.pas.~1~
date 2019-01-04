@@ -27,8 +27,7 @@ uses
   dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, cxPCdxBarPopupMenu, dxPScxGridLnk,
-  dxPScxGridLayoutViewLnk, cxNavigator, dxSkinsdxRibbonPainter,
-  dxSkinDevExpressStyle;
+  dxPScxGridLayoutViewLnk, cxNavigator, dxSkinsdxRibbonPainter;
 
 type
   TformOS = class(TformModeloOS)

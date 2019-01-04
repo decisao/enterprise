@@ -147,6 +147,7 @@ type
     procedure cdsDadosPRAZOGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
     procedure btnSalvarClick(Sender: TObject); override;
+    procedure Label93Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -206,4 +207,10 @@ begin
      Text := DataIntervalo(Sender.AsFloat);
 end;
 
-end.
+eprocedure TformOS.Label93Click(Sender: TObject);
+begin
+  inherited;
+
+end;
+
+nd.

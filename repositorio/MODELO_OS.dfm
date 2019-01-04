@@ -64,7 +64,7 @@ inherited formModeloOS: TformModeloOS
           Width = 907
           Height = 494
           ExplicitWidth = 907
-          ExplicitHeight = 498
+          ExplicitHeight = 494
           inherited cxGrid1DBTableView1: TcxGridDBTableView
             DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
             DataController.Summary.DefaultGroupSummaryItems = <
@@ -81,8 +81,6 @@ inherited formModeloOS: TformModeloOS
       end
     end
     inherited tabDetalhe: TcxTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 907
       ExplicitHeight = 648
       inherited dbnDetalhes: TDBNavigator
@@ -95,8 +93,9 @@ inherited formModeloOS: TformModeloOS
       inherited pnlEdicao: TPanel
         Width = 907
         Height = 569
+        ExplicitTop = 79
         ExplicitWidth = 907
-        ExplicitHeight = 571
+        ExplicitHeight = 569
         object Panel2: TPanel
           Left = 0
           Top = 0
@@ -290,9 +289,9 @@ inherited formModeloOS: TformModeloOS
           Align = alClient
           TabOrder = 1
           Properties.ActivePage = cxTabSheet1
+          Properties.CustomButtons.Buttons = <>
           LookAndFeel.NativeStyle = True
           OnChange = cxPageControl1Change
-          ExplicitHeight = 435
           ClientRectBottom = 429
           ClientRectLeft = 4
           ClientRectRight = 903
@@ -300,10 +299,6 @@ inherited formModeloOS: TformModeloOS
           object cxTabSheet1: TcxTabSheet
             Caption = 'Abertura'
             ImageIndex = 0
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbQUEMABRIU: TLabel
               Left = 8
               Top = 8
@@ -711,17 +706,17 @@ inherited formModeloOS: TformModeloOS
               BevelOuter = bvLowered
               Caption = 'Sem registro de T'#233'cnicos.'
               TabOrder = 1
-              ExplicitHeight = 313
               object grdTecnicos: TcxGrid
                 Left = 1
                 Top = 1
                 Width = 897
-                Height = 311
+                Height = 309
                 Align = alClient
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object DBTableView1: TcxGridDBTableView
                   OnDblClick = DBTableView1DblClick
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dsrTecnicos
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -767,15 +762,11 @@ inherited formModeloOS: TformModeloOS
           object cxTabSheet3: TcxTabSheet
             Caption = 'Produtos && Servi'#231'os'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pnlItens: TPanel
               Left = 0
               Top = 0
               Width = 899
-              Height = 407
+              Height = 405
               Align = alClient
               BevelOuter = bvLowered
               Caption = 'N'#227'o existem Produtos ou Servi'#231'os lan'#231'ados.'
@@ -784,11 +775,12 @@ inherited formModeloOS: TformModeloOS
                 Left = 1
                 Top = 1
                 Width = 897
-                Height = 405
+                Height = 403
                 Align = alClient
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object grdItensDBTableView2: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dmoOS.dsrItens
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -828,15 +820,11 @@ inherited formModeloOS: TformModeloOS
           object tabPagamentos: TcxTabSheet
             Caption = 'Pagamentos'
             ImageIndex = 7
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pnlPagamentos: TPanel
               Left = 0
               Top = 0
               Width = 899
-              Height = 407
+              Height = 405
               Align = alClient
               BevelOuter = bvLowered
               Caption = 'Nenhum pagamento lan'#231'ado.'
@@ -845,11 +833,12 @@ inherited formModeloOS: TformModeloOS
                 Left = 1
                 Top = 1
                 Width = 897
-                Height = 405
+                Height = 403
                 Align = alClient
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object cxGridDBTableView2: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dsrPagamentos
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -934,10 +923,6 @@ inherited formModeloOS: TformModeloOS
           object cxTabSheet4: TcxTabSheet
             Caption = 'Autoriza'#231#227'o'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbQUEM_AUTORIZOU: TLabel
               Left = 160
               Top = 8
@@ -1033,6 +1018,7 @@ inherited formModeloOS: TformModeloOS
               LookAndFeel.NativeStyle = True
               object cxGridDBTableView3: TcxGridDBTableView
                 OnDblClick = DBTableView1DblClick
+                Navigator.Buttons.CustomButtons = <>
                 DataController.DataSource = dmoOS.dsrAtend
                 DataController.Summary.DefaultGroupSummaryItems = <>
                 DataController.Summary.FooterSummaryItems = <>
@@ -1085,10 +1071,6 @@ inherited formModeloOS: TformModeloOS
           object cxTabSheet5: TcxTabSheet
             Caption = 'Fechamento'
             ImageIndex = 4
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbDATA_ENTREGA: TLabel
               Left = 9
               Top = 50
@@ -1218,10 +1200,6 @@ inherited formModeloOS: TformModeloOS
           object cxTabSheet7: TcxTabSheet
             Caption = #218'ltimo Log'
             ImageIndex = 5
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label21: TLabel
               Left = 8
               Top = 8
@@ -1298,15 +1276,11 @@ inherited formModeloOS: TformModeloOS
           object cxTabSheet8: TcxTabSheet
             Caption = 'Outros Logs'
             ImageIndex = 6
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pnlLog: TPanel
               Left = 0
               Top = 0
               Width = 899
-              Height = 407
+              Height = 405
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Nenhum registro de Log'
@@ -1329,6 +1303,7 @@ inherited formModeloOS: TformModeloOS
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object cxGridDBTableView1: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
                   DataController.Summary.SummaryGroups = <>
@@ -1382,11 +1357,12 @@ inherited formModeloOS: TformModeloOS
                 Left = 0
                 Top = 108
                 Width = 899
-                Height = 299
+                Height = 297
                 Align = alClient
                 TabOrder = 1
                 LookAndFeel.NativeStyle = True
                 object cxGrid2DBTableView2: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
                   DataController.Summary.SummaryGroups = <>
@@ -1679,6 +1655,7 @@ inherited formModeloOS: TformModeloOS
     Top = 512
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.752070300930000000
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

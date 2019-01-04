@@ -228,6 +228,7 @@ inherited formOS: TformOS
       inherited pnlEdicao: TPanel
         Width = 805
         Height = 516
+        ExplicitTop = 79
         ExplicitWidth = 805
         ExplicitHeight = 516
         inherited Panel2: TPanel
@@ -270,10 +271,6 @@ inherited formOS: TformOS
           object cxTabSheet6: TcxTabSheet [2]
             Caption = 'Fechamento Venda'
             ImageIndex = 8
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label8: TLabel
               Left = 5
               Top = 12
@@ -823,7 +820,6 @@ inherited formOS: TformOS
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.758312141200000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

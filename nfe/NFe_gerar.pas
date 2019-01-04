@@ -534,7 +534,7 @@ begin
                      writeln(arquivo, 'pFCPUFDest=2');      // simples
                      writeln(arquivo, 'pICMSUFDest=0');     // simples
                      writeln(arquivo, 'pICMSinter='+icmsdest);
-                     writeln(arquivo, 'pICMSinterPart=80'); // 2017
+                     writeln(arquivo, 'pICMSinterPart=100'); // 2019
                      writeln(arquivo, 'vFCPUFDest=0');
                      writeln(arquivo, 'vICMSUFDest=0');
                      writeln(arquivo, 'vICMSUFRemet=0');    // simples
