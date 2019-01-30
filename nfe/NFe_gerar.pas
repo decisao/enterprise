@@ -121,7 +121,7 @@ begin
   except
   end;
 
-  { pego o número da nota }
+  { pego o nï¿½mero da nota }
   if not formPrincipal.SocketConnection.Connected then
     formPrincipal.SocketConnection.Open;
   nf_numero := formPrincipal.SocketConnection.AppServer.GetID('NOTAFISCAL');
@@ -177,7 +177,7 @@ begin
      else vista := 1;
    end else vista := 1;
 
-  { desabilito o botão cancelar }
+  { desabilito o botï¿½o cancelar }
   cxButton2.Enabled := False;
   Application.ProcessMessages;
 
@@ -190,7 +190,7 @@ begin
     writeln(arquivo, 'versao=4.0');
     writeln(arquivo, '[Identificacao]');
 
-    { cabeçalho da nota }
+    { cabeï¿½alho da nota }
     outroestado := cdsNota.FieldByName('CLI_ESTADO').AsString <> cdsNota.FieldByName('EMPRESA_ESTADO').AsString;
     if outroestado then
       writeln(arquivo, 'idDest=2')
@@ -200,7 +200,7 @@ begin
     { ICMS outro estado para partilha }
     if MatchStr(cdsNota.FieldByName('EMPRESA_ESTADO').AsString, ['SP', 'MG', 'RJ', 'PR', 'SC', 'RS']) and
        MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
-          ['ES', 'RR', 'AP', 'AM', 'PA', 'MA', 'CE', 'RN', 'PB', 'AL', 'SE', 'BA', 'AC', 'RO', 'TO', 'DF', 'GO', 'MT', 'MS', 'PE']) then
+          ['ES', 'RR', 'AP', 'AM', 'PA', 'MA', 'CE', 'RN', 'PB', 'AL', 'SE', 'BA', 'AC', 'RO', 'TO', 'GO', 'MT', 'MS', 'PE']) then
       icmsdest := '7'
     else
       icmsdest := '12';
@@ -268,7 +268,7 @@ begin
         begin
 
           { chave a devolver }
-          chavedev := inputbox('NFe a devolver', 'Chave (somente números)', '');
+          chavedev := inputbox('NFe a devolver', 'Chave (somente nï¿½meros)', '');
 
           if LimpaNumStr(chavedev) > '' then
            begin
@@ -353,7 +353,7 @@ begin
     writeln(arquivo, 'PaisCod=1058');
     writeln(arquivo, 'Pais=BRASIL');
 
-    { lançamento de produtos }
+    { lanï¿½amento de produtos }
     if ckAcrescimo.Checked then
      begin
        quant_itens := cdsItens.RecordCount;
@@ -527,7 +527,7 @@ begin
                    and (not comie) then
                  begin
                    if not MatchStr(cdsNota.FieldByName('CLI_ESTADO').AsString,
-                      ['RJ']) then
+                      ['RJ', 'DF']) then
                     begin
                      writeln(arquivo, Format('[ICMSUFDEST%.3d]', [i]));
                      writeln(arquivo, 'vBCUFDest=0');       // simples
@@ -551,7 +551,7 @@ begin
           if cdsItens.FieldByName('VALOR_ITEM').AsCurrency > 0 then
            begin
 
-              { serviço }
+              { serviï¿½o }
               writeln(arquivo, Format('[Produto%.3d]', [i]));
               if cdsNota.FieldByName('EMPRESA_ESTADO').AsString = cdsNota.FieldByName('CLI_ESTADO').AsString then
                 writeln(arquivo, 'CFOP=5933') else
@@ -576,13 +576,13 @@ begin
               writeln(arquivo, 'Aliquota=0' {+ FloatToStrF(cdsNota.FieldByName('ISSALIQ').AsCurrency, ffFixed, 18, 2)});
               writeln(arquivo, 'ValorISSQN=0' {+ FloatToStrF(cdsItens.FieldByName('VALOR_PAGO').AsCurrency * (cdsNota.FieldByName('ISSALIQ').AsCurrency / 100), ffFixed, 18, 2)});
               writeln(arquivo, 'MunicipioFatoGerador=' + cdsNota.FieldByName('EMPRESA_MUNIBGE').AsString);
-              writeln(arquivo, 'CodigoServico=1402'); // assistência técnica
+              writeln(arquivo, 'CodigoServico=1402'); // assistï¿½ncia tï¿½cnica
 
            end;
 
         end;
 
-       { próximo produto }
+       { prï¿½ximo produto }
        cdsItens.Next;
      end;
 
@@ -711,7 +711,7 @@ begin
     writeln(arquivo, 'Complemento=CODIGO INTERNO ' + cdsNota.FieldByName('CODIGO').AsString + '. ' +
       cdsNota.FieldByName('OBSERVACOES').AsString + '"');
 
-    { finalização }
+    { finalizaï¿½ï¿½o }
     writeln(arquivo, ',1,1)');
 
     { encerro o arquivo }
@@ -737,7 +737,7 @@ begin
        except
        end;
 
-       { arquivo não foi gerado }
+       { arquivo nï¿½o foi gerado }
        Label3.Caption := Label3.Caption + ' [erro]';
        Label3.Font.Color := clBlack;
        formPrincipal.SocketConnection.Close;
