@@ -1211,7 +1211,7 @@ begin  MsgError(
     '© 1999-2012 Taligent' + #13#10 +
     '© 2013-2019 decisao.net - Gestão de Resultado' + #13#10#13#10 +
     'atendimento@decisao.net' + #13#10#13#10 +
-    'versão 2019.32 (08/03/2019)',
+    'versão 2019.10 (02/01/2019)',
     'Sobre...');
 end;
 

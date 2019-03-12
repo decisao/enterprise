@@ -2,7 +2,7 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2018/02/19 20:48:26.000.526,=C:\Users\Administrador\Documents\enterprise\Unit1.pas</Transaction>
-    <Transaction>2018/02/19 20:51:02.000.921,C:\Users\Administrador\Documents\enterprise\relatorios\rel_estoquereposicao.pas=C:\Users\Administrador\Documents\enterprise\Unit1.pas</Transaction>
-    <Transaction>2018/02/19 20:51:02.000.921,C:\Users\Administrador\Documents\enterprise\relatorios\rel_estoquereposicao.dfm=C:\Users\Administrador\Documents\enterprise\Unit1.dfm</Transaction>
+    <Transaction>2018/02/19 20:51:02.000.921,C:\Users\Administrador\Documents\enterprise\Unit1.pas=C:\Users\Administrador\Documents\enterprise\relatorios\rel_estoquereposicao.pas</Transaction>
+    <Transaction>2018/02/19 20:51:02.000.921,C:\Users\Administrador\Documents\enterprise\Unit1.dfm=C:\Users\Administrador\Documents\enterprise\relatorios\rel_estoquereposicao.dfm</Transaction>
   </Transactions>
 </BorlandProject>

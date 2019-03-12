@@ -270,8 +270,6 @@ type
     cdsDadosPRECOVENDA5: TFloatField;
     cxGrid1DBTableView1PRECOVENDA4: TcxGridDBColumn;
     cxGrid1DBTableView1PRECOVENDA5: TcxGridDBColumn;
-    cxGrid1DBTableView1NCM: TcxGridDBColumn;
-    cxGrid1DBTableView1PRECOCUSTO: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure cdsEstoqueAfterOpen(DataSet: TDataSet);
     procedure cdsEstoqueBeforeClose(DataSet: TDataSet);

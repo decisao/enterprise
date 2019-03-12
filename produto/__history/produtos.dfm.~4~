@@ -167,10 +167,6 @@ inherited formProdutos: TformProdutos
               Caption = 'Valor Servi'#231'o'
               DataBinding.FieldName = 'PRECOSERVICO'
             end
-            object cxGrid1DBTableView1PRECOCUSTO: TcxGridDBColumn
-              Caption = 'Custo'
-              DataBinding.FieldName = 'PRECOCUSTO'
-            end
             object cxGrid1DBTableView1GARANTIA: TcxGridDBColumn
               Caption = 'Garantia'
               DataBinding.FieldName = 'GARANTIA'
