@@ -20,7 +20,7 @@ Veja a lista do que é necessário:
 
 Assim que tiver as ferramentas prontas e instaladas, abra o arquivo de grupo de projeto e compile.
 
-## Bsnco de dados
+## Banco de dados
 
 O Enterprise usa o banco de dados Firebird para funcionar. Você pode usar uma cópia da base de dados
 que já possui usando a senha padrão do Firebird para testes, ou construir uma base do zero usando os
@@ -28,12 +28,11 @@ scripts SQL fornecidos nos fontes.
 
 ## Suporte
 
-Não provemos mais suporte ao Enterprise, portanto você pode construir, compartilhar, copiar, usar e
-estudar o sistema a vontade. Lembre-se que o risco é todo seu e não há garantias.
-
-## Uso em produção
-
 Ocasionalmente fornecemos uma versão compilada com atualizações para alguns clientes pagantes, mediante
 pedido especial. As versões compiladas estão em Releases, e podem ser usadas livremente. Caso deseje
 solicitar uma alteração, entre em contato para negociar o desenvolvimento do seu pedido.
+
+Você pode continuar o desenvolvimento, compilar, compartilhar, copiar, usar e estudar o sistema a 
+vontade. Lembre-se que o risco é todo seu e não provemos quaisquer garantias.
+
 
