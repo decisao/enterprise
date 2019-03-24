@@ -5,7 +5,7 @@ inherited formPessoas: TformPessoas
   ClientHeight = 583
   ClientWidth = 707
   ExplicitWidth = 723
-  ExplicitHeight = 622
+  ExplicitHeight = 621
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcDados: TcxPageControl
@@ -185,13 +185,31 @@ inherited formPessoas: TformPessoas
               Caption = 'Valor Contrato'
               DataBinding.FieldName = 'VALOR_CONTRATO'
             end
-            object cxGrid1DBTableView1CIDADE: TcxGridDBColumn
-              DataBinding.FieldName = 'CIDADE'
-              Width = 409
+            object cxGrid1DBTableView1IM: TcxGridDBColumn
+              DataBinding.FieldName = 'IM'
+            end
+            object cxGrid1DBTableView1LOGRADOURO: TcxGridDBColumn
+              DataBinding.FieldName = 'LOGRADOURO'
+            end
+            object cxGrid1DBTableView1NUMERO: TcxGridDBColumn
+              DataBinding.FieldName = 'NUMERO'
+            end
+            object cxGrid1DBTableView1COMPLEMENTO: TcxGridDBColumn
+              DataBinding.FieldName = 'COMPLEMENTO'
+            end
+            object cxGrid1DBTableView1BAIRRO: TcxGridDBColumn
+              DataBinding.FieldName = 'BAIRRO'
+            end
+            object cxGrid1DBTableView1CEP: TcxGridDBColumn
+              DataBinding.FieldName = 'CEP'
             end
             object cxGrid1DBTableView1ESTADO: TcxGridDBColumn
               DataBinding.FieldName = 'ESTADO'
               Width = 39
+            end
+            object cxGrid1DBTableView1CIDADE: TcxGridDBColumn
+              DataBinding.FieldName = 'CIDADE'
+              Width = 409
             end
           end
         end
@@ -210,6 +228,7 @@ inherited formPessoas: TformPessoas
       inherited pnlEdicao: TPanel
         Width = 705
         Height = 482
+        ExplicitTop = 79
         ExplicitWidth = 705
         ExplicitHeight = 482
         object pnlCliente: TPanel
@@ -289,13 +308,14 @@ inherited formPessoas: TformPessoas
           Align = alClient
           TabOrder = 1
           Properties.ActivePage = tabJuridica
+          Properties.CustomButtons.Buttons = <>
           LookAndFeel.Kind = lfOffice11
           LookAndFeel.NativeStyle = False
           OnChange = pgcDetalhesChange
           ClientRectBottom = 379
           ClientRectLeft = 2
           ClientRectRight = 699
-          ClientRectTop = 25
+          ClientRectTop = 27
           object tabJuridica: TcxTabSheet
             Caption = 'Jur'#237'dica'
             ImageIndex = 0
@@ -347,7 +367,7 @@ inherited formPessoas: TformPessoas
             object lbValorContratoJuridico: TLabel
               Left = 235
               Top = 231
-              Width = 83
+              Width = 84
               Height = 13
               Caption = 'Valor Contrato'
               FocusControl = dedValorContratoJuridico
@@ -507,10 +527,6 @@ inherited formPessoas: TformPessoas
           object tabFisica: TcxTabSheet
             Caption = 'F'#237'sica'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label7: TLabel
               Left = 8
               Top = 8
@@ -613,7 +629,7 @@ inherited formPessoas: TformPessoas
             object lbValorContratoFisico: TLabel
               Left = 233
               Top = 213
-              Width = 83
+              Width = 84
               Height = 13
               Caption = 'Valor Contrato'
               FocusControl = dedValorContratoFisico
@@ -782,10 +798,6 @@ inherited formPessoas: TformPessoas
           object cxTabSheet3: TcxTabSheet
             Caption = 'Endere'#231'o'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label16: TLabel
               Left = 8
               Top = 48
@@ -863,7 +875,7 @@ inherited formPessoas: TformPessoas
             object Label23: TLabel
               Left = 8
               Top = 128
-              Width = 48
+              Width = 49
               Height = 13
               Caption = 'Telefone'
               FocusControl = dedFONE
@@ -872,7 +884,7 @@ inherited formPessoas: TformPessoas
             object Label24: TLabel
               Left = 160
               Top = 128
-              Width = 21
+              Width = 22
               Height = 13
               Caption = 'FAX'
               FocusControl = dedFAX
@@ -917,7 +929,7 @@ inherited formPessoas: TformPessoas
             object lbTEMPO_RESIDENCIA: TLabel
               Left = 7
               Top = 207
-              Width = 103
+              Width = 104
               Height = 13
               Caption = 'Tempo Resid'#234'ncia'
               FocusControl = dedTEMPO_RESIDENCIA
@@ -926,7 +938,7 @@ inherited formPessoas: TformPessoas
             object lbALUGUEL_VALOR: TLabel
               Left = 312
               Top = 207
-              Width = 75
+              Width = 76
               Height = 13
               Caption = 'Valor Aluguel'
               FocusControl = dedALUGUEL_VALOR
@@ -1111,10 +1123,6 @@ inherited formPessoas: TformPessoas
           object tabAdicionais: TcxTabSheet
             Caption = 'Adicionais'
             ImageIndex = 10
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbENTREGA: TLabel
               Left = 8
               Top = 8
@@ -1154,7 +1162,7 @@ inherited formPessoas: TformPessoas
             object lbEMP_FONE: TLabel
               Left = 320
               Top = 149
-              Width = 48
+              Width = 49
               Height = 13
               Caption = 'Telefone'
               FocusControl = dedFONE2
@@ -1292,10 +1300,6 @@ inherited formPessoas: TformPessoas
           object cxTabSheet1: TcxTabSheet
             Caption = 'C'#244'njuge'
             ImageIndex = 11
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbCONJUGE: TLabel
               Left = 8
               Top = 9
@@ -1326,7 +1330,7 @@ inherited formPessoas: TformPessoas
             object lbCON_FONE: TLabel
               Left = 320
               Top = 133
-              Width = 48
+              Width = 49
               Height = 13
               Caption = 'Telefone'
               FocusControl = dedCON_FONE
@@ -1522,10 +1526,6 @@ inherited formPessoas: TformPessoas
           object cxTabSheet2: TcxTabSheet
             Caption = 'Refer'#234'ncias'
             ImageIndex = 12
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object lbREFERENCIA: TLabel
               Left = 8
               Top = 8
@@ -1630,10 +1630,6 @@ inherited formPessoas: TformPessoas
           object cxTabSheet5: TcxTabSheet
             Caption = 'Imagem'
             ImageIndex = 4
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Panel3: TPanel
               Left = 0
               Top = 0
@@ -1647,7 +1643,7 @@ inherited formPessoas: TformPessoas
             end
             object Panel4: TPanel
               Left = 0
-              Top = 344
+              Top = 342
               Width = 697
               Height = 10
               Align = alBottom
@@ -1660,7 +1656,7 @@ inherited formPessoas: TformPessoas
               Left = 0
               Top = 10
               Width = 10
-              Height = 334
+              Height = 332
               Align = alLeft
               BevelOuter = bvNone
               Color = clCream
@@ -1671,7 +1667,7 @@ inherited formPessoas: TformPessoas
               Left = 10
               Top = 10
               Width = 687
-              Height = 334
+              Height = 332
               Align = alClient
               BevelOuter = bvNone
               Color = clCream
@@ -1681,7 +1677,7 @@ inherited formPessoas: TformPessoas
                 Left = 0
                 Top = 0
                 Width = 465
-                Height = 334
+                Height = 332
                 Align = alClient
                 IncrementalDisplay = True
                 PopupMenu = menuImagem
@@ -1692,7 +1688,7 @@ inherited formPessoas: TformPessoas
                 Left = 465
                 Top = 0
                 Width = 222
-                Height = 334
+                Height = 332
                 Align = alRight
                 BevelOuter = bvNone
                 Color = clCream
@@ -1713,10 +1709,6 @@ inherited formPessoas: TformPessoas
           object cxTabSheet9: TcxTabSheet
             Caption = 'Cond.Pag.'
             ImageIndex = 7
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label31: TLabel
               Left = 0
               Top = 0
@@ -1737,7 +1729,7 @@ inherited formPessoas: TformPessoas
               Left = 0
               Top = 17
               Width = 697
-              Height = 337
+              Height = 335
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Carregando...'
@@ -1748,7 +1740,7 @@ inherited formPessoas: TformPessoas
                 Left = 0
                 Top = 0
                 Width = 113
-                Height = 337
+                Height = 335
                 Align = alLeft
                 BevelOuter = bvNone
                 Color = clCream
@@ -1778,11 +1770,12 @@ inherited formPessoas: TformPessoas
                 Left = 113
                 Top = 0
                 Width = 584
-                Height = 337
+                Height = 335
                 Align = alClient
                 TabOrder = 1
                 LookAndFeel.NativeStyle = True
                 object DBTableView2: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
                   DataController.Summary.SummaryGroups = <>
@@ -1899,17 +1892,13 @@ inherited formPessoas: TformPessoas
               TabOrder = 0
               OnEnter = edtPesquisar2Enter
               OnExit = edtPesquisar2Exit
-              Height = 354
+              Height = 352
               Width = 697
             end
           end
           object cxTabSheet6: TcxTabSheet
             Caption = #218'ltimo Log'
             ImageIndex = 5
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Label21: TLabel
               Left = 8
               Top = 8
@@ -1986,15 +1975,11 @@ inherited formPessoas: TformPessoas
           object cxTabSheet7: TcxTabSheet
             Caption = 'Outros Logs'
             ImageIndex = 6
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pnlLog: TPanel
               Left = 0
               Top = 0
               Width = 697
-              Height = 354
+              Height = 352
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Nenhum registro de Log'
@@ -2017,6 +2002,7 @@ inherited formPessoas: TformPessoas
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object DBTableView1: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dmoLog.dsrLog1
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -2066,11 +2052,12 @@ inherited formPessoas: TformPessoas
                 Left = 0
                 Top = 84
                 Width = 697
-                Height = 270
+                Height = 268
                 Align = alClient
                 TabOrder = 1
                 LookAndFeel.NativeStyle = True
                 object cxGrid2DBTableView2: TcxGridDBTableView
+                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dmoLog.dsrLog2
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -2999,6 +2986,7 @@ inherited formPessoas: TformPessoas
     Top = 208
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.462735208330000000
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

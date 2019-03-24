@@ -1207,11 +1207,8 @@ end;
 
 procedure TformPrincipal.actSobreExecute(Sender: TObject);
 begin  MsgError(
-    'Enterprise' + #13#10#13#10 +
-    '© 1999-2012 Taligent' + #13#10 +
-    '© 2013-2019 decisao.net - Gestão de Resultado' + #13#10#13#10 +
-    'atendimento@decisao.net' + #13#10#13#10 +
-    'versão 2019.32 (08/03/2019)',
+    'Enterprise' + #13#10#13#10  +
+    'versão 2019.37 (21/03/2019)',
     'Sobre...');
 end;
 

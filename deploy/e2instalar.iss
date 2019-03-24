@@ -5,9 +5,9 @@
 AppName=Enterprise Plus
 AppVerName=Enterprise Plus
 AppPublisher=decisao.net
-AppPublisherURL=http://www.decisao.net
-AppSupportURL=http://www.decisao.net/contato
-AppUpdatesURL=http://www.decisao.net/enterprise
+AppPublisherURL=http://github.com/decisao
+AppSupportURL=http://github.com/decisao
+AppUpdatesURL=http://github.com/decisao/enterprise/releases
 DefaultDirName=C:\enterprise\local
 DisableDirPage=yes
 DefaultGroupName=Enterprise Plus

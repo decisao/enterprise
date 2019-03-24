@@ -405,12 +405,6 @@ type
     cdsDadosPRECO_CLIENTE: TStringField;
     cdsDadosPRECO_45: TStringField;
     cdsDadosLICENCIAMENTO: TSmallintField;
-    cxGrid1DBTableView1LOGRADOURO: TcxGridDBColumn;
-    cxGrid1DBTableView1NUMERO: TcxGridDBColumn;
-    cxGrid1DBTableView1COMPLEMENTO: TcxGridDBColumn;
-    cxGrid1DBTableView1BAIRRO: TcxGridDBColumn;
-    cxGrid1DBTableView1CEP: TcxGridDBColumn;
-    cxGrid1DBTableView1IM: TcxGridDBColumn;
     procedure lblCidadeClick(Sender: TObject);
     procedure Label16Click(Sender: TObject);
     procedure btnAdicionarClick(Sender: TObject); override;
