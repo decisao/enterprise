@@ -1208,7 +1208,7 @@ end;
 procedure TformPrincipal.actSobreExecute(Sender: TObject);
 begin  MsgError(
     'Enterprise' + #13#10#13#10  +
-    'versão 2019.37 (21/03/2019)',
+    'versão 2019.92 (02/09/2019)',
     'Sobre...');
 end;
 

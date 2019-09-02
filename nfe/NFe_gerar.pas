@@ -236,7 +236,7 @@ begin
     writeln(arquivo, 'NaturezaOperacao=' + cdsNota.fieldByName('NATUREZAOPERACAO').AsString);
     writeln(arquivo, 'Modelo=55');
     writeln(arquivo, 'Serie=1');
-    writeln(arquivo, 'Codigo=' + inttostr(nf_numero));
+    writeln(arquivo, 'Codigo=' + inttostr(Round(Random(99999999))));
     writeln(arquivo, 'Numero=' + inttostr(nf_numero));
     writeln(arquivo, 'Emissao=' + FormatDateTime('DD/MM/YYYY', now));
     if not ckDataHora.Checked then
