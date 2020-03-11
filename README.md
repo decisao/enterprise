@@ -26,6 +26,9 @@ O Enterprise usa o banco de dados Firebird para funcionar. Você pode usar uma c
 que já possui usando a senha padrão do Firebird para testes, ou construir uma base do zero usando os
 scripts SQL fornecidos nos fontes.
 
+Foi incluido na pasta DATABASE o script SQL para criar uma base de testes e a UDF tbudf.dll para
+colocar na pasta UDF do Firebird.
+
 ## Suporte
 
 Ocasionalmente fornecemos uma versão compilada com atualizações para alguns clientes pagantes, mediante
