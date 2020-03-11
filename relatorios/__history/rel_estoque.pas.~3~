@@ -85,18 +85,9 @@ begin
      end;
    end else
    begin
-     if ckPositivo.Checked then
-     begin
-       SetWhereDynamic(
-         Format('QUANTIDADE > 0 AND OCULTO = %s', [QuotedStr('N')]),
-         'Estoque completo de todas as empresas');
-     end else
-     begin
-       SetWhereDynamic(
-         Format('OCULTO = %s', [QuotedStr('N')]),
-         'Estoque completo de todas as empresas');
-     end;
-
+     SetWhereDynamic(
+       Format('OCULTO = %s', [QuotedStr('N')]),
+       'Estoque completo de todas as empresas');
    end;
   SetOrderBy('DESCRICAO');
 

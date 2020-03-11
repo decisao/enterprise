@@ -845,16 +845,21 @@ object formRepModelo: TformRepModelo
     EmailSettings.ReportFormat = 'PDF'
     LanguageID = 'Default'
     OnPreviewFormCreate = ppReportPreviewFormCreate
+    OpenFile = False
     OutlineSettings.CreateNode = False
     OutlineSettings.CreatePageNodes = False
     OutlineSettings.Enabled = False
     OutlineSettings.Visible = False
+    ThumbnailSettings.Enabled = True
+    ThumbnailSettings.Visible = True
+    ThumbnailSettings.DeadSpace = 30
     PDFSettings.EmbedFontOptions = []
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
     PDFSettings.EncryptSettings.Enabled = False
+    PDFSettings.EncryptSettings.KeyLength = kl40Bit
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
     PreviewFormSettings.WindowState = wsMaximized
@@ -873,7 +878,7 @@ object formRepModelo: TformRepModelo
     XLSSettings.Title = 'Report'
     Left = 320
     Top = 160
-    Version = '14.07'
+    Version = '15.03'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline'
     object ppHeaderBand1: TppHeaderBand
@@ -999,6 +1004,7 @@ object formRepModelo: TformRepModelo
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsItalic]
+        RemoveEmptyLines = False
         Transparent = True
         mmHeight = 7938
         mmLeft = 3175

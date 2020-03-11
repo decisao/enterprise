@@ -18,8 +18,7 @@ uses
   dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
   dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue, ComCtrls, dxCore, cxDateUtils, ppDesignLayer,
-  dxSkinDevExpressStyle;
+  dxSkinXmas2008Blue, ComCtrls, dxCore, cxDateUtils, ppDesignLayer;
 
 type
   TformRelEstoque = class(TformRepModelo)
@@ -52,7 +51,6 @@ type
     ppSummaryBand1: TppSummaryBand;
     ppDBCalc1: TppDBCalc;
     ppDBCalc2: TppDBCalc;
-    ckPositivo: TCheckBox;
     procedure cxButton1Click(Sender: TObject);
   private
     { Private declarations }
@@ -72,31 +70,14 @@ begin
   SetTitulo('Estoque Total');
   if ckEmpresa.Checked then
    begin
-     if ckPositivo.Checked then
-     begin
-       SetWhereDynamic(
-         Format('QUANTIDADE > 0 AND CODEMPRESA = %s AND OCULTO = %s', [dlcEmpresa.EditValue, QuotedStr('N')]),
-         Format('Estoque completo da empresa %s - %s', [dlcEmpresa.EditValue, dlcEmpresa.Text]));
-     end else
-     begin
-       SetWhereDynamic(
-         Format('CODEMPRESA = %s AND OCULTO = %s', [dlcEmpresa.EditValue, QuotedStr('N')]),
-         Format('Estoque completo da empresa %s - %s', [dlcEmpresa.EditValue, dlcEmpresa.Text]));
-     end;
+     SetWhereDynamic(
+       Format('CODEMPRESA = %s AND OCULTO = %s', [dlcEmpresa.EditValue, QuotedStr('N')]),
+       Format('Estoque completo da empresa %s - %s', [dlcEmpresa.EditValue, dlcEmpresa.Text]));
    end else
    begin
-     if ckPositivo.Checked then
-     begin
-       SetWhereDynamic(
-         Format('QUANTIDADE > 0 AND OCULTO = %s', [QuotedStr('N')]),
-         'Estoque completo de todas as empresas');
-     end else
-     begin
-       SetWhereDynamic(
-         Format('OCULTO = %s', [QuotedStr('N')]),
-         'Estoque completo de todas as empresas');
-     end;
-
+     SetWhereDynamic(
+       Format('OCULTO = %s', [QuotedStr('N')]),
+       'Estoque completo de todas as empresas');
    end;
   SetOrderBy('DESCRICAO');
 
