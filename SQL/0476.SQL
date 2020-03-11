@@ -181,4 +181,10 @@ END^
 
 SET TERM ; ^
 
+ALTER TABLE PRODUTOS
+ADD ORIGEM STR01;
+
+update PRODUTOS set origem = '0';
+
+
 
