@@ -58,43 +58,45 @@ object formMODELO_MOV: TformMODELO_MOV
   end
   object Panel1: TPanel
     Left = 0
-    Top = 107
+    Top = 111
     Width = 791
-    Height = 443
+    Height = 439
     Align = alClient
     BevelOuter = bvLowered
     Caption = 'Panel1'
     TabOrder = 1
-    ExplicitTop = 111
-    ExplicitHeight = 439
+    ExplicitTop = 100
+    ExplicitHeight = 450
     object pgcSaida: TcxPageControl
       Left = 1
       Top = 1
       Width = 789
-      Height = 441
+      Height = 437
       Align = alClient
       TabOrder = 0
       Properties.ActivePage = tabItens
-      Properties.CustomButtons.Buttons = <>
       Properties.HideTabs = True
       Properties.Style = 1
       LookAndFeel.SkinName = 'Office2010Silver'
       OnChange = pgcSaidaChange
-      ExplicitHeight = 437
-      ClientRectBottom = 439
-      ClientRectLeft = 2
-      ClientRectRight = 787
-      ClientRectTop = 2
+      ExplicitHeight = 448
+      ClientRectBottom = 433
+      ClientRectLeft = 4
+      ClientRectRight = 785
+      ClientRectTop = 4
       object tabItens: TcxTabSheet
         Caption = 'tabItens'
         Color = clCream
         ImageIndex = 0
         ParentColor = False
-        ExplicitHeight = 433
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 444
         object Bevel1: TBevel
           Left = 0
-          Top = 329
-          Width = 785
+          Top = 321
+          Width = 781
           Height = 2
           Align = alBottom
           Shape = bsBottomLine
@@ -103,15 +105,16 @@ object formMODELO_MOV: TformMODELO_MOV
         end
         object pnlTotal: TPanel
           Left = 0
-          Top = 331
-          Width = 785
+          Top = 323
+          Width = 781
           Height = 106
           Align = alBottom
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = 327
+          ExplicitTop = 338
+          ExplicitWidth = 785
           object lblDesconto: TLabel
             Left = 33
             Top = 8
@@ -353,8 +356,8 @@ object formMODELO_MOV: TformMODELO_MOV
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
-          Width = 785
-          Height = 266
+          Width = 781
+          Height = 258
           Align = alClient
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -364,9 +367,9 @@ object formMODELO_MOV: TformMODELO_MOV
           LookAndFeel.Kind = lfFlat
           LookAndFeel.NativeStyle = False
           LookAndFeel.SkinName = 'Office2010Silver'
-          ExplicitHeight = 262
+          ExplicitWidth = 785
+          ExplicitHeight = 273
           object cxGridDBTableView1: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsrItens
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -444,8 +447,8 @@ object formMODELO_MOV: TformMODELO_MOV
         end
         object pnlServicosOpcionais: TPanel
           Left = 0
-          Top = 266
-          Width = 785
+          Top = 258
+          Width = 781
           Height = 63
           Align = alBottom
           BevelOuter = bvNone
@@ -453,7 +456,8 @@ object formMODELO_MOV: TformMODELO_MOV
           ParentBackground = False
           TabOrder = 2
           Visible = False
-          ExplicitTop = 262
+          ExplicitTop = 273
+          ExplicitWidth = 785
           object lbDescricaoDetalhada: TLabel
             Left = 16
             Top = 3
@@ -478,15 +482,19 @@ object formMODELO_MOV: TformMODELO_MOV
         Color = clCream
         ImageIndex = 1
         ParentColor = False
-        ExplicitHeight = 433
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 444
         object pnlTotalFinal: TPanel
           Left = 0
-          Top = 331
-          Width = 785
+          Top = 323
+          Width = 781
           Height = 106
           Align = alBottom
           TabOrder = 0
-          ExplicitTop = 327
+          ExplicitTop = 338
+          ExplicitWidth = 785
           object Label1: TLabel
             Left = 19
             Top = 8
@@ -525,14 +533,14 @@ object formMODELO_MOV: TformMODELO_MOV
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
-          Width = 785
-          Height = 331
+          Width = 781
+          Height = 323
           Align = alClient
           TabOrder = 1
           LookAndFeel.NativeStyle = True
-          ExplicitHeight = 327
+          ExplicitWidth = 785
+          ExplicitHeight = 338
           object cxGrid2DBTableView1: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsrPagamento
             DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -627,7 +635,7 @@ object formMODELO_MOV: TformMODELO_MOV
     ImageOptions.LargeImages = formPrincipal.imgToolbar
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
-    LookAndFeel.SkinName = 'Office2010Silver'
+    LookAndFeel.SkinName = 'DevExpressStyle'
     PopupMenuLinks = <>
     UseSystemFont = True
     Left = 664
@@ -635,7 +643,7 @@ object formMODELO_MOV: TformMODELO_MOV
     DockControlHeights = (
       0
       0
-      107
+      111
       0)
     object dxBarManagerBar1: TdxBar
       AllowClose = False
@@ -717,7 +725,7 @@ object formMODELO_MOV: TformMODELO_MOV
       CaptionButtons = <>
       DockedDockingStyle = dsTop
       DockedLeft = 0
-      DockedTop = 78
+      DockedTop = 80
       DockingStyle = dsTop
       FloatLeft = 124
       FloatTop = 116

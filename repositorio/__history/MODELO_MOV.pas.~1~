@@ -23,7 +23,7 @@ uses
   dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, cxPCdxBarPopupMenu, cxNavigator,
-  dxSkinDevExpressStyle, dxSkinDevExpressDarkStyle;
+  dxSkinDevExpressStyle;
 
 const
   CM_FORMSETUP  = WM_USER + 1;

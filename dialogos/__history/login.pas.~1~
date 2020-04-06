@@ -15,8 +15,7 @@ uses
   dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
   dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue, cxImage, dxGDIPlusClasses, dxSkinDevExpressStyle,
-  dxSkinDevExpressDarkStyle;
+  dxSkinXmas2008Blue, cxImage, dxGDIPlusClasses, dxSkinDevExpressStyle;
 
 type
   TformLogin = class(TForm)

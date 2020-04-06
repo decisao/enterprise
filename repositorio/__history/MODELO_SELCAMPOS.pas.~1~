@@ -9,8 +9,7 @@ uses
   cxDBData, cxCheckBox, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
   cxGrid, Menus, cxLookAndFeels, dxSkinsCore, dxSkinOffice2010Silver,
-  dxSkinscxPCPainter, dxSkinOffice2010Blue, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, cxNavigator;
+  dxSkinscxPCPainter, dxSkinOffice2010Blue;
 
 type
   TformSelCampos = class(TForm)

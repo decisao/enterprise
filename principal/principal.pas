@@ -29,7 +29,7 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, dxGDIPlusClasses, dxSkinOffice2010Blue,
   dxSkinOffice2010Black, dxSkinOffice2010Silver, AppEvnts, dxSkinDevExpressStyle,
-  ShellApi;
+  ShellApi, dxSkinDevExpressDarkStyle;
 
 const
   CM_FORMSETUP  = WM_USER + 1;

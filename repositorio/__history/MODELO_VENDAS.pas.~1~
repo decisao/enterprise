@@ -27,7 +27,7 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, cxPCdxBarPopupMenu, dxPScxGridLnk,
   dxPScxGridLayoutViewLnk, cxNavigator, dxSkinsdxRibbonPainter,
-  dxSkinDevExpressStyle, dxSkinDevExpressDarkStyle;
+  dxSkinDevExpressStyle;
 
 type
   TformModeloVendas = class(TformCadModelo)

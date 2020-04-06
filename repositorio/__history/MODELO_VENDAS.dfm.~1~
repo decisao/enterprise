@@ -2,52 +2,51 @@ inherited formModeloVendas: TformModeloVendas
   Left = 215
   Caption = 'MODELO VENDAS'
   ClientHeight = 510
-  ClientWidth = 758
-  ExplicitWidth = 774
-  ExplicitHeight = 549
+  ClientWidth = 740
+  ExplicitWidth = 756
+  ExplicitHeight = 548
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcDados: TcxPageControl
-    Width = 758
+    Width = 740
     Height = 490
     ExplicitWidth = 740
     ExplicitHeight = 490
     ClientRectBottom = 489
-    ClientRectRight = 757
+    ClientRectRight = 739
     inherited tabVisual: TcxTabSheet
       ExplicitWidth = 738
       ExplicitHeight = 488
       inherited dxBarDockControl_BotoesSelecao: TdxBarDockControl
-        Width = 756
-        ExplicitWidth = 756
+        Width = 738
+        ExplicitWidth = 738
       end
       inherited dxBarDockControl_Selecao: TdxBarDockControl
-        Top = 459
-        Width = 756
-        ExplicitTop = 459
-        ExplicitWidth = 756
+        Top = 457
+        Width = 738
+        ExplicitTop = 457
+        ExplicitWidth = 738
       end
       inherited pnlFundoGrade: TPanel
-        Width = 756
-        Height = 382
-        ExplicitTop = 77
+        Width = 738
+        Height = 378
         ExplicitWidth = 738
-        ExplicitHeight = 382
+        ExplicitHeight = 378
         inherited dxBarDockControl_Links: TdxBarDockControl
-          Top = 360
-          Width = 756
-          ExplicitTop = 360
-          ExplicitWidth = 756
+          Top = 356
+          Width = 738
+          ExplicitTop = 356
+          ExplicitWidth = 738
         end
         inherited dxBarDockControlWhere: TdxBarDockControl
-          Width = 756
-          ExplicitWidth = 756
+          Width = 738
+          ExplicitWidth = 738
         end
         inherited grdDados: TcxGrid
-          Width = 756
-          Height = 338
+          Width = 738
+          Height = 334
           ExplicitWidth = 738
-          ExplicitHeight = 338
+          ExplicitHeight = 345
           inherited cxGrid1DBTableView1: TcxGridDBTableView
             OptionsCustomize.ColumnHiding = True
             OptionsSelection.UnselectFocusedRecordOnExit = False
@@ -56,25 +55,26 @@ inherited formModeloVendas: TformModeloVendas
       end
     end
     inherited tabDetalhe: TcxTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 738
       ExplicitHeight = 488
       inherited dbnDetalhes: TDBNavigator
         Hints.Strings = ()
       end
       inherited dxBarDockControl_BotesDetalhes: TdxBarDockControl
-        Width = 756
-        ExplicitWidth = 756
+        Width = 738
+        ExplicitWidth = 738
       end
       inherited pnlEdicao: TPanel
-        Width = 756
-        Height = 411
-        ExplicitTop = 77
-        ExplicitWidth = 756
-        ExplicitHeight = 411
+        Width = 738
+        Height = 409
+        ExplicitWidth = 738
+        ExplicitHeight = 414
         object pnlPainel: TPanel
           Left = 0
           Top = 0
-          Width = 756
+          Width = 738
           Height = 96
           Align = alTop
           BevelOuter = bvNone
@@ -247,21 +247,25 @@ inherited formModeloVendas: TformModeloVendas
         object pgcDetalhes: TcxPageControl
           Left = 0
           Top = 96
-          Width = 756
-          Height = 315
+          Width = 738
+          Height = 313
           Align = alClient
           TabOrder = 1
           Properties.ActivePage = tabFechamento
-          Properties.CustomButtons.Buttons = <>
           LookAndFeel.NativeStyle = True
           OnChange = pgcDetalhesChange
-          ClientRectBottom = 311
+          ExplicitHeight = 318
+          ClientRectBottom = 309
           ClientRectLeft = 4
-          ClientRectRight = 752
+          ClientRectRight = 734
           ClientRectTop = 24
           object tabFechamento: TcxTabSheet
             Caption = '&Fechamento'
             ImageIndex = 0
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Label10: TLabel
               Left = 11
               Top = 8
@@ -300,11 +304,15 @@ inherited formModeloVendas: TformModeloVendas
           object tabItens: TcxTabSheet
             Caption = '&Produtos && Servi'#231'os'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pnlItens: TPanel
               Left = 0
               Top = 0
-              Width = 748
-              Height = 287
+              Width = 730
+              Height = 290
               Align = alClient
               BevelOuter = bvLowered
               Caption = 'Nenhum item vendido.'
@@ -312,13 +320,12 @@ inherited formModeloVendas: TformModeloVendas
               object grdItens: TcxGrid
                 Left = 1
                 Top = 1
-                Width = 746
-                Height = 285
+                Width = 728
+                Height = 288
                 Align = alClient
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object grdItensDBTableView2: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dmoOS.dsrItens
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -358,11 +365,15 @@ inherited formModeloVendas: TformModeloVendas
           object tabPagamentos: TcxTabSheet
             Caption = 'Pagamentos'
             ImageIndex = 2
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pnlPagamentos: TPanel
               Left = 0
               Top = 0
-              Width = 748
-              Height = 287
+              Width = 730
+              Height = 290
               Align = alClient
               BevelOuter = bvLowered
               Caption = 'Nenhum pagamento lan'#231'ado.'
@@ -370,13 +381,12 @@ inherited formModeloVendas: TformModeloVendas
               object grdPagamentos: TcxGrid
                 Left = 1
                 Top = 1
-                Width = 746
-                Height = 285
+                Width = 728
+                Height = 288
                 Align = alClient
                 TabOrder = 0
                 LookAndFeel.NativeStyle = True
                 object cxGridDBTableView1: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
                   DataController.DataSource = dsrPagamentos
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <>
@@ -464,7 +474,7 @@ inherited formModeloVendas: TformModeloVendas
   end
   inherited dxStatusBar: TdxStatusBar
     Top = 490
-    Width = 758
+    Width = 740
     ExplicitTop = 490
     ExplicitWidth = 740
   end
@@ -630,7 +640,6 @@ inherited formModeloVendas: TformModeloVendas
     Top = 264
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.752401793980000000
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

@@ -858,9 +858,9 @@ object formPrincipal: TformPrincipal
   TextHeight = 13
   object Bevel1: TBevel
     Left = 0
-    Top = 103
+    Top = 101
     Width = 2
-    Height = 462
+    Height = 464
     Align = alLeft
     Shape = bsLeftLine
     ExplicitLeft = 24
@@ -905,19 +905,21 @@ object formPrincipal: TformPrincipal
   end
   object pnllogo: TPanel
     Left = 2
-    Top = 103
+    Top = 101
     Width = 794
-    Height = 462
+    Height = 464
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 5
+    ExplicitTop = 103
+    ExplicitHeight = 462
     object imgFundo: TImage
       Left = 0
       Top = 0
       Width = 794
-      Height = 462
+      Height = 464
       Align = alClient
       Center = True
       Transparent = True
@@ -1474,7 +1476,7 @@ object formPrincipal: TformPrincipal
     ImageOptions.LargeIcons = True
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
-    LookAndFeel.SkinName = 'DevExpressStyle'
+    LookAndFeel.SkinName = 'Office2010Silver'
     MenusShowRecentItemsFirst = False
     NotDocking = [dsNone, dsLeft, dsRight, dsBottom]
     PopupMenuLinks = <>
@@ -1485,7 +1487,7 @@ object formPrincipal: TformPrincipal
     DockControlHeights = (
       0
       0
-      103
+      101
       0)
     object dxBarManagerBar1: TdxBar
       AllowClose = False
@@ -3110,8 +3112,9 @@ object formPrincipal: TformPrincipal
     Top = 168
   end
   object dxSkinController: TdxSkinController
-    Kind = lfStandard
-    SkinName = 'DevExpressStyle'
+    Kind = lfOffice11
+    NativeStyle = False
+    SkinName = 'Office2010Silver'
     Left = 40
     Top = 344
   end

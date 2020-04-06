@@ -31,7 +31,6 @@ object formCadModelo: TformCadModelo
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = tabVisual
-    Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
     LookAndFeel.NativeStyle = False
     OnChange = pgcDadosChange
@@ -47,7 +46,7 @@ object formCadModelo: TformCadModelo
         Left = 0
         Top = 0
         Width = 697
-        Height = 77
+        Height = 79
         HelpContext = 555
         Align = dalTop
         AllowDocking = False
@@ -57,9 +56,9 @@ object formCadModelo: TformCadModelo
       end
       object dxBarDockControl_Selecao: TdxBarDockControl
         Left = 0
-        Top = 403
+        Top = 401
         Width = 697
-        Height = 29
+        Height = 31
         HelpContext = 555
         Align = dalBottom
         AllowDocking = False
@@ -69,19 +68,17 @@ object formCadModelo: TformCadModelo
       end
       object pnlFundoGrade: TPanel
         Left = 0
-        Top = 77
+        Top = 79
         Width = 697
-        Height = 326
+        Height = 322
         HelpContext = 555
         Align = alClient
         BevelOuter = bvNone
         Color = clCream
         TabOrder = 2
-        ExplicitTop = 79
-        ExplicitHeight = 322
         object dxBarDockControl_Links: TdxBarDockControl
           Left = 0
-          Top = 304
+          Top = 300
           Width = 697
           Height = 22
           HelpContext = 555
@@ -90,7 +87,6 @@ object formCadModelo: TformCadModelo
           BarManager = dxBarManagerCad
           SunkenBorder = False
           UseOwnSunkenBorder = True
-          ExplicitTop = 300
         end
         object dxBarDockControlWhere: TdxBarDockControl
           Left = 0
@@ -108,7 +104,7 @@ object formCadModelo: TformCadModelo
           Left = 0
           Top = 22
           Width = 697
-          Height = 282
+          Height = 278
           HelpContext = 555
           Align = alClient
           PopupMenu = menuGrade
@@ -116,9 +112,7 @@ object formCadModelo: TformCadModelo
           LookAndFeel.Kind = lfOffice11
           LookAndFeel.NativeStyle = False
           LookAndFeel.SkinName = 'Office2010Silver'
-          ExplicitHeight = 278
           object cxGrid1DBTableView1: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
             Navigator.Visible = True
             OnCellClick = cxGrid1DBTableView1CellClick
             OnCellDblClick = cxGrid1DBTableView1CellDblClick
@@ -158,7 +152,7 @@ object formCadModelo: TformCadModelo
         Left = 0
         Top = 0
         Width = 697
-        Height = 77
+        Height = 79
         HelpContext = 555
         Align = dalTop
         AllowDocking = False
@@ -168,17 +162,17 @@ object formCadModelo: TformCadModelo
       end
       object pnlEdicao: TPanel
         Left = 0
-        Top = 77
+        Top = 79
         Width = 697
-        Height = 355
+        Height = 353
         HelpContext = 555
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 2
-        ExplicitTop = 79
-        ExplicitHeight = 353
+        ExplicitTop = 74
+        ExplicitHeight = 358
       end
     end
   end
@@ -269,7 +263,7 @@ object formCadModelo: TformCadModelo
     ImageOptions.UseLargeImagesForLargeIcons = True
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
-    LookAndFeel.SkinName = 'Office2010Silver'
+    LookAndFeel.SkinName = 'DevExpressStyle'
     PopupMenuLinks = <>
     UseSystemFont = True
     Left = 40
@@ -783,7 +777,6 @@ object formCadModelo: TformCadModelo
     object dxComponentPrinterLink1: TdxGridReportLink
       Active = True
       Component = grdDados
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -795,8 +788,7 @@ object formCadModelo: TformCadModelo
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43927.276474328700000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 42615.943077858800000000
       OptionsExpanding.ExpandGroupRows = True
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.Headers = False

@@ -48,10 +48,10 @@ object formSelCampos: TformSelCampos
         Height = 25
         Cursor = crHandPoint
         Caption = 'OK'
-        LookAndFeel.Kind = lfOffice11
-        LookAndFeel.NativeStyle = False
         TabOrder = 0
         OnClick = cxButton1Click
+        LookAndFeel.Kind = lfOffice11
+        LookAndFeel.NativeStyle = False
       end
       object cxButton2: TcxButton
         Left = 208
@@ -61,9 +61,9 @@ object formSelCampos: TformSelCampos
         Cursor = crHandPoint
         Cancel = True
         Caption = 'Cancelar'
-        LookAndFeel.Kind = lfOffice11
         TabOrder = 1
         OnClick = cxButton2Click
+        LookAndFeel.Kind = lfOffice11
       end
     end
     object cxGrid1: TcxGrid
@@ -83,9 +83,9 @@ object formSelCampos: TformSelCampos
       ParentFont = False
       TabOrder = 1
       LookAndFeel.Kind = lfUltraFlat
-      LookAndFeel.NativeStyle = False
+      LookAndFeel.NativeStyle = True
       object cxGrid1DBTableView1: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
+        NavigatorButtons.ConfirmDelete = False
         DataController.DataSource = dsrCampos
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
