@@ -5,12 +5,13 @@ inherited formProdutos: TformProdutos
   ClientHeight = 527
   ClientWidth = 751
   ExplicitWidth = 767
-  ExplicitHeight = 565
+  ExplicitHeight = 566
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcDados: TcxPageControl
     Width = 751
     Height = 507
+    Properties.ActivePage = tabDetalhe
     ExplicitWidth = 751
     ExplicitHeight = 507
     ClientRectBottom = 506
@@ -23,20 +24,20 @@ inherited formProdutos: TformProdutos
         ExplicitWidth = 749
       end
       inherited dxBarDockControl_Selecao: TdxBarDockControl
-        Top = 474
+        Top = 476
         Width = 749
-        ExplicitTop = 474
+        ExplicitTop = 476
         ExplicitWidth = 749
       end
       inherited pnlFundoGrade: TPanel
         Width = 749
-        Height = 395
+        Height = 399
         ExplicitWidth = 749
-        ExplicitHeight = 395
+        ExplicitHeight = 399
         inherited dxBarDockControl_Links: TdxBarDockControl
-          Top = 373
+          Top = 377
           Width = 749
-          ExplicitTop = 373
+          ExplicitTop = 377
           ExplicitWidth = 749
         end
         inherited dxBarDockControlWhere: TdxBarDockControl
@@ -45,9 +46,9 @@ inherited formProdutos: TformProdutos
         end
         inherited grdDados: TcxGrid
           Width = 749
-          Height = 351
+          Height = 355
           ExplicitWidth = 749
-          ExplicitHeight = 351
+          ExplicitHeight = 355
           inherited cxGrid1DBTableView1: TcxGridDBTableView
             OptionsData.Deleting = True
             OptionsData.DeletingConfirmation = True
@@ -207,15 +208,14 @@ inherited formProdutos: TformProdutos
       end
       inherited pnlEdicao: TPanel
         Width = 749
-        Height = 426
-        ExplicitTop = 79
+        Height = 428
         ExplicitWidth = 749
-        ExplicitHeight = 426
+        ExplicitHeight = 428
         object cxPageControl1: TcxPageControl
           Left = 0
           Top = 91
           Width = 749
-          Height = 335
+          Height = 337
           Align = alClient
           PopupMenu = menuImagem
           TabOrder = 0
@@ -223,7 +223,7 @@ inherited formProdutos: TformProdutos
           Properties.CustomButtons.Buttons = <>
           LookAndFeel.NativeStyle = True
           OnChange = cxPageControl1Change
-          ClientRectBottom = 331
+          ClientRectBottom = 333
           ClientRectLeft = 4
           ClientRectRight = 745
           ClientRectTop = 24
@@ -333,7 +333,7 @@ inherited formProdutos: TformProdutos
             object Label14: TLabel
               Left = 200
               Top = 88
-              Width = 49
+              Width = 48
               Height = 13
               Caption = 'Volumes'
               FocusControl = DEDVOLUMES
@@ -402,9 +402,9 @@ inherited formProdutos: TformProdutos
               OnClick = Label33Click
             end
             object Label34: TLabel
-              Left = 122
+              Left = 104
               Top = 208
-              Width = 45
+              Width = 44
               Height = 13
               Caption = 'Sit.Trib.'
             end
@@ -419,7 +419,7 @@ inherited formProdutos: TformProdutos
             object lbTributos: TLabel
               Left = 322
               Top = 248
-              Width = 72
+              Width = 71
               Height = 13
               Caption = 'Tributos (%)'
               FocusControl = dedTributos
@@ -602,7 +602,7 @@ inherited formProdutos: TformProdutos
               TabOrder = 12
               OnEnter = edtPesquisar2Enter
               OnExit = edtPesquisar2Exit
-              Width = 98
+              Width = 85
             end
             object cxDBTextEdit10: TcxDBTextEdit
               Left = 199
@@ -616,7 +616,7 @@ inherited formProdutos: TformProdutos
               Width = 106
             end
             object cxDBComboBox1: TcxDBComboBox
-              Left = 121
+              Left = 104
               Top = 223
               DataBinding.DataField = 'SITTRIBU'
               DataBinding.DataSource = dsrDados
@@ -722,7 +722,7 @@ inherited formProdutos: TformProdutos
                 '890'
                 '')
               TabOrder = 13
-              Width = 64
+              Width = 81
             end
             object dedPartNumber: TcxDBTextEdit
               Left = 320
@@ -761,7 +761,7 @@ inherited formProdutos: TformProdutos
             object Label17: TLabel
               Left = 296
               Top = 8
-              Width = 72
+              Width = 71
               Height = 13
               Caption = 'Pre'#231'o Venda'
               FocusControl = DEDVENDA
@@ -821,7 +821,7 @@ inherited formProdutos: TformProdutos
             object Label27: TLabel
               Left = 296
               Top = 48
-              Width = 83
+              Width = 82
               Height = 13
               Caption = 'Pre'#231'o Venda 2'
               FocusControl = cxDBTextEdit6
@@ -829,7 +829,7 @@ inherited formProdutos: TformProdutos
             object Label31: TLabel
               Left = 296
               Top = 88
-              Width = 83
+              Width = 82
               Height = 13
               Caption = 'Pre'#231'o Venda 3'
               FocusControl = cxDBTextEdit7
@@ -871,7 +871,7 @@ inherited formProdutos: TformProdutos
             object lbPreco4: TLabel
               Left = 297
               Top = 128
-              Width = 83
+              Width = 82
               Height = 13
               Caption = 'Pre'#231'o Venda 4'
               FocusControl = dedPreco4
@@ -879,7 +879,7 @@ inherited formProdutos: TformProdutos
             object lbPreco5: TLabel
               Left = 297
               Top = 168
-              Width = 83
+              Width = 82
               Height = 13
               Caption = 'Pre'#231'o Venda 5'
               FocusControl = dedPreco5
@@ -1051,7 +1051,7 @@ inherited formProdutos: TformProdutos
               Left = 0
               Top = 0
               Width = 741
-              Height = 307
+              Height = 309
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Executando invent'#225'rio...'
@@ -1060,7 +1060,7 @@ inherited formProdutos: TformProdutos
                 Left = 0
                 Top = 0
                 Width = 741
-                Height = 307
+                Height = 309
                 Align = alClient
                 TabOrder = 0
                 Visible = False
@@ -1110,7 +1110,7 @@ inherited formProdutos: TformProdutos
               Left = 0
               Top = 10
               Width = 10
-              Height = 287
+              Height = 289
               Align = alLeft
               BevelOuter = bvNone
               Color = clCream
@@ -1118,7 +1118,7 @@ inherited formProdutos: TformProdutos
             end
             object Panel6: TPanel
               Left = 0
-              Top = 297
+              Top = 299
               Width = 741
               Height = 10
               Align = alBottom
@@ -1131,7 +1131,7 @@ inherited formProdutos: TformProdutos
               Left = 10
               Top = 10
               Width = 731
-              Height = 287
+              Height = 289
               Align = alClient
               BevelOuter = bvNone
               Color = clCream
@@ -1141,7 +1141,7 @@ inherited formProdutos: TformProdutos
                 Left = 0
                 Top = 0
                 Width = 509
-                Height = 287
+                Height = 289
                 Align = alClient
                 IncrementalDisplay = True
                 PopupMenu = menuImagem
@@ -1152,7 +1152,7 @@ inherited formProdutos: TformProdutos
                 Left = 509
                 Top = 0
                 Width = 222
-                Height = 287
+                Height = 289
                 Align = alRight
                 BevelOuter = bvNone
                 Color = clCream
@@ -1361,7 +1361,7 @@ inherited formProdutos: TformProdutos
               Left = 0
               Top = 0
               Width = 741
-              Height = 307
+              Height = 309
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Nenhum registro de Log'
@@ -1434,7 +1434,7 @@ inherited formProdutos: TformProdutos
                 Left = 0
                 Top = 84
                 Width = 741
-                Height = 223
+                Height = 225
                 Align = alClient
                 TabOrder = 1
                 LookAndFeel.NativeStyle = True
@@ -1507,7 +1507,7 @@ inherited formProdutos: TformProdutos
           object Label3: TLabel
             Left = 160
             Top = 8
-            Width = 72
+            Width = 71
             Height = 13
             Caption = 'Pre'#231'o Venda'
             FocusControl = dedPRECOVENDA
@@ -2102,7 +2102,6 @@ inherited formProdutos: TformProdutos
     Top = 168
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.759807581020000000
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end
