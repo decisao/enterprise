@@ -77,6 +77,8 @@ object formCadModelo: TformCadModelo
         BevelOuter = bvNone
         Color = clCream
         TabOrder = 2
+        ExplicitTop = 79
+        ExplicitHeight = 322
         object dxBarDockControl_Links: TdxBarDockControl
           Left = 0
           Top = 304
@@ -88,6 +90,7 @@ object formCadModelo: TformCadModelo
           BarManager = dxBarManagerCad
           SunkenBorder = False
           UseOwnSunkenBorder = True
+          ExplicitTop = 300
         end
         object dxBarDockControlWhere: TdxBarDockControl
           Left = 0
@@ -113,6 +116,7 @@ object formCadModelo: TformCadModelo
           LookAndFeel.Kind = lfOffice11
           LookAndFeel.NativeStyle = False
           LookAndFeel.SkinName = 'Office2010Silver'
+          ExplicitHeight = 278
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Visible = True
@@ -173,6 +177,8 @@ object formCadModelo: TformCadModelo
         Color = clWhite
         ParentBackground = False
         TabOrder = 2
+        ExplicitTop = 79
+        ExplicitHeight = 353
       end
     end
   end
@@ -777,6 +783,7 @@ object formCadModelo: TformCadModelo
     object dxComponentPrinterLink1: TdxGridReportLink
       Active = True
       Component = grdDados
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -788,7 +795,8 @@ object formCadModelo: TformCadModelo
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43927.290952870370000000
+      ReportDocument.CreationDate = 43927.276474328700000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsExpanding.ExpandGroupRows = True
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.Headers = False

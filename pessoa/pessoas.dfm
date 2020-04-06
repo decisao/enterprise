@@ -5,7 +5,7 @@ inherited formPessoas: TformPessoas
   ClientHeight = 583
   ClientWidth = 707
   ExplicitWidth = 723
-  ExplicitHeight = 621
+  ExplicitHeight = 622
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcDados: TcxPageControl
@@ -23,20 +23,20 @@ inherited formPessoas: TformPessoas
         ExplicitWidth = 705
       end
       inherited dxBarDockControl_Selecao: TdxBarDockControl
-        Top = 530
+        Top = 532
         Width = 705
-        ExplicitTop = 530
+        ExplicitTop = 532
         ExplicitWidth = 705
       end
       inherited pnlFundoGrade: TPanel
         Width = 705
-        Height = 451
+        Height = 455
         ExplicitWidth = 705
-        ExplicitHeight = 451
+        ExplicitHeight = 455
         inherited dxBarDockControl_Links: TdxBarDockControl
-          Top = 429
+          Top = 433
           Width = 705
-          ExplicitTop = 429
+          ExplicitTop = 433
           ExplicitWidth = 705
         end
         inherited dxBarDockControlWhere: TdxBarDockControl
@@ -45,9 +45,9 @@ inherited formPessoas: TformPessoas
         end
         inherited grdDados: TcxGrid
           Width = 705
-          Height = 407
+          Height = 411
           ExplicitWidth = 705
-          ExplicitHeight = 407
+          ExplicitHeight = 411
           inherited cxGrid1DBTableView1: TcxGridDBTableView
             DataController.Summary.DefaultGroupSummaryItems = <
               item
@@ -227,10 +227,9 @@ inherited formPessoas: TformPessoas
       end
       inherited pnlEdicao: TPanel
         Width = 705
-        Height = 482
-        ExplicitTop = 79
+        Height = 484
         ExplicitWidth = 705
-        ExplicitHeight = 482
+        ExplicitHeight = 484
         object pnlCliente: TPanel
           Left = 0
           Top = 0
@@ -304,15 +303,16 @@ inherited formPessoas: TformPessoas
           Left = 0
           Top = 97
           Width = 705
-          Height = 385
+          Height = 387
           Align = alClient
           TabOrder = 1
           Properties.ActivePage = tabJuridica
           Properties.CustomButtons.Buttons = <>
+          Properties.Style = 11
           LookAndFeel.Kind = lfOffice11
           LookAndFeel.NativeStyle = False
           OnChange = pgcDetalhesChange
-          ClientRectBottom = 379
+          ClientRectBottom = 381
           ClientRectLeft = 2
           ClientRectRight = 699
           ClientRectTop = 27
@@ -367,7 +367,7 @@ inherited formPessoas: TformPessoas
             object lbValorContratoJuridico: TLabel
               Left = 235
               Top = 231
-              Width = 84
+              Width = 83
               Height = 13
               Caption = 'Valor Contrato'
               FocusControl = dedValorContratoJuridico
@@ -629,7 +629,7 @@ inherited formPessoas: TformPessoas
             object lbValorContratoFisico: TLabel
               Left = 233
               Top = 213
-              Width = 84
+              Width = 83
               Height = 13
               Caption = 'Valor Contrato'
               FocusControl = dedValorContratoFisico
@@ -875,7 +875,7 @@ inherited formPessoas: TformPessoas
             object Label23: TLabel
               Left = 8
               Top = 128
-              Width = 49
+              Width = 48
               Height = 13
               Caption = 'Telefone'
               FocusControl = dedFONE
@@ -884,7 +884,7 @@ inherited formPessoas: TformPessoas
             object Label24: TLabel
               Left = 160
               Top = 128
-              Width = 22
+              Width = 21
               Height = 13
               Caption = 'FAX'
               FocusControl = dedFAX
@@ -929,7 +929,7 @@ inherited formPessoas: TformPessoas
             object lbTEMPO_RESIDENCIA: TLabel
               Left = 7
               Top = 207
-              Width = 104
+              Width = 103
               Height = 13
               Caption = 'Tempo Resid'#234'ncia'
               FocusControl = dedTEMPO_RESIDENCIA
@@ -938,7 +938,7 @@ inherited formPessoas: TformPessoas
             object lbALUGUEL_VALOR: TLabel
               Left = 312
               Top = 207
-              Width = 76
+              Width = 75
               Height = 13
               Caption = 'Valor Aluguel'
               FocusControl = dedALUGUEL_VALOR
@@ -1162,7 +1162,7 @@ inherited formPessoas: TformPessoas
             object lbEMP_FONE: TLabel
               Left = 320
               Top = 149
-              Width = 49
+              Width = 48
               Height = 13
               Caption = 'Telefone'
               FocusControl = dedFONE2
@@ -1330,7 +1330,7 @@ inherited formPessoas: TformPessoas
             object lbCON_FONE: TLabel
               Left = 320
               Top = 133
-              Width = 49
+              Width = 48
               Height = 13
               Caption = 'Telefone'
               FocusControl = dedCON_FONE
@@ -1643,7 +1643,7 @@ inherited formPessoas: TformPessoas
             end
             object Panel4: TPanel
               Left = 0
-              Top = 342
+              Top = 344
               Width = 697
               Height = 10
               Align = alBottom
@@ -1656,7 +1656,7 @@ inherited formPessoas: TformPessoas
               Left = 0
               Top = 10
               Width = 10
-              Height = 332
+              Height = 334
               Align = alLeft
               BevelOuter = bvNone
               Color = clCream
@@ -1667,7 +1667,7 @@ inherited formPessoas: TformPessoas
               Left = 10
               Top = 10
               Width = 687
-              Height = 332
+              Height = 334
               Align = alClient
               BevelOuter = bvNone
               Color = clCream
@@ -1677,7 +1677,7 @@ inherited formPessoas: TformPessoas
                 Left = 0
                 Top = 0
                 Width = 465
-                Height = 332
+                Height = 334
                 Align = alClient
                 IncrementalDisplay = True
                 PopupMenu = menuImagem
@@ -1688,7 +1688,7 @@ inherited formPessoas: TformPessoas
                 Left = 465
                 Top = 0
                 Width = 222
-                Height = 332
+                Height = 334
                 Align = alRight
                 BevelOuter = bvNone
                 Color = clCream
@@ -1729,7 +1729,7 @@ inherited formPessoas: TformPessoas
               Left = 0
               Top = 17
               Width = 697
-              Height = 335
+              Height = 337
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Carregando...'
@@ -1740,7 +1740,7 @@ inherited formPessoas: TformPessoas
                 Left = 0
                 Top = 0
                 Width = 113
-                Height = 335
+                Height = 337
                 Align = alLeft
                 BevelOuter = bvNone
                 Color = clCream
@@ -1770,7 +1770,7 @@ inherited formPessoas: TformPessoas
                 Left = 113
                 Top = 0
                 Width = 584
-                Height = 335
+                Height = 337
                 Align = alClient
                 TabOrder = 1
                 LookAndFeel.NativeStyle = True
@@ -1892,7 +1892,7 @@ inherited formPessoas: TformPessoas
               TabOrder = 0
               OnEnter = edtPesquisar2Enter
               OnExit = edtPesquisar2Exit
-              Height = 352
+              Height = 354
               Width = 697
             end
           end
@@ -1979,7 +1979,7 @@ inherited formPessoas: TformPessoas
               Left = 0
               Top = 0
               Width = 697
-              Height = 352
+              Height = 354
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Nenhum registro de Log'
@@ -2052,7 +2052,7 @@ inherited formPessoas: TformPessoas
                 Left = 0
                 Top = 84
                 Width = 697
-                Height = 268
+                Height = 270
                 Align = alClient
                 TabOrder = 1
                 LookAndFeel.NativeStyle = True
@@ -2986,7 +2986,6 @@ inherited formPessoas: TformPessoas
     Top = 208
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.462735208330000000
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end
