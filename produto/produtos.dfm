@@ -11,7 +11,6 @@ inherited formProdutos: TformProdutos
   inherited pgcDados: TcxPageControl
     Width = 751
     Height = 507
-    Properties.ActivePage = tabDetalhe
     ExplicitWidth = 751
     ExplicitHeight = 507
     ClientRectBottom = 506
@@ -2066,9 +2065,10 @@ inherited formProdutos: TformProdutos
     end
     object cdsDadosSITTRIBU: TStringField
       DisplayLabel = 'Sit.Trib.'
+      DisplayWidth = 5
       FieldName = 'SITTRIBU'
       FixedChar = True
-      Size = 3
+      Size = 5
     end
     object cdsDadosPARTNUMBER: TStringField
       DisplayLabel = 'PartNumber'
@@ -2102,6 +2102,7 @@ inherited formProdutos: TformProdutos
     Top = 168
     inherited dxComponentPrinterLink1: TdxGridReportLink
       ReportDocument.CreationDate = 39476.759807581020000000
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end
