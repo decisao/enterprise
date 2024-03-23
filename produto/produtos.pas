@@ -27,8 +27,7 @@ uses
   dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue, dxPSPrVwAdv,
   dxPSPrVwRibbon, cxPCdxBarPopupMenu, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
-  cxNavigator, dxSkinsdxRibbonPainter, dxSkinDevExpressStyle,
-  dxSkinDevExpressDarkStyle;
+  cxNavigator, dxSkinsdxRibbonPainter, dxSkinDevExpressStyle;
 
 type
   {####################################################################}

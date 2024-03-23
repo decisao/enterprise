@@ -72,7 +72,6 @@ object formServidor: TformServidor
       'UseUnicode=False'
       'Trim Char=True')
     VendorLib = 'gds32.dll'
-    AfterDisconnect = SQLConnectionAfterDisconnect
     Left = 176
     Top = 8
   end

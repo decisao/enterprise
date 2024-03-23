@@ -12,7 +12,7 @@ type
     lbNome: TLabel;
     SQLMonitor: TSQLMonitor;
     procedure FormCreate(Sender: TObject);
-    procedure SQLConnectionAfterDisconnect(Sender: TObject);
+    procedure SQLConnectionBeforeDisconnect(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,8 +31,6 @@ var
   nome, extensao, base: string;
 begin
 
-  if SQLConnection.Connected then
-    SQLConnection.Close;
 
 //  { limpo os parâmetros }
 //  SQLConnection.Params.Clear;
@@ -58,8 +56,9 @@ begin
 end;
 
 
-procedure TformServidor.SQLConnectionAfterDisconnect(Sender: TObject);
+procedure TformServidor.SQLConnectionBeforeDisconnect(Sender: TObject);
 begin
+  { fecho se estiver aberto }
   if SQLConnection.Connected then
     SQLConnection.Close;
 end;
