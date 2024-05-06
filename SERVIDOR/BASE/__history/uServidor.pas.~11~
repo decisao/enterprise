@@ -76,8 +76,6 @@ end;
 
 procedure TformServidor.tmrCloseTimer(Sender: TObject);
 begin
-  if SQLConnection.Connected then
-    SQLConnection.Close;
   close;
 end;
 
