@@ -712,7 +712,7 @@ begin
       cdsNota.FieldByName('OBSERVACOES').AsString + '"');
 
     { finalização }
-    writeln(arquivo, ',1,1)');
+    writeln(arquivo, ',1,1,1)');
 
     { encerro o arquivo }
     CloseFile(arquivo);
