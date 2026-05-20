@@ -913,8 +913,6 @@ object formPrincipal: TformPrincipal
     Color = clWhite
     ParentBackground = False
     TabOrder = 5
-    ExplicitTop = 103
-    ExplicitHeight = 462
     object imgFundo: TImage
       Left = 0
       Top = 0

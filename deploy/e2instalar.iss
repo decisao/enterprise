@@ -75,7 +75,7 @@ Source: "C:\enterprise\teste\BemaMFD.dll"; DestDir: "{app}"; Flags: ignoreversio
 Source: "C:\enterprise\teste\BemaMFD2.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\enterprise\teste\Daruma32.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; Source: "C:\enterprise\teste\vccrt8_Win32.msi"; DestDir: {tmp}; Flags: deleteafterinstall
-Source: "C:\enterprise\teste\Firebird-3.0.4.33054_0_Win32.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "C:\enterprise\teste\Firebird-3.0.5.33220_0_Win32.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 Source: "C:\enterprise\teste\dbxida42.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
