@@ -58,6 +58,7 @@ type
     procedure ckAcrescimoClick(Sender: TObject);
   private
     { Private declarations }
+    function ObterMotivoErro: string;
   public
     { Public declarations }
     codMovimento: longint;
@@ -757,6 +758,59 @@ begin
   modalresult := mrCancel;
 end;
 
+function TformNFeGerar.ObterMotivoErro: string;
+var
+  k: integer;
+  s: string;
+begin
+  result := '';
+
+  { 1o: XMotivo em qualquer secao do retorno (a secao NFE%d pode nao
+    existir quando o monitor rejeita o comando) }
+  for k := 0 to Memo1.Lines.Count-1 do
+   begin
+     s := trim(Memo1.Lines[k]);
+     if SameText(copy(s, 1, 8), 'XMotivo=') then
+      begin
+        result := trim(copy(s, 9, MaxInt));
+        break;
+      end;
+   end;
+
+  { 2o: linha de excecao do monitor, ex: ERRO: Exception: <msg> }
+  if result = '' then
+   for k := 0 to Memo1.Lines.Count-1 do
+    begin
+      s := trim(Memo1.Lines[k]);
+      if (SameText(copy(s, 1, 5), 'ERRO:')) or
+         (SameText(copy(s, 1, 10), 'EXCEPTION:')) or
+         (pos('Exception', s) > 0) then
+       begin
+         result := trim(copy(s, pos(':', s)+1, MaxInt));
+         break;
+       end;
+    end;
+
+  { 3o: ultimas linhas do retorno bruto }
+  if result = '' then
+   for k := Memo1.Lines.Count-1 downto 0 do
+    begin
+      s := trim(Memo1.Lines[k]);
+      if s > '' then
+       begin
+         if result > '' then
+           result := s + ' | ' + result
+         else
+           result := s;
+         if length(result) > 300 then
+           break;
+       end;
+    end;
+
+  if trim(result) = '' then
+    result := 'Consulte o LOG do ACBrMonitorPLUS';
+end;
+
 procedure TformNFeGerar.tmrRetornoTimer(Sender: TObject);
 var
   RetornoIni: TIniFile;
@@ -813,6 +867,13 @@ begin
         except
         end;
         Application.ProcessMessages;
+
+        { motivo real: se a secao NFE%d nao existe no retorno, busco a
+          mensagem genuina do monitor (XMotivo / ERRO / EXCEPTION) }
+        if (motivo = 'ERRO') or (trim(motivo) = '') then
+          motivo := Format('cStat=%s: %s', [stat, ObterMotivoErro])
+        else
+          motivo := Format('cStat=%s: %s', [stat, motivo]);
         formPrincipal.MsgError('ERRO!'+#13#10#13#10+motivo, 'NFe');
       end else
       begin
